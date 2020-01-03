@@ -1,0 +1,7 @@
+.fieldContainsNumbers{
+    -fx-background-color: lightgrey;
+}
+
+.fieldDoesNotContainNumbers{
+    -fx-background-color: burlywood;
+}
