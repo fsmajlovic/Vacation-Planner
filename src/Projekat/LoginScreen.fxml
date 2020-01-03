@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="313.0" prefWidth="512.0" style="-fx-background-color: ghostwhite;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Projekat.LoginController">
+   <children>
+      <Button alignment="CENTER" layoutX="211.0" layoutY="201.0" mnemonicParsing="false" onAction="#LoginButtonAction" prefHeight="22.0" prefWidth="91.0" style="-fx-background-color: #333f5c;" text="Login" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Button>
+      <Ellipse fill="#9eab96" layoutX="-22.0" layoutY="14.0" radiusX="100.0" radiusY="80.0" stroke="BLACK" strokeType="INSIDE" />
+      <Polyline fill="#333f5c" layoutX="-134.0" layoutY="-31.0" points="92.0, -14.0, 187.0, 163.0, 244.0, 127.0, 358.0, 163.0" rotate="113.0" strokeType="INSIDE" />
+      <Polyline fill="#333f5c" layoutX="222.0" layoutY="164.0" points="92.0, -14.0, 311.27642822265625, 19.70916175842285, 442.77252197265625, -122.72108459472656, 383.2321472167969, 128.41207885742188" rotate="-81.9" strokeType="INSIDE" />
+      <Polyline fill="#333f5c" layoutX="290.0" layoutY="384.0" points="173.0, 23.0, 44.0, -19.0, 185.0, -130.0, 158.0, -44.0" strokeType="INSIDE" />
+      <Polyline fill="#9eab96" layoutX="456.0" layoutY="355.0" points="6.0, 52.0, -11.0, -15.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
+      <Polyline fill="#9eab96" layoutX="563.0" layoutY="-8.0" points="6.0, 52.0, -144.0, -2.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
+      <Polyline fill="#9eab96" layoutX="47.0" layoutY="339.0" points="6.0, 52.0, -11.0, -15.0, -89.0, -167.0, 121.0, 24.0" strokeType="INSIDE" />
+      <Polyline fill="#333f5c" layoutX="-118.0" layoutY="282.0" points="308.0, 79.0, 68.0, 79.0, 79.0, -186.0, 165.0, -2.0" strokeType="INSIDE" />
+      <CheckBox fx:id="AdminCheckBox" contentDisplay="CENTER" layoutX="211.0" layoutY="237.0" mnemonicParsing="false" onAction="#AdminCheckBoxOnAction" text="Administrator" />
+      <Polyline fill="#9eab96" layoutX="44.0" layoutY="-38.0" points="6.0, 52.0, -144.0, -2.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
+      <Polyline fill="#9eab96" layoutX="-38.0" layoutY="409.0" points="6.0, 52.0, -144.0, -2.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
+      <Polyline fill="#9eab96" layoutX="-48.0" layoutY="396.0" points="6.0, 52.0, -144.0, -2.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
+      <Polyline fill="#9eab96" layoutX="-58.0" layoutY="378.0" points="6.0, 52.0, -84.0, -30.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
+      <Polyline fill="#9eab96" layoutX="600.0" layoutY="13.0" points="6.0, 52.0, -144.0, -2.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
+      <Polyline fill="#9eab96" layoutX="613.0" layoutY="31.0" points="6.0, 52.0, -144.0, -2.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
+      <Text fill="#333f5c" fontSmoothingType="LCD" layoutX="124.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacation Planner" textAlignment="CENTER">
+         <font>
+            <Font name="Monotype Corsiva" size="43.0" />
+         </font>
+      </Text>
+      <HBox layoutX="156.0" layoutY="126.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #9eab96;">
+         <children>
+            <TextField fx:id="username" alignment="CENTER" prefHeight="25.0" prefWidth="209.0" promptText="username" style="-fx-border-color: #195b3b;">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></TextField>
+         </children>
+      </HBox>
+      <HBox layoutX="156.0" layoutY="160.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #9eab96;">
+         <children>
+            <PasswordField fx:id="password" alignment="CENTER" prefHeight="25.0" prefWidth="223.0" promptText="password" style="-fx-border-color: #195b3b;" />
+         </children></HBox>
+      <Text layoutX="145.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New to Vacation Planner?" AnchorPane.leftAnchor="160.0" />
+      <Text fill="#333f5c" layoutX="305.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign up" AnchorPane.leftAnchor="310.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+   </children>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
+   <effect>
+      <InnerShadow />
+   </effect>
+</AnchorPane>
