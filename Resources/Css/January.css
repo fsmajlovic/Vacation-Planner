@@ -1,0 +1,11 @@
+.isPressed{
+    -fx-background-color: burlywood;
+}
+.notPressed{
+    -fx-background-color: lightblue;
+}
+
+.toggle-button {
+    -fx-background-color: lightblue;
+}
+
