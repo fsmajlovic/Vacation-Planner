@@ -6,21 +6,18 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
 
-public class JanuaryController {
+public class DecemberController {
 
     public ToggleButton btnOne;
     public TextField labelDaysLeft;
@@ -45,7 +42,7 @@ public class JanuaryController {
     }
 
     public void btnPressed(ActionEvent actionEvent) {
-         ToggleButton tgl = (ToggleButton) actionEvent.getSource();
+        ToggleButton tgl = (ToggleButton) actionEvent.getSource();
         //System.out.println(tgl.getText());
 
         if(daysLeft > 0 && tgl.getStyleClass().contains("notPressed")){
@@ -132,7 +129,7 @@ public class JanuaryController {
     }
 
     public void nxtMonth(MouseEvent mouseEvent) throws IOException {
-        Parent MonthParent = FXMLLoader.load(getClass().getResource("February" + ".fxml"));
+        Parent MonthParent = FXMLLoader.load(getClass().getResource("January" + ".fxml"));
         Scene MonthScene = new Scene(MonthParent, 800, 500);
         Stage window = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();
         window.setScene(MonthScene);
@@ -140,7 +137,7 @@ public class JanuaryController {
     }
 
     public void pvsMonth(MouseEvent mouseEvent) throws IOException {
-        Parent MonthParent = FXMLLoader.load(getClass().getResource("December" + ".fxml"));
+        Parent MonthParent = FXMLLoader.load(getClass().getResource("November" + ".fxml"));
         Scene MonthScene = new Scene(MonthParent, 800, 500);
         Stage window = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();
         window.setScene(MonthScene);
