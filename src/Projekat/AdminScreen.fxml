@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="501.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Projekat.AdminController">
+   <children>
+      <AnchorPane layoutX="592.0" prefHeight="501.0" prefWidth="208.0" style="-fx-background-color: #333f5c; -fx-border-color: black]];">
+         <children>
+            <Button fx:id="btnDeny" alignment="CENTER" contentDisplay="CENTER" layoutY="334.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="208.0" style="-fx-background-color: azure; -fx-border-color: ghostwhite;" text="Deny" textFill="#d02525" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="124.0" layoutY="462.0" mnemonicParsing="false" onAction="#LogoutAdminOnAction" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: azure;" text="Logout" />
+            <Button fx:id="btnApprove" alignment="CENTER" contentDisplay="CENTER" layoutY="251.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="107.0" style="-fx-background-color: azure; -fx-border-color: ghostwhite;" text="Approve" textFill="#2b9039" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="251.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ChoiceBox fx:id="choiceSelectMonth" layoutX="30.0" layoutY="56.0" onAction="#changeMonth" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: azure;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ChoiceBox>
+            <Text fill="WHITE" layoutX="30.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Month" textAlignment="CENTER" wrappingWidth="150.0">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Text>
+         </children></AnchorPane>
+      <ListView layoutX="61.0" layoutY="93.0" prefHeight="224.0" prefWidth="466.0" style="-fx-background-color: #9eab96; -fx-border-color: #9eab96;" />
+      <Label fx:id="GreetingsLabel" layoutX="61.0" layoutY="14.0" prefHeight="15.0" prefWidth="466.0" text="GreetingMsg" textFill="#333f5c">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="selectedMonthLabel" layoutX="61.0" layoutY="63.0" prefHeight="21.0" prefWidth="173.0" text="CurentlySelectedMonth">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+      </Label>
+      <TextField editable="false" layoutX="378.0" layoutY="363.0" mouseTransparent="true" style="-fx-background-color: #9eab96;" />
+      <TextField editable="false" layoutX="378.0" layoutY="426.0" mouseTransparent="true" style="-fx-background-color: #9eab96;" />
+      <TextField editable="false" layoutX="148.0" layoutY="363.0" mouseTransparent="true" style="-fx-background-color: #9eab96;" />
+      <TextField editable="false" layoutX="148.0" layoutY="426.0" mouseTransparent="true" style="-fx-background-color: #9eab96;" />
+      <Text layoutX="61.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" wrappingWidth="78.13671875">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="61.0" layoutY="443.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:" wrappingWidth="78.13671875">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="314.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From:" textAlignment="CENTER" wrappingWidth="78.13671875">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="314.0" layoutY="442.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To:" textAlignment="CENTER" wrappingWidth="78.13671875">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="183.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee:" textAlignment="CENTER" wrappingWidth="78.13671875">
+         <font>
+            <Font name="Monotype Corsiva" size="17.0" />
+         </font>
+      </Text>
+      <Text layoutX="413.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:" textAlignment="CENTER" wrappingWidth="78.13671875">
+         <font>
+            <Font name="Monotype Corsiva" size="17.0" />
+         </font>
+      </Text>
+   </children>
+   <cursor>
+      <Cursor fx:constant="DEFAULT" />
+   </cursor>
+</AnchorPane>
