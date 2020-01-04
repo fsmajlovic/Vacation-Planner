@@ -106,4 +106,20 @@ public class LoginController {
         window.show();
     }
 
+
+    public void usernameOnMouseClicked(MouseEvent mouseEvent) {
+        if(invalidLabel.isVisible()){
+            usernameTextField.setText("");
+            passwordTextField.setText("");
+            invalidLabel.setVisible(false);
+        }
+    }
+
+    public void passwordOnMouseClicked(MouseEvent mouseEvent) {
+        if(invalidLabel.isVisible()){
+            usernameTextField.setText("");
+            passwordTextField.setText("");
+            invalidLabel.setVisible(false);
+        }
+    }
 }

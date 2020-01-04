@@ -40,8 +40,8 @@
          </font>
       </Button>
       <Label fx:id="invalidLabel" layoutX="177.0" layoutY="180.0" text="Invalid username or password" textFill="RED" visible="false" />
-      <TextField fx:id="usernameTextField" alignment="CENTER" layoutX="173.0" layoutY="121.0" prefHeight="25.0" prefWidth="169.0" promptText="username" />
-      <PasswordField fx:id="passwordTextField" alignment="CENTER" layoutX="174.0" layoutY="154.0" prefHeight="25.0" prefWidth="169.0" promptText="password" />
+      <TextField fx:id="usernameTextField" alignment="CENTER" layoutX="173.0" layoutY="121.0" onMouseClicked="#usernameOnMouseClicked" prefHeight="25.0" prefWidth="169.0" promptText="username" />
+      <PasswordField fx:id="passwordTextField" alignment="CENTER" layoutX="174.0" layoutY="154.0" onMouseClicked="#passwordOnMouseClicked" prefHeight="25.0" prefWidth="169.0" promptText="password" />
    </children>
    <cursor>
       <Cursor fx:constant="HAND" />
