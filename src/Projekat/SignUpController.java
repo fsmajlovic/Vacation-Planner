@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -19,6 +20,7 @@ public class SignUpController {
     public TextField usernameTF;
     public PasswordField passwordTF;
     public PreparedStatement getNextIdStmt, addIntoDatabaseStmt;
+    public Label Labeltest;
 
     public void backOnAction(ActionEvent actionEvent) throws IOException {
         Parent AdminParent = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
@@ -69,4 +71,6 @@ public class SignUpController {
         passwordTF.setText("");
 
     }
+
+
 }

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
@@ -34,24 +33,15 @@
             <Font name="Monotype Corsiva" size="43.0" />
          </font>
       </Text>
-      <HBox layoutX="156.0" layoutY="126.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #9eab96;">
-         <children>
-            <TextField fx:id="username" alignment="CENTER" prefHeight="25.0" prefWidth="209.0" promptText="username" style="-fx-border-color: #195b3b;">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets></TextField>
-         </children>
-      </HBox>
-      <HBox layoutX="156.0" layoutY="160.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #9eab96;">
-         <children>
-            <PasswordField fx:id="password" alignment="CENTER" prefHeight="25.0" prefWidth="223.0" promptText="password" style="-fx-border-color: #195b3b;" />
-         </children></HBox>
       <Text layoutX="145.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New to Vacation Planner?" AnchorPane.leftAnchor="160.0" />
       <Button layoutX="302.0" layoutY="257.0" mnemonicParsing="false" onAction="#SignUpOnAction" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: white;" text="Sign up" textFill="#333f5c">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
+      <Label fx:id="invalidLabel" layoutX="177.0" layoutY="180.0" text="Invalid username or password" textFill="RED" visible="false" />
+      <TextField fx:id="usernameTextField" alignment="CENTER" layoutX="173.0" layoutY="121.0" prefHeight="25.0" prefWidth="169.0" promptText="username" />
+      <PasswordField fx:id="passwordTextField" alignment="CENTER" layoutX="174.0" layoutY="154.0" prefHeight="25.0" prefWidth="169.0" promptText="password" />
    </children>
    <cursor>
       <Cursor fx:constant="HAND" />
