@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Projekat.SignUpController">
+   <children>
+      <AnchorPane layoutX="297.0" prefHeight="493.0" prefWidth="71.0" style="-fx-background-color: #9eab96;" />
+      <Text fill="#333f5c" layoutX="153.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VP">
+         <font>
+            <Font name="Monotype Corsiva" size="53.0" />
+         </font>
+         <effect>
+            <Shadow blurType="ONE_PASS_BOX" />
+         </effect>
+      </Text>
+      <Text fill="#333f5c" layoutX="153.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VP">
+         <font>
+            <Font name="Monotype Corsiva" size="53.0" />
+         </font>
+      </Text>
+      <TextField fx:id="firstNameTF" alignment="CENTER" layoutX="110.0" layoutY="128.0" promptText="Enter your first name" />
+      <TextField fx:id="lastNameTF" alignment="CENTER" layoutX="110.0" layoutY="182.0" promptText="Enter your last name" />
+      <TextField fx:id="emailTF" alignment="CENTER" layoutX="110.0" layoutY="234.0" promptText="Enter your email" />
+      <TextField fx:id="usernameTF" alignment="CENTER" layoutX="110.0" layoutY="289.0" promptText="Enter your username" />
+      <Button layoutX="149.0" layoutY="397.0" mnemonicParsing="false" onAction="#signUpOnAction" prefHeight="36.0" prefWidth="71.0" style="-fx-background-color: lightgrey; -fx-border-color: aliceblue;" text="Sign up">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Button>
+      <Text layoutX="118.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fill in your details below" textAlignment="CENTER">
+         <font>
+            <Font name="Monotype Corsiva" size="15.0" />
+         </font>
+      </Text>
+      <Button layoutX="305.0" layoutY="452.0" mnemonicParsing="false" onAction="#backOnAction" prefHeight="27.0" prefWidth="56.0" style="-fx-background-color: lightgrey; -fx-border-color: aliceblue;" text="Back" />
+      <PasswordField fx:id="passwordTF" alignment="CENTER" layoutX="110.0" layoutY="343.0" promptText="Enter your password" />
+   </children>
+</AnchorPane>

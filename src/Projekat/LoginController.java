@@ -8,10 +8,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.Objects;
 
 public class LoginController {
 
@@ -40,7 +42,7 @@ public class LoginController {
         else{
             String month = getMonthName();
 
-            Parent MonthParent = FXMLLoader.load(getClass().getResource("January" + ".fxml"));
+            Parent MonthParent = FXMLLoader.load(getClass().getResource(month + ".fxml"));
             Scene MonthScene = new Scene(MonthParent, 800, 500);
             Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
             window.setScene(MonthScene);
@@ -63,5 +65,14 @@ public class LoginController {
                 "December"};
         Calendar cal = Calendar.getInstance();
         return monthName[cal.get(Calendar.MONTH)];
+    }
+
+
+    public void SignUpOnAction(ActionEvent actionEvent) throws IOException {
+        Parent MonthParent = FXMLLoader.load(getClass().getResource("SignUpScreen" + ".fxml"));
+        Scene MonthScene = new Scene(MonthParent, 368, 493);
+        Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setScene(MonthScene);
+        window.show();
     }
 }
