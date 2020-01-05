@@ -6,16 +6,19 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 public class FebruaryController {
 
@@ -92,39 +95,42 @@ public class FebruaryController {
         for(Integer a: reservedNumbers){
             System.out.println(a);
         }
-        Integer min = Collections.min(reservedNumbers);
-        Integer max = Collections.max(reservedNumbers);
-
-        LocalDate fromDate = LocalDate.of(2020, Month.JANUARY, min);
-        LocalDate toDate = LocalDate.of(2020, Month.JANUARY, max);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
-        String from = fromDate.format(formatter);
-        String to = toDate.format(formatter);
-
         if(!reservedNumbers.isEmpty()) {
+            Integer min = Collections.min(reservedNumbers);
+            Integer max = Collections.max(reservedNumbers);
 
-            fromField.setText(from.toString());
-            fromField.getStyleClass().clear();
-            fromField.getStyleClass().add("fieldContainsNumbers");
-            if(reservedNumbers.size() != 1 && reservedNumbers.size() != 0) {
+            LocalDate fromDate = LocalDate.of(2020, Month.FEBRUARY, min);
+            LocalDate toDate = LocalDate.of(2020, Month.FEBRUARY, max);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
+            String from = fromDate.format(formatter);
+            String to = toDate.format(formatter);
 
-                toField.setText(to.toString());
-                toField.getStyleClass().clear();
-                toField.getStyleClass().add("fieldContainsNumbers");
-            }
-            else if(reservedNumbers.size() == 0){
+            if (!reservedNumbers.isEmpty()) {
+
+                fromField.setText(from.toString());
+                fromField.getStyleClass().clear();
+                fromField.getStyleClass().add("fieldContainsNumbers");
+                if (reservedNumbers.size() != 0) {
+                    toField.setText(to.toString());
+                    toField.getStyleClass().clear();
+                    toField.getStyleClass().add("fieldContainsNumbers");
+                } else if (reservedNumbers.size() == 0) {
+                    toField.setText("");
+                    toField.getStyleClass().clear();
+                    toField.getStyleClass().add("fieldDoesNotContainNumbers");
+                }
+            } else {
+                fromField.setText("");
+                fromField.getStyleClass().clear();
+                fromField.getStyleClass().add("fieldDoesNotContainNumbers");
                 toField.setText("");
-                toField.getStyleClass().clear();
+                toField.clear();
                 toField.getStyleClass().add("fieldDoesNotContainNumbers");
             }
         }
         else{
             fromField.setText("");
-            fromField.getStyleClass().clear();
-            fromField.getStyleClass().add("fieldDoesNotContainNumbers");
             toField.setText("");
-            toField.clear();
-            toField.getStyleClass().add("fieldDoesNotContainNumbers");
         }
     }
 
