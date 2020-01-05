@@ -106,10 +106,17 @@ public class LoginController {
     public void SignUpOnAction(ActionEvent actionEvent) throws IOException {
         invalidLabel.setVisible(false);
         yourRNAdminLabel.setVisible(false);
-        Parent MonthParent = FXMLLoader.load(getClass().getResource("SignUpScreen" + ".fxml"));
-        Scene MonthScene = new Scene(MonthParent, 368, 493);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("SignUpScreen.fxml"));
+        Parent viewParent = loader.load();
+
+        Scene viewScene = new Scene(viewParent);
+
+        SignUpController ctrl = loader.getController();
+        ctrl.initData();
+
         Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        window.setScene(MonthScene);
+        window.setScene(viewScene);
         window.show();
     }
 

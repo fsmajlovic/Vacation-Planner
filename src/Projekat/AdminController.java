@@ -24,9 +24,8 @@ public class AdminController{
         window.show();
     }
 
-
     public void initData() {
-        model.napuni();
+        model.fill();
         choiceSelectMonth.setItems(model.getMonths());
         selectedMonthLabel.textProperty().bind(model.getCurrentSimple());
     }

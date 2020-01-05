@@ -10,7 +10,7 @@ public class MonthsModel {
     private ObservableList<String> months = FXCollections.observableArrayList();
     private SimpleStringProperty currentMonth = new SimpleStringProperty();
 
-    public void napuni(){
+    public void fill(){
         months.add("Select All");
         months.add("January");
         months.add("February");

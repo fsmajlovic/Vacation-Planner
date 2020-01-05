@@ -114,7 +114,7 @@ public class FebruaryController {
                     toField.setText(to.toString());
                     toField.getStyleClass().clear();
                     toField.getStyleClass().add("fieldContainsNumbers");
-                } else if (reservedNumbers.size() == 0) {
+                } else {
                     toField.setText("");
                     toField.getStyleClass().clear();
                     toField.getStyleClass().add("fieldDoesNotContainNumbers");

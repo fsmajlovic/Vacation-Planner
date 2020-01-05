@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class SignUpController {
     public TextField firstNameTF;
@@ -20,7 +21,7 @@ public class SignUpController {
     public TextField usernameTF;
     public PasswordField passwordTF;
     public PreparedStatement getNextIdStmt, addIntoDatabaseStmt;
-    public Label Labeltest;
+    public ArrayList<User> listUsers = new ArrayList<>();
 
     public void backOnAction(ActionEvent actionEvent) throws IOException {
         Parent AdminParent = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
@@ -72,5 +73,7 @@ public class SignUpController {
 
     }
 
-
+    public void initData() {
+        model.fill();
+    }
 }
