@@ -19,6 +19,18 @@ public class User {
         this.requests_id = requests_id;
     }
 
+    public User() {
+        this.id = 0;
+        this.first_name = "";
+        this.last_name = "";
+        this.email = "";
+        this.username = "";
+        this.password = "";
+        this.admin_id = 0;
+        this.daysleft = 0;
+        this.requests_id = 0;
+    }
+
     public int getId() {
         return id;
     }

@@ -21,6 +21,7 @@ public class SignUpController {
     public TextField usernameTF;
     public PasswordField passwordTF;
     public PreparedStatement getNextIdStmt, addIntoDatabaseStmt;
+    public UsersModel model;
     public ArrayList<User> listUsers = new ArrayList<>();
 
     public void backOnAction(ActionEvent actionEvent) throws IOException {
@@ -32,27 +33,21 @@ public class SignUpController {
     }
 
     public void signUpOnAction(ActionEvent actionEvent) {
-        //Gettin information from input
-
+        //Getting information from input
         String first_name = firstNameTF.getText();
         String last_name = lastNameTF.getText();
         String email = emailTF.getText();
         String username = usernameTF.getText();
         String password = passwordTF.getText();
 
+
         Connection myConn = null;
         int nextId = -1;
         try {
             myConn = DriverManager.getConnection("jdbc:sqlite:VPdatabase.db");
-//            getNextIdStmt = myConn.prepareStatement("select MAX(id)+1 from users");
-//            ResultSet rs = getNextIdStmt.executeQuery();
-//            if(rs.next()){
-//                nextId = rs.getInt(1);
-//            }
             String sqlprep = "insert into users(first_name, last_name, email, username," +
                     " password, admin_id, daysleft, requests_id)values (?, ?, ?, ?, ?, ?, ?, ?);";
             addIntoDatabaseStmt = myConn.prepareStatement(sqlprep);
-            //addIntoDatabaseStmt.setInt(1, nextId);
             addIntoDatabaseStmt.setString(1, first_name);
             addIntoDatabaseStmt.setString(2, last_name);
             addIntoDatabaseStmt.setString(3, email);
@@ -73,7 +68,4 @@ public class SignUpController {
 
     }
 
-    public void initData() {
-        model.fill();
-    }
 }
