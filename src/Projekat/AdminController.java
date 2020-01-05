@@ -31,8 +31,8 @@ public class AdminController{
         selectedMonthLabel.textProperty().bind(model.getCurrentSimple());
     }
 
-    public void initGreetingsMsg(String name){
-        GreetingsLabel.setText("Welcome " + name + "!");
+    public void initGreetingsMsg(String first_name, String last_name){
+        GreetingsLabel.setText("Welcome " + first_name + " " + last_name + "!");
     }
 
     public void changeMonth(ActionEvent actionEvent) {

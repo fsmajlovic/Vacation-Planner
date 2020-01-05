@@ -41,6 +41,8 @@ public class LoginController {
                 usernamedb = rs.getString("username");
                 passworddb = rs.getString("password");
                 int admin_ID = rs.getInt("admin_id");
+                String first_name = rs.getString("first_name");
+                String last_name = rs.getString("last_name");
                 if(usernamedb.equals(username) && passworddb.equals(password)){
                     invalidLabel.setVisible(false);
                     if(CheckBox){
@@ -53,7 +55,8 @@ public class LoginController {
 
                             AdminController ctrl = loader.getController();
                             ctrl.initData();
-                            ctrl.initGreetingsMsg(usernameTextField.getText());
+
+                            ctrl.initGreetingsMsg(first_name, last_name);
 
                             Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
                             window.setScene(viewScene);
@@ -100,7 +103,6 @@ public class LoginController {
         return monthName[cal.get(Calendar.MONTH)];
     }
 
-
     public void SignUpOnAction(ActionEvent actionEvent) throws IOException {
         invalidLabel.setVisible(false);
         yourRNAdminLabel.setVisible(false);
@@ -110,7 +112,6 @@ public class LoginController {
         window.setScene(MonthScene);
         window.show();
     }
-
 
     public void usernameOnMouseClicked(MouseEvent mouseEvent) {
         if(invalidLabel.isVisible()){
