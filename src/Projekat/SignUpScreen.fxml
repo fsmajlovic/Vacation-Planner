@@ -23,8 +23,8 @@
       </Text>
       <TextField fx:id="firstNameTF" alignment="CENTER" layoutX="110.0" layoutY="128.0" promptText="Enter your first name" />
       <TextField fx:id="lastNameTF" alignment="CENTER" layoutX="110.0" layoutY="182.0" promptText="Enter your last name" />
-      <TextField fx:id="emailTF" alignment="CENTER" layoutX="110.0" layoutY="234.0" promptText="Enter your email" />
-      <TextField fx:id="usernameTF" alignment="CENTER" layoutX="110.0" layoutY="289.0" promptText="Enter your username" />
+      <TextField fx:id="emailTF" alignment="CENTER" layoutX="110.0" layoutY="234.0" onAction="#emailOnAction" promptText="Enter your email" />
+      <TextField fx:id="usernameTF" alignment="CENTER" layoutX="110.0" layoutY="289.0" onAction="#usernameOnAction" promptText="Enter your username" />
       <Button layoutX="149.0" layoutY="397.0" mnemonicParsing="false" onAction="#signUpOnAction" prefHeight="36.0" prefWidth="71.0" style="-fx-background-color: lightgrey; -fx-border-color: aliceblue;" text="Sign up">
          <font>
             <Font name="System Bold Italic" size="12.0" />

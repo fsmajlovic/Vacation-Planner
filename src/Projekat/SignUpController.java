@@ -82,4 +82,17 @@ public class SignUpController {
 
     }
 
+    public void emailOnAction(ActionEvent actionEvent) {
+        if(emailInUseLabel.isVisible()){
+            emailTF.setText("");
+            emailInUseLabel.setVisible(false);
+        }
+    }
+
+    public void usernameOnAction(ActionEvent actionEvent) {
+        if(usernameInUseLabel.isVisible()){
+            usernameTF.setText("");
+            usernameInUseLabel.setVisible(false);
+        }
+    }
 }
