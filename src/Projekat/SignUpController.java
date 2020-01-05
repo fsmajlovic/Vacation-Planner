@@ -23,6 +23,8 @@ public class SignUpController {
     public PreparedStatement getNextIdStmt, addIntoDatabaseStmt;
     public UsersModel model;
     public ArrayList<User> listUsers = new ArrayList<>();
+    public Label usernameInUseLabel;
+    public Label emailInUseLabel;
 
     public void backOnAction(ActionEvent actionEvent) throws IOException {
         Parent AdminParent = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
@@ -39,7 +41,19 @@ public class SignUpController {
         String email = emailTF.getText();
         String username = usernameTF.getText();
         String password = passwordTF.getText();
-
+        //Check if user already exist with model so we don't have to create another statement
+        model.fill();
+        listUsers = model.getListUsers();
+        boolean emailWrong = false, emailInUse = false, usernameWrong = false, userNameInUse = false, passwordWrong = false;
+        for(User u: listUsers){
+            if(u.getEmail().equals(email)) emailInUse = true;
+            if(u.getUsername().equals(username)) userNameInUse = true;
+        }
+        if(emailWrong || emailInUse || usernameWrong || userNameInUse || passwordWrong){
+            if(emailInUse) emailInUseLabel.setVisible(true);
+            if(userNameInUse) usernameInUseLabel.setVisible(true);
+            return;
+        }
 
         Connection myConn = null;
         int nextId = -1;

@@ -37,5 +37,7 @@
       </Text>
       <Button layoutX="305.0" layoutY="452.0" mnemonicParsing="false" onAction="#backOnAction" prefHeight="27.0" prefWidth="56.0" style="-fx-background-color: lightgrey; -fx-border-color: aliceblue;" text="Back" />
       <PasswordField fx:id="passwordTF" alignment="CENTER" layoutX="110.0" layoutY="343.0" promptText="Enter your password" />
+      <Label fx:id="emailInUseLabel" layoutX="132.0" layoutY="259.0" text="Email already in use" textAlignment="CENTER" textFill="RED" visible="false" />
+      <Label fx:id="usernameInUseLabel" layoutX="120.0" layoutY="314.0" text="Username already in use" textFill="RED" visible="false" />
    </children>
 </AnchorPane>
