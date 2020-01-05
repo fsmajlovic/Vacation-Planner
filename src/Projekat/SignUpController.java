@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,7 +22,7 @@ public class SignUpController {
     public TextField usernameTF;
     public PasswordField passwordTF;
     public PreparedStatement getNextIdStmt, addIntoDatabaseStmt;
-    public UsersModel model;
+    public UsersModel model = new UsersModel();
     public ArrayList<User> listUsers = new ArrayList<>();
     public Label usernameInUseLabel;
     public Label emailInUseLabel;
@@ -45,9 +46,12 @@ public class SignUpController {
         model.fill();
         listUsers = model.getListUsers();
         boolean emailWrong = false, emailInUse = false, usernameWrong = false, userNameInUse = false, passwordWrong = false;
+
         for(User u: listUsers){
             if(u.getEmail().equals(email)) emailInUse = true;
             if(u.getUsername().equals(username)) userNameInUse = true;
+//            System.out.println("email " + u.getEmail());
+//            System.out.println("username " + u.getUsername());
         }
         if(emailWrong || emailInUse || usernameWrong || userNameInUse || passwordWrong){
             if(emailInUse) emailInUseLabel.setVisible(true);
@@ -82,17 +86,17 @@ public class SignUpController {
 
     }
 
-    public void emailOnAction(ActionEvent actionEvent) {
-        if(emailInUseLabel.isVisible()){
-            emailTF.setText("");
-            emailInUseLabel.setVisible(false);
-        }
-    }
-
-    public void usernameOnAction(ActionEvent actionEvent) {
+    public void usernameOnMouseClicked(MouseEvent mouseEvent) {
         if(usernameInUseLabel.isVisible()){
             usernameTF.setText("");
             usernameInUseLabel.setVisible(false);
+        }
+    }
+
+    public void emailOnMouseClicked(MouseEvent mouseEvent) {
+        if(emailInUseLabel.isVisible()){
+            emailTF.setText("");
+            emailInUseLabel.setVisible(false);
         }
     }
 }
