@@ -26,6 +26,7 @@ public class LoginController {
     public Label invalidLabel;
     public TextField usernameTextField;
     public PasswordField passwordTextField;
+    public Label yourRNAdminLabel;
 
 
     public void LoginButtonAction(ActionEvent actionEvent) throws IOException {
@@ -39,23 +40,29 @@ public class LoginController {
             while(rs.next()){
                 usernamedb = rs.getString("username");
                 passworddb = rs.getString("password");
+                int admin_ID = rs.getInt("admin_id");
                 if(usernamedb.equals(username) && passworddb.equals(password)){
                     invalidLabel.setVisible(false);
                     if(CheckBox){
-                        FXMLLoader loader = new FXMLLoader();
-                        loader.setLocation(getClass().getResource("AdminScreen.fxml"));
-                        Parent viewParent = loader.load();
+                        if(admin_ID == 1){
+                            FXMLLoader loader = new FXMLLoader();
+                            loader.setLocation(getClass().getResource("AdminScreen.fxml"));
+                            Parent viewParent = loader.load();
 
-                        Scene viewScene = new Scene(viewParent);
+                            Scene viewScene = new Scene(viewParent);
 
-                        AdminController ctrl = loader.getController();
-                        ctrl.initData();
-                        ctrl.initGreetingsMsg(usernameTextField.getText());
+                            AdminController ctrl = loader.getController();
+                            ctrl.initData();
+                            ctrl.initGreetingsMsg(usernameTextField.getText());
 
-                        Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-                        window.setScene(viewScene);
-                        window.show();
-
+                            Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+                            window.setScene(viewScene);
+                            window.show();
+                        }
+                        else{
+                            yourRNAdminLabel.setVisible(true);
+                            return;
+                        }
                     }
                     else{
                         String month = getMonthName();
@@ -74,10 +81,6 @@ public class LoginController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
-
-
     }
 
     public void AdminCheckBoxOnAction(ActionEvent actionEvent) {
@@ -85,6 +88,7 @@ public class LoginController {
             CheckBox = true;
         else if(CheckBox == true)
             CheckBox = false;
+        yourRNAdminLabel.setVisible(false);
     }
 
     public String getMonthName(){
@@ -99,6 +103,7 @@ public class LoginController {
 
     public void SignUpOnAction(ActionEvent actionEvent) throws IOException {
         invalidLabel.setVisible(false);
+        yourRNAdminLabel.setVisible(false);
         Parent MonthParent = FXMLLoader.load(getClass().getResource("SignUpScreen" + ".fxml"));
         Scene MonthScene = new Scene(MonthParent, 368, 493);
         Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
@@ -113,6 +118,7 @@ public class LoginController {
             passwordTextField.setText("");
             invalidLabel.setVisible(false);
         }
+        yourRNAdminLabel.setVisible(false);
     }
 
     public void passwordOnMouseClicked(MouseEvent mouseEvent) {
@@ -121,5 +127,6 @@ public class LoginController {
             passwordTextField.setText("");
             invalidLabel.setVisible(false);
         }
+        yourRNAdminLabel.setVisible(false);
     }
 }
