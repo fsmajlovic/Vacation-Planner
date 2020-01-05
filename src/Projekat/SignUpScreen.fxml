@@ -39,5 +39,10 @@
       <PasswordField fx:id="passwordTF" alignment="CENTER" layoutX="110.0" layoutY="343.0" promptText="Enter your password" />
       <Label fx:id="emailInUseLabel" layoutX="132.0" layoutY="259.0" text="Email already in use" textAlignment="CENTER" textFill="RED" visible="false" />
       <Label fx:id="usernameInUseLabel" layoutX="120.0" layoutY="314.0" text="Username already in use" textFill="RED" visible="false" />
+      <Label fx:id="invalidFirstNameLabel" layoutX="140.0" layoutY="153.0" text="Invalid first name" textFill="RED" visible="false" />
+      <Label fx:id="invalidLastNameLabel" layoutX="139.0" layoutY="207.0" text="Invalid last name " textAlignment="CENTER" textFill="RED" visible="false" />
+      <Label fx:id="incorrectEmailLabel" layoutX="146.0" layoutY="259.0" text="Incorrect email" textFill="RED" visible="false" />
+      <Label fx:id="invalidUsernameLabel" layoutX="141.0" layoutY="314.0" text="Invalid username" textAlignment="CENTER" textFill="RED" visible="false" />
+      <Label fx:id="incorrectPassword" layoutX="60.0" layoutY="368.0" prefHeight="17.0" prefWidth="254.0" text="Password needs to be at least 4 characters long" textAlignment="CENTER" textFill="#ee0000" visible="false" />
    </children>
 </AnchorPane>

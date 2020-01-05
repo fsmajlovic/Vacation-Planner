@@ -26,6 +26,11 @@ public class SignUpController {
     public ArrayList<User> listUsers = new ArrayList<>();
     public Label usernameInUseLabel;
     public Label emailInUseLabel;
+    public Label invalidLastNameLabel;
+    public Label invalidFirstNameLabel;
+    public Label incorrectEmailLabel;
+    public Label invalidUsernameLabel;
+    public Label incorrectPassword;
 
     public void backOnAction(ActionEvent actionEvent) throws IOException {
         Parent AdminParent = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
@@ -42,20 +47,23 @@ public class SignUpController {
         String email = emailTF.getText();
         String username = usernameTF.getText();
         String password = passwordTF.getText();
+        boolean emailWrong = false, emailInUse = false, usernameWrong = false, userNameInUse = false, passwordWrong = false;
         //Check if user already exist with model so we don't have to create another statement
         model.fill();
         listUsers = model.getListUsers();
-        boolean emailWrong = false, emailInUse = false, usernameWrong = false, userNameInUse = false, passwordWrong = false;
-
         for(User u: listUsers){
             if(u.getEmail().equals(email)) emailInUse = true;
             if(u.getUsername().equals(username)) userNameInUse = true;
-//            System.out.println("email " + u.getEmail());
-//            System.out.println("username " + u.getUsername());
         }
+        //Check if email is the right format
+        emailWrong = isValidMail(email);
+        //Check if username is at least 4 characters
+        usernameWrong = isValidUser(username);
         if(emailWrong || emailInUse || usernameWrong || userNameInUse || passwordWrong){
             if(emailInUse) emailInUseLabel.setVisible(true);
             if(userNameInUse) usernameInUseLabel.setVisible(true);
+            if(emailWrong) incorrectEmailLabel.setVisible(true);
+            if(usernameWrong) invalidUsernameLabel.setVisible(true);
             return;
         }
 
@@ -73,7 +81,7 @@ public class SignUpController {
             addIntoDatabaseStmt.setString(5, password);
             addIntoDatabaseStmt.setInt(6, 0);
             addIntoDatabaseStmt.setInt(7, 10);
-            addIntoDatabaseStmt.setInt(8, 11);
+            addIntoDatabaseStmt.setInt(8, 0);
             addIntoDatabaseStmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -91,6 +99,10 @@ public class SignUpController {
             usernameTF.setText("");
             usernameInUseLabel.setVisible(false);
         }
+        if(invalidUsernameLabel.isVisible()){
+            usernameTF.setText("");
+            invalidUsernameLabel.setVisible(false);
+        }
     }
 
     public void emailOnMouseClicked(MouseEvent mouseEvent) {
@@ -98,5 +110,26 @@ public class SignUpController {
             emailTF.setText("");
             emailInUseLabel.setVisible(false);
         }
+        if(incorrectEmailLabel.isVisible()){
+            emailTF.setText("");
+            incorrectEmailLabel.setVisible(false);
+        }
+    }
+
+    public boolean isValidMail(String email){
+        if(!email.contains("@") || email.charAt(0) == '@' || email.charAt(email.length()-1) == '@') return false;
+        return true;
+    }
+
+    public boolean isValidUser(String username){
+        if(username.length() > 16)
+            return false;
+        for(int i = 0; i < username.length(); i++){
+            if(!Character.isLetter(username.charAt(i)) && username.charAt(i) != '_'
+                    && !Character.isDigit(username.charAt(i))){
+                return false;
+            }
+        }
+        return true;
     }
 }
