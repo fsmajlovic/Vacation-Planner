@@ -49,13 +49,6 @@ public class SignUpController {
         String username = usernameTF.getText();
         String password = passwordTF.getText();
         boolean firstNameWrong = false, lastNameWrong = false, emailWrong = false, emailInUse = false, usernameWrong = false, userNameInUse = false, passwordWrong = false;
-        //Check if user already exist with model so we don't have to create another statement
-        model.fill();
-        listUsers = model.getListUsers();
-        for(User u: listUsers){
-            if(u.getEmail().equals(email)) emailInUse = true;
-            if(u.getUsername().equals(username)) userNameInUse = true;
-        }
         //Check if first_name is valid
         firstNameWrong = isValidName(first_name);
         //Check if last_name is valid
@@ -66,6 +59,13 @@ public class SignUpController {
         usernameWrong = isValidUser(username);
         //Check if password is at least 4 letters long
         if(password.length() < 4) passwordWrong = true;
+        //Check if user already exist with model so we don't have to create another statement
+        model.fill();
+        listUsers = model.getListUsers();
+        for(User u: listUsers){
+            if(u.getEmail().equals(email)) emailInUse = true;
+            if(u.getUsername().equals(username)) userNameInUse = true;
+        }
         //Setting alert labels visible acording to the input
         if(firstNameWrong || lastNameWrong || emailWrong || emailInUse || usernameWrong || userNameInUse || passwordWrong){
             if(firstNameWrong) invalidFirstNameLabel.setVisible(true);
@@ -77,7 +77,7 @@ public class SignUpController {
             if(passwordWrong) incorrectPasswordLabel.setVisible(true);
             return;
         }
-
+        
         Connection myConn = null;
         int nextId = -1;
         try {
