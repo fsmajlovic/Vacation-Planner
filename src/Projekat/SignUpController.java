@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -30,7 +31,7 @@ public class SignUpController {
     public Label invalidFirstNameLabel;
     public Label incorrectEmailLabel;
     public Label invalidUsernameLabel;
-    public Label incorrectPassword;
+    public Label incorrectPasswordLabel;
 
     public void backOnAction(ActionEvent actionEvent) throws IOException {
         Parent AdminParent = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
@@ -47,7 +48,7 @@ public class SignUpController {
         String email = emailTF.getText();
         String username = usernameTF.getText();
         String password = passwordTF.getText();
-        boolean emailWrong = false, emailInUse = false, usernameWrong = false, userNameInUse = false, passwordWrong = false;
+        boolean firstNameWrong = false, lastNameWrong = false, emailWrong = false, emailInUse = false, usernameWrong = false, userNameInUse = false, passwordWrong = false;
         //Check if user already exist with model so we don't have to create another statement
         model.fill();
         listUsers = model.getListUsers();
@@ -55,15 +56,25 @@ public class SignUpController {
             if(u.getEmail().equals(email)) emailInUse = true;
             if(u.getUsername().equals(username)) userNameInUse = true;
         }
-        //Check if email is the right format
+        //Check if first_name is valid
+        firstNameWrong = isValidName(first_name);
+        //Check if last_name is valid
+        lastNameWrong = isValidName(last_name);
+        //Check if email is in the right format
         emailWrong = isValidMail(email);
-        //Check if username is at least 4 characters
+        //Check if username in the right format
         usernameWrong = isValidUser(username);
-        if(emailWrong || emailInUse || usernameWrong || userNameInUse || passwordWrong){
+        //Check if password is at least 4 letters long
+        if(password.length() < 4) passwordWrong = true;
+        //Setting alert labels visible acording to the input
+        if(firstNameWrong || lastNameWrong || emailWrong || emailInUse || usernameWrong || userNameInUse || passwordWrong){
+            if(firstNameWrong) invalidFirstNameLabel.setVisible(true);
+            if(lastNameWrong) invalidLastNameLabel.setVisible(true);
             if(emailInUse) emailInUseLabel.setVisible(true);
             if(userNameInUse) usernameInUseLabel.setVisible(true);
             if(emailWrong) incorrectEmailLabel.setVisible(true);
             if(usernameWrong) invalidUsernameLabel.setVisible(true);
+            if(passwordWrong) incorrectPasswordLabel.setVisible(true);
             return;
         }
 
@@ -116,20 +127,53 @@ public class SignUpController {
         }
     }
 
-    public boolean isValidMail(String email){
-        if(!email.contains("@") || email.charAt(0) == '@' || email.charAt(email.length()-1) == '@') return false;
-        return true;
-    }
-
-    public boolean isValidUser(String username){
-        if(username.length() > 16)
-            return false;
-        for(int i = 0; i < username.length(); i++){
-            if(!Character.isLetter(username.charAt(i)) && username.charAt(i) != '_'
-                    && !Character.isDigit(username.charAt(i))){
-                return false;
+    public boolean isValidName(String name){
+        if(name.length() < 1)
+            return true;
+        for(int i = 0; i < name.length(); i++){
+            if(!Character.isLetter(name.charAt(i)) && name.charAt(i) != ' ' && name.charAt(i) != '-'){
+                return true;
             }
         }
-        return true;
+        return false;
+    }
+
+    public boolean isValidMail(String email){
+        if(!email.contains("@") || email.charAt(0) == '@' || email.charAt(email.length()-1) == '@') return true;
+        return false;
+    }
+
+    public boolean isValidUser(String tekst){
+        if(tekst.length() > 16)
+            return true;
+        for(int i = 0; i < tekst.length(); i++){
+            if(!Character.isLetter(tekst.charAt(i)) && tekst.charAt(i) != '_'
+                    && !Character.isDigit(tekst.charAt(i))){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void passwordOnMouseClicked(MouseEvent mouseEvent) {
+        if(incorrectPasswordLabel.isVisible()){
+            incorrectPasswordLabel.setVisible(false);
+            passwordTF.setText("");
+        }
+    }
+
+    public void firstNameOnMouseClicked(MouseEvent mouseEvent) {
+        if(invalidFirstNameLabel.isVisible()){
+            firstNameTF.setText("");
+            invalidFirstNameLabel.setVisible(false);
+        }
+    }
+
+
+    public void lastNameOnMouseClicked(MouseEvent mouseEvent) {
+        if(invalidLastNameLabel.isVisible()){
+            lastNameTF.setText("");
+            invalidLastNameLabel.setVisible(false);
+        }
     }
 }
