@@ -68,13 +68,28 @@ public class LoginController {
                         }
                     }
                     else{
-                        String month = getMonthName();
+//                        String month = getMonthName();
+//
+//                        Parent MonthParent = FXMLLoader.load(getClass().getResource(month + ".fxml"));
+//                        Scene MonthScene = new Scene(MonthParent, 800, 500);
+//                        Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+//                        window.setScene(MonthScene);
+//                        window.show();
 
-                        Parent MonthParent = FXMLLoader.load(getClass().getResource(month + ".fxml"));
-                        Scene MonthScene = new Scene(MonthParent, 800, 500);
-                        Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-                        window.setScene(MonthScene);
-                        window.show();
+
+                        //
+                        FXMLLoader loader = new FXMLLoader();
+                        loader.setLocation(getClass().getResource("January.fxml"));
+                        Parent viewParent = loader.load();
+
+                        Scene viewScene = new Scene(viewParent);
+
+                        JanuaryController ctrl = loader.getController();
+                        ctrl.initialize(usernameTextField.getText());
+
+                        Stage window_2 = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+                        window_2.setScene(viewScene);
+                        window_2.show();
                     }
                 }
                 else{

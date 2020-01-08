@@ -77,7 +77,7 @@ public class SignUpController {
             if(passwordWrong) incorrectPasswordLabel.setVisible(true);
             return;
         }
-        
+
         Connection myConn = null;
         int nextId = -1;
         try {

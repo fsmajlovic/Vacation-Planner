@@ -1,6 +1,7 @@
 package Projekat;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -13,6 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -29,7 +31,38 @@ public class JanuaryController {
     public int daysLeft = 10;
     public ArrayList<String> reserved = new ArrayList<>();
     public ArrayList<Integer> reservedNumbers = new ArrayList<>();
+    public PreparedStatement getUserByUsernameStmt;
+    public User currentUser;
 
+    @FXML
+    public void initialize(String usernameFromLogin){
+        //Get user from databes by username
+        Connection myConn;
+        User current = new User();
+        try {
+            myConn = DriverManager.getConnection("jdbc:sqlite:VPdatabase.db");
+            String getUser = "select id, first_name, last_name, email, username, password, admin_id, daysleft, " +
+                    "requests_id from users where username = ?";
+            getUserByUsernameStmt = myConn.prepareStatement(getUser);
+            getUserByUsernameStmt.setString(1, usernameFromLogin);
+            ResultSet rs = getUserByUsernameStmt.executeQuery();
+            while (rs.next()) {
+                current.setId(rs.getInt("id"));
+                current.setFirst_name(rs.getString("first_name"));
+                current.setLast_name(rs.getString("last_name"));
+                current.setEmail(rs.getString("email"));
+                current.setUsername(rs.getString("username"));
+                current.setPassword(rs.getString("password"));
+                current.setAdmin_id(rs.getInt("admin_id"));
+                current.setDaysleft(rs.getInt("daysleft"));
+                current.setRequests_id(rs.getInt("requests_id"));
+            }
+            System.out.println("user data: " + current.getUsername() + " " + current.getFirst_name() +
+                    " " + current.getLast_name() + " " + current.daysleft);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void LogoutAction(ActionEvent actionEvent) {
         Parent AdminParent = null;
