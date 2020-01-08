@@ -31,14 +31,13 @@ public class JanuaryController {
     public int daysLeft = 10;
     public ArrayList<String> reserved = new ArrayList<>();
     public ArrayList<Integer> reservedNumbers = new ArrayList<>();
-    public PreparedStatement getUserByUsernameStmt;
-    public User currentUser;
+    public PreparedStatement getUserByUsernameStmt, updateDaysLeftStmt;
+    public User current = new User();
 
     @FXML
     public void initialize(String usernameFromLogin){
         //Get user from databes by username
         Connection myConn;
-        User current = new User();
         try {
             myConn = DriverManager.getConnection("jdbc:sqlite:VPdatabase.db");
             String getUser = "select id, first_name, last_name, email, username, password, admin_id, daysleft, " +
@@ -62,6 +61,8 @@ public class JanuaryController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        daysLeft = current.getDaysleft();
+        labelDaysLeft.setText(String.valueOf(daysLeft));
     }
 
     public void LogoutAction(ActionEvent actionEvent) {
@@ -79,7 +80,6 @@ public class JanuaryController {
 
     public void btnPressed(ActionEvent actionEvent) {
          ToggleButton tgl = (ToggleButton) actionEvent.getSource();
-        //System.out.println(tgl.getText());
 
         if(daysLeft > 0 && tgl.getStyleClass().contains("notPressed")){
             //Updating the ArrayList
@@ -181,5 +181,24 @@ public class JanuaryController {
         Stage window = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();
         window.setScene(MonthScene);
         window.show();
+    }
+
+
+    public void sendRequestOnAction(ActionEvent actionEvent) {
+        current.setDaysleft(daysLeft);
+        Connection myConn;
+        try {
+            myConn = DriverManager.getConnection("jdbc:sqlite:VPdatabase.db");
+            String updateDaysLeft = "update users " +
+                             "set daysleft = ?" +
+                             "where username = ?;";
+            updateDaysLeftStmt = myConn.prepareStatement(updateDaysLeft);
+            updateDaysLeftStmt.setInt(1, daysLeft);
+            updateDaysLeftStmt.setString(2, current.getUsername());
+            updateDaysLeftStmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }

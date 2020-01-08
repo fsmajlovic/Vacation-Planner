@@ -490,7 +490,7 @@
             <Font name="Monotype Corsiva" size="15.0" />
          </font>
       </Text>
-      <Button layoutX="551.0" layoutY="377.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="151.0" style="-fx-background-color: azure;" text="Send Request">
+      <Button layoutX="551.0" layoutY="377.0" mnemonicParsing="false" onAction="#sendRequestOnAction" prefHeight="54.0" prefWidth="151.0" style="-fx-background-color: azure;" text="Send Request">
          <font>
             <Font name="Monotype Corsiva" size="23.0" />
          </font></Button>
