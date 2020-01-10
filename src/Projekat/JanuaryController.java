@@ -28,11 +28,12 @@ public class JanuaryController {
     public TextField labelDaysLeft;
     public TextField  fromField;
     public TextField toField;
-    public int daysLeft = 10;
+    public int daysLeft;
     public ArrayList<String> reserved = new ArrayList<>();
     public ArrayList<Integer> reservedNumbers = new ArrayList<>();
-    public PreparedStatement getUserByUsernameStmt, updateDaysLeftStmt;
+    public PreparedStatement getUserByUsernameStmt, updateDaysLeftStmt, addRequestStmt;
     public User current = new User();
+    public String from, to;
 
     @FXML
     public void initialize(String usernameFromLogin){
@@ -135,8 +136,8 @@ public class JanuaryController {
             LocalDate fromDate = LocalDate.of(2020, Month.JANUARY, min);
             LocalDate toDate = LocalDate.of(2020, Month.JANUARY, max);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
-            String from = fromDate.format(formatter);
-            String to = toDate.format(formatter);
+            from = fromDate.format(formatter);
+            to = toDate.format(formatter);
 
             if (!reservedNumbers.isEmpty()) {
 
@@ -165,6 +166,7 @@ public class JanuaryController {
             fromField.setText("");
             toField.setText("");
         }
+
     }
 
     public void nxtMonth(MouseEvent mouseEvent) throws IOException {
@@ -183,7 +185,6 @@ public class JanuaryController {
         window.show();
     }
 
-
     public void sendRequestOnAction(ActionEvent actionEvent) {
         current.setDaysleft(daysLeft);
         Connection myConn;
@@ -199,6 +200,25 @@ public class JanuaryController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        String from_date = from;
+        String to_date = to;
+
+//        try {
+//            myConn = DriverManager.getConnection("jdbc:sqlite:VPdatabase.db");
+//            String addRequest = "update requests " +
+//                    "set from_date = ?, to_date = ?, user_id = ?" +
+//                    "where username = ?;";
+//            addRequestStmt = myConn.prepareStatement(addRequest);
+//            addRequestStmt.setInt(1, daysLeft);
+//            addRequestStmt.setString(2, current.getUsername());
+//            addRequestStmt.executeUpdate();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+
+
+
 
     }
 }

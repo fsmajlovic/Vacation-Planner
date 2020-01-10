@@ -169,11 +169,11 @@ public class SignUpController {
         }
     }
 
-
     public void lastNameOnMouseClicked(MouseEvent mouseEvent) {
         if(invalidLastNameLabel.isVisible()){
             lastNameTF.setText("");
             invalidLastNameLabel.setVisible(false);
         }
     }
+
 }
