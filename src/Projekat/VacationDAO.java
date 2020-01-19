@@ -21,7 +21,7 @@ public class VacationDAO {
             e.printStackTrace();
         }
         try {
-            getUsersStmt = myConn.prepareStatement("select * from users");
+            getUsersStmt = myConn.prepareStatement("select * from users order by first_name desc");
             addNewRequestStmt = myConn.prepareStatement("insert into requests (from_date, to_date, approved, user_id) values (?,?,?,?)");
         } catch (SQLException e) {
             e.printStackTrace();

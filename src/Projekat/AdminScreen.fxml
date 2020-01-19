@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="501.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Projekat.AdminController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="501.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" >
    <children>
       <AnchorPane layoutX="592.0" prefHeight="501.0" prefWidth="208.0" style="-fx-background-color: #333f5c; -fx-border-color: black]];">
          <children>
@@ -43,8 +43,8 @@
                </font>
             </Text>
          </children></AnchorPane>
-      <ListView layoutX="61.0" layoutY="93.0" prefHeight="224.0" prefWidth="466.0" style="-fx-background-color: #9eab96; -fx-border-color: #9eab96;" />
-      <Label fx:id="GreetingsLabel" layoutX="61.0" layoutY="14.0" prefHeight="15.0" prefWidth="466.0" text="GreetingMsg" textFill="#333f5c">
+      <ListView fx:id="listOfRequests" layoutX="61.0" layoutY="93.0" prefHeight="224.0" prefWidth="466.0" style="-fx-background-color: #9eab96; -fx-border-color: #9eab96;" />
+      <Label fx:id="GreetingsLabel" layoutX="61.0" layoutY="14.0" prefHeight="15.0" prefWidth="466.0" text="GreetingsMsg" textFill="#333f5c">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
@@ -54,10 +54,10 @@
             <Font name="System Bold Italic" size="15.0" />
          </font>
       </Label>
-      <TextField editable="false" layoutX="378.0" layoutY="363.0" mouseTransparent="true" style="-fx-background-color: #9eab96;" />
-      <TextField editable="false" layoutX="378.0" layoutY="426.0" mouseTransparent="true" style="-fx-background-color: #9eab96;" />
-      <TextField editable="false" layoutX="148.0" layoutY="363.0" mouseTransparent="true" style="-fx-background-color: #9eab96;" />
-      <TextField editable="false" layoutX="148.0" layoutY="426.0" mouseTransparent="true" style="-fx-background-color: #9eab96;" />
+      <TextField fx:id="fieldFromDate" editable="false" layoutX="378.0" layoutY="363.0" mouseTransparent="true" style="-fx-background-color: #9eab96;" />
+      <TextField fx:id="fieldToDate" editable="false" layoutX="378.0" layoutY="426.0" mouseTransparent="true" style="-fx-background-color: #9eab96;" />
+      <TextField fx:id="fieldFirstName" editable="false" layoutX="148.0" layoutY="363.0" mouseTransparent="true" style="-fx-background-color: #9eab96;" />
+      <TextField fx:id="fieldLastName" editable="false" layoutX="148.0" layoutY="426.0" mouseTransparent="true" style="-fx-background-color: #9eab96;" />
       <Text layoutX="61.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" wrappingWidth="78.13671875">
          <font>
             <Font size="14.0" />

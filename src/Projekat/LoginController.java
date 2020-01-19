@@ -57,20 +57,19 @@ public class LoginController {
             invalidLabel.setVisible(false);
             if(CheckBox){
                 if(admin){
-                    FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("AdminScreen.fxml"));
-                    Parent viewParent = loader.load();
-
-                    Scene viewScene = new Scene(viewParent);
-
-                    AdminController ctrl = loader.getController();
-                    ctrl.initData();
-
-                    ctrl.initGreetingsMsg(current.getFirstName(), current.getLastName());
-
-                    Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-                    window.setScene(viewScene);
-                    window.show();
+                    Stage stage = new Stage();
+                    Parent root = null;
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminScreen.fxml"));
+                    AdminController adminController = new AdminController(current);
+                    loader.setController(adminController);
+                    root = loader.load();
+                    stage.setTitle("Administator profile");
+                    stage.setScene(new Scene(root, 800,500));
+                    stage.setResizable(false);
+                    stage.show();
+                    usernameTextField.setText("");
+                    passwordTextField.setText("");
+                    AdminCheckBox.setSelected(false);
                 }
                 else{
                     yourRNAdminLabel.setVisible(true);
