@@ -22,6 +22,7 @@ public class VacationDAO {
         }
         try {
             getUsersStmt = myConn.prepareStatement("select * from users");
+            addNewRequestStmt = myConn.prepareStatement("insert into requests (from_date, to_date, approved, user_id) values (?,?,?,?)");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -50,6 +51,19 @@ public class VacationDAO {
                 e.printStackTrace();
             }
         return users;
+    }
+
+    public void addNewRequest(Request req){
+        try {
+            addNewRequestStmt.setString(1, req.getFromDate());
+            addNewRequestStmt.setString(2, req.getToDate());
+            addNewRequestStmt.setInt(3, 0);
+            addNewRequestStmt.setInt(4, req.getUserId());
+            addNewRequestStmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

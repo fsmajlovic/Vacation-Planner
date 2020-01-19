@@ -60,7 +60,6 @@ public class JanuaryController {
 
     public void btnPressed(ActionEvent actionEvent) {
          ToggleButton tgl = (ToggleButton) actionEvent.getSource();
-        System.out.println(current.getUsername() + " days left" + current.getDaysleft());
 
         if(daysLeft > 0 && tgl.getStyleClass().contains("notPressed")){
             //Updating the ArrayList

@@ -471,6 +471,9 @@
          </font>
       </Label>
       <TextField fx:id="fromField" alignment="CENTER" editable="false" layoutX="131.0" layoutY="390.0" maxHeight="25.0" maxWidth="170.0" minHeight="-Infinity" minWidth="-Infinity" mouseTransparent="true" prefHeight="25.0" prefWidth="170.0" style="-fx-background-color: lightgrey; -fx-border-color: aliceblue;" styleClass="fieldNotPressed">
+         <stylesheets>
+            <URL value="@/Css/JanuaryFields.css" />
+         </stylesheets>
          <effect>
             <DropShadow>
                <color>
@@ -500,6 +503,9 @@
          </font>
       </TextField>
       <TextField fx:id="toField" alignment="CENTER" editable="false" layoutX="130.0" layoutY="443.0" maxHeight="25.0" maxWidth="170.0" minHeight="-Infinity" minWidth="-Infinity" mouseTransparent="true" prefHeight="25.0" prefWidth="170.0" style="-fx-background-color: lightgrey; -fx-border-color: aliceblue;" styleClass="fieldNotPressed">
+         <stylesheets>
+            <URL value="@/Css/JanuaryFields.css" />
+         </stylesheets>
          <effect>
             <DropShadow>
                <color>

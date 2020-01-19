@@ -3,40 +3,60 @@ package Projekat;
 import java.util.Date;
 
 public class Request {
-    public int request_id;
-    public Date from;
-    public Date to;
+    public int requestId;
+    public String fromDate;
+    public String toDate;
+    public int approved;
+    public int userId;
 
-    public Request(int request_id, Date from, Date to) {
-        this.request_id = request_id;
-        this.from = from;
-        this.to = to;
+    public Request(int requestId, String fromDate, String toDate, int approved, int userId) {
+        this.requestId = requestId;
+        this.fromDate = fromDate;
+        this.toDate = toDate;
+        this.approved = approved;
+        this.userId = userId;
     }
 
     public Request() {
     }
 
-    public int getRequest_id() {
-        return request_id;
+    public int getRequestId() {
+        return requestId;
     }
 
-    public void setRequest_id(int request_id) {
-        this.request_id = request_id;
+    public void setRequestId(int requestId) {
+        this.requestId = requestId;
     }
 
-    public Date getFrom() {
-        return from;
+    public String getFromDate() {
+        return fromDate;
     }
 
-    public void setFrom(Date from) {
-        this.from = from;
+    public void setFromDate(String fromDate) {
+        this.fromDate = fromDate;
     }
 
-    public Date getTo() {
-        return to;
+    public String getToDate() {
+        return toDate;
     }
 
-    public void setTo(Date to) {
-        this.to = to;
+    public void setToDate(String toDate) {
+        this.toDate = toDate;
+    }
+
+    public int getApproved() {
+        return approved;
+    }
+
+    public void setApproved(int approved) {
+        this.approved = approved;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }
