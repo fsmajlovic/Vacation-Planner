@@ -37,12 +37,11 @@ public class JanuaryController {
 
     public JanuaryController(User current){
         this.current = current;
+        daysLeft = current.getDaysleft();
     }
 
     @FXML
     public void initialize(String usernameFromLogin){
-
-        daysLeft = current.getDaysleft();
         labelDaysLeft.setText(String.valueOf(daysLeft));
     }
 
@@ -61,6 +60,7 @@ public class JanuaryController {
 
     public void btnPressed(ActionEvent actionEvent) {
          ToggleButton tgl = (ToggleButton) actionEvent.getSource();
+        System.out.println(current.getUsername() + " days left" + current.getDaysleft());
 
         if(daysLeft > 0 && tgl.getStyleClass().contains("notPressed")){
             //Updating the ArrayList
@@ -183,22 +183,6 @@ public class JanuaryController {
 
         String from_date = from;
         String to_date = to;
-
-//        try {
-//            myConn = DriverManager.getConnection("jdbc:sqlite:VPdatabase.db");
-//            String addRequest = "update requests " +
-//                    "set from_date = ?, to_date = ?, user_id = ?" +
-//                    "where username = ?;";
-//            addRequestStmt = myConn.prepareStatement(addRequest);
-//            addRequestStmt.setInt(1, daysLeft);
-//            addRequestStmt.setString(2, current.getUsername());
-//            addRequestStmt.executeUpdate();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-
-
-
 
     }
 }

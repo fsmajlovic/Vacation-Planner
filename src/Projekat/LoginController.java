@@ -84,18 +84,29 @@ public class LoginController {
 //                        Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
 //                        window.setScene(MonthScene);
 //                        window.show();//
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("January.fxml"));
-                Parent viewParent = loader.load();
+//                FXMLLoader loader = new FXMLLoader();
+//                loader.setLocation(getClass().getResource("January.fxml"));
+//                Parent viewParent = loader.load();
+//
+//                Scene viewScene = new Scene(viewParent);
+//
+//                JanuaryController ctrl = new JanuaryController(current);
+//                ctrl.initialize(usernameTextField.getText());
+//
+//                Stage window_2 = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+//                window_2.setScene(viewScene);
+//                window_2.show();
 
-                Scene viewScene = new Scene(viewParent);
-
-                JanuaryController ctrl = new JanuaryController(current);
-                ctrl.initialize(usernameTextField.getText());
-
-                Stage window_2 = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-                window_2.setScene(viewScene);
-                window_2.show();
+                Stage stage = new Stage();
+                Parent root = null;
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("January.fxml"));
+                JanuaryController januaryController = new JanuaryController(current);
+                loader.setController(januaryController);
+                root = loader.load();
+                stage.setTitle("January");
+                stage.setScene(new Scene(root, 800,500));
+                stage.setResizable(false);
+                stage.show();
             }
         }
         else{

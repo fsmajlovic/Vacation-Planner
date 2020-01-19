@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class VacationDAO {
     private static VacationDAO instance;
     private Connection myConn;
-    private PreparedStatement getUsersStmt;
+    private PreparedStatement getUsersStmt, addNewRequestStmt;
 
     public static VacationDAO getInstance(){
         if(instance == null) instance = new VacationDAO();
