@@ -2,33 +2,24 @@ package Projekat;
 
 public class User {
     public int id;
-    public String first_name, last_name, email, username, password;
-    public int admin_id;
+    public String firstName, lastName, email, username, password;
+    public int adminId;
     public int daysleft;
-    public int requests_id;
+    public int requestsId;
 
-    public User(int id, String first_name, String last_name, String email, String username, String password, int admin_id, int daysleft, int requests_id) {
+    public User(int id, String firstName, String lastName, String email, String username, String password, int adminId, int daysleft, int requestsId) {
         this.id = id;
-        this.first_name = first_name;
-        this.last_name = last_name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.username = username;
         this.password = password;
-        this.admin_id = admin_id;
+        this.adminId = adminId;
         this.daysleft = daysleft;
-        this.requests_id = requests_id;
+        this.requestsId = requestsId;
     }
 
     public User() {
-        this.id = 0;
-        this.first_name = "";
-        this.last_name = "";
-        this.email = "";
-        this.username = "";
-        this.password = "";
-        this.admin_id = 0;
-        this.daysleft = 0;
-        this.requests_id = 0;
     }
 
     public int getId() {
@@ -39,20 +30,20 @@ public class User {
         this.id = id;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -79,12 +70,12 @@ public class User {
         this.password = password;
     }
 
-    public int getAdmin_id() {
-        return admin_id;
+    public int getAdminId() {
+        return adminId;
     }
 
-    public void setAdmin_id(int admin_id) {
-        this.admin_id = admin_id;
+    public void setAdminId(int adminId) {
+        this.adminId = adminId;
     }
 
     public int getDaysleft() {
@@ -95,11 +86,11 @@ public class User {
         this.daysleft = daysleft;
     }
 
-    public int getRequests_id() {
-        return requests_id;
+    public int getRequestsId() {
+        return requestsId;
     }
 
-    public void setRequests_id(int requests_id) {
-        this.requests_id = requests_id;
+    public void setRequestsId(int requestsId) {
+        this.requestsId = requestsId;
     }
 }

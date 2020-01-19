@@ -1,6 +1,7 @@
 package Projekat;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -14,11 +15,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Objects;
 
 public class LoginController {
 
+    public VacationDAO dao;
     public CheckBox AdminCheckBox;
     public boolean CheckBox = false;
     public Connection myConn;
@@ -27,78 +30,78 @@ public class LoginController {
     public TextField usernameTextField;
     public PasswordField passwordTextField;
     public Label yourRNAdminLabel;
+    public ArrayList<User> users;
+    public User current;
 
+    @FXML
+    public void initialize(){
+        dao = VacationDAO.getInstance();
+        users = dao.users();
+    }
 
     public void LoginButtonAction(ActionEvent actionEvent) throws IOException {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
-        try {
-            myConn = DriverManager.getConnection("jdbc:sqlite:VPdatabase.db");
-            getUsersStmt = myConn.prepareStatement("select * from users");
-            ResultSet rs = getUsersStmt.executeQuery();
-            String usernamedb, passworddb;
-            while(rs.next()){
-                usernamedb = rs.getString("username");
-                passworddb = rs.getString("password");
-                int admin_ID = rs.getInt("admin_id");
-                String first_name = rs.getString("first_name");
-                String last_name = rs.getString("last_name");
-                if(usernamedb.equals(username) && passworddb.equals(password)){
-                    invalidLabel.setVisible(false);
-                    if(CheckBox){
-                        if(admin_ID == 1){
-                            FXMLLoader loader = new FXMLLoader();
-                            loader.setLocation(getClass().getResource("AdminScreen.fxml"));
-                            Parent viewParent = loader.load();
+        boolean found = false;
+        boolean admin = false;
+        for(User u: users){
+            if(u.getUsername().equals(username) && u.getPassword().equals(password)) {
+                found = true;
+                current = u;
+                if(u.getAdminId() == 1)
+                    admin = true;
+            }
+        }
 
-                            Scene viewScene = new Scene(viewParent);
+        if(found){
+            invalidLabel.setVisible(false);
+            if(CheckBox){
+                if(admin){
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("AdminScreen.fxml"));
+                    Parent viewParent = loader.load();
 
-                            AdminController ctrl = loader.getController();
-                            ctrl.initData();
+                    Scene viewScene = new Scene(viewParent);
 
-                            ctrl.initGreetingsMsg(first_name, last_name);
+                    AdminController ctrl = loader.getController();
+                    ctrl.initData();
 
-                            Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-                            window.setScene(viewScene);
-                            window.show();
-                        }
-                        else{
-                            yourRNAdminLabel.setVisible(true);
-                            return;
-                        }
-                    }
-                    else{
+                    ctrl.initGreetingsMsg(current.getFirstName(), current.getLastName());
+
+                    Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+                    window.setScene(viewScene);
+                    window.show();
+                }
+                else{
+                    yourRNAdminLabel.setVisible(true);
+                    return;
+                }
+            }
+            else{
 //                        String month = getMonthName();
-//
 //                        Parent MonthParent = FXMLLoader.load(getClass().getResource(month + ".fxml"));
 //                        Scene MonthScene = new Scene(MonthParent, 800, 500);
 //                        Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
 //                        window.setScene(MonthScene);
-//                        window.show();
+//                        window.show();//
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("January.fxml"));
+                Parent viewParent = loader.load();
 
+                Scene viewScene = new Scene(viewParent);
 
-                        //
-                        FXMLLoader loader = new FXMLLoader();
-                        loader.setLocation(getClass().getResource("January.fxml"));
-                        Parent viewParent = loader.load();
+                JanuaryController ctrl = new JanuaryController(current);
+                ctrl.initialize(usernameTextField.getText());
 
-                        Scene viewScene = new Scene(viewParent);
-
-                        JanuaryController ctrl = loader.getController();
-                        ctrl.initialize(usernameTextField.getText());
-
-                        Stage window_2 = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-                        window_2.setScene(viewScene);
-                        window_2.show();
-                    }
-                }
-                else{
-                    invalidLabel.setVisible(true);
-                }
+                Stage window_2 = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+                window_2.setScene(viewScene);
+                window_2.show();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
+        else{
+            invalidLabel.setVisible(true);
+        }
+
     }
 
     public void AdminCheckBoxOnAction(ActionEvent actionEvent) {

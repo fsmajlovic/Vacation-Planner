@@ -35,33 +35,13 @@ public class JanuaryController {
     public User current = new User();
     public String from, to;
 
+    public JanuaryController(User current){
+        this.current = current;
+    }
+
     @FXML
     public void initialize(String usernameFromLogin){
-        //Get user from databes by username
-        Connection myConn;
-        try {
-            myConn = DriverManager.getConnection("jdbc:sqlite:VPdatabase.db");
-            String getUser = "select id, first_name, last_name, email, username, password, admin_id, daysleft, " +
-                    "requests_id from users where username = ?";
-            getUserByUsernameStmt = myConn.prepareStatement(getUser);
-            getUserByUsernameStmt.setString(1, usernameFromLogin);
-            ResultSet rs = getUserByUsernameStmt.executeQuery();
-            while (rs.next()) {
-                current.setId(rs.getInt("id"));
-                current.setFirst_name(rs.getString("first_name"));
-                current.setLast_name(rs.getString("last_name"));
-                current.setEmail(rs.getString("email"));
-                current.setUsername(rs.getString("username"));
-                current.setPassword(rs.getString("password"));
-                current.setAdmin_id(rs.getInt("admin_id"));
-                current.setDaysleft(rs.getInt("daysleft"));
-                current.setRequests_id(rs.getInt("requests_id"));
-            }
-            System.out.println("user data: " + current.getUsername() + " " + current.getFirst_name() +
-                    " " + current.getLast_name() + " " + current.daysleft);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
         daysLeft = current.getDaysleft();
         labelDaysLeft.setText(String.valueOf(daysLeft));
     }

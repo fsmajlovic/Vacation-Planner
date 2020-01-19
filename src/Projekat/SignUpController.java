@@ -1,6 +1,7 @@
 package Projekat;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -32,6 +33,12 @@ public class SignUpController {
     public Label incorrectEmailLabel;
     public Label invalidUsernameLabel;
     public Label incorrectPasswordLabel;
+    public VacationDAO dao;
+
+    @FXML
+    public void intialize(){
+        dao = VacationDAO.getInstance();
+    }
 
     public void backOnAction(ActionEvent actionEvent) throws IOException {
         Parent AdminParent = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
@@ -60,8 +67,7 @@ public class SignUpController {
         //Check if password is at least 4 letters long
         if(password.length() < 4) passwordWrong = true;
         //Check if user already exist with model so we don't have to create another statement
-        model.fill();
-        listUsers = model.getListUsers();
+        listUsers = dao.users();
         for(User u: listUsers){
             if(u.getEmail().equals(email)) emailInUse = true;
             if(u.getUsername().equals(username)) userNameInUse = true;
