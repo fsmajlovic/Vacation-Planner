@@ -1,16 +1,16 @@
 package Projekat;
 
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Toggle;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -24,16 +24,16 @@ import java.util.*;
 
 public class JanuaryController {
 
-    public ToggleButton btnOne;
     public TextField labelDaysLeft;
     public TextField  fromField;
     public TextField toField;
+    public String from, to;
     public int daysLeft;
     public ArrayList<String> reserved = new ArrayList<>();
     public ArrayList<Integer> reservedNumbers = new ArrayList<>();
-    public PreparedStatement getUserByUsernameStmt, updateDaysLeftStmt, addRequestStmt;
-    public User current = new User();
-    public String from, to;
+    public User current;
+    public Request req;
+    public Label labelRequestOk;
 
     public JanuaryController(User current){
         this.current = current;
@@ -46,16 +46,8 @@ public class JanuaryController {
     }
 
     public void LogoutAction(ActionEvent actionEvent) {
-        Parent AdminParent = null;
-        try {
-            AdminParent = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Scene AdminScene = new Scene(AdminParent, 500, 300);
-        Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        window.setScene(AdminScene);
-        window.show();
+        Stage st = (Stage) toField.getScene().getWindow();
+        st.close();
     }
 
     public void btnPressed(ActionEvent actionEvent) {
@@ -164,24 +156,27 @@ public class JanuaryController {
         window.show();
     }
 
-    public void sendRequestOnAction(ActionEvent actionEvent) {
-        current.setDaysleft(daysLeft);
-        Connection myConn;
-        try {
-            myConn = DriverManager.getConnection("jdbc:sqlite:VPdatabase.db");
-            String updateDaysLeft = "update users " +
-                             "set daysleft = ?" +
-                             "where username = ?;";
-            updateDaysLeftStmt = myConn.prepareStatement(updateDaysLeft);
-            updateDaysLeftStmt.setInt(1, daysLeft);
-            updateDaysLeftStmt.setString(2, current.getUsername());
-            updateDaysLeftStmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        String from_date = from;
-        String to_date = to;
-
+    public Request getRequest(){
+        return req;
     }
+
+    public void sendRequestOnAction(ActionEvent actionEvent) {
+        //Updates request for getRequest method
+        req = new Request();
+        req.setFromDate(fromField.getText());
+        req.setToDate(toField.getText());
+        req.setApproved(0);
+        req.setUserId(current.getId());
+
+        labelRequestOk.setVisible(true);
+        PauseTransition visiblePause = new PauseTransition(
+                Duration.seconds(2)
+        );
+        visiblePause.setOnFinished(
+                event -> labelRequestOk.setVisible(false)
+        );
+        visiblePause.play();
+    }
+
+
 }

@@ -517,5 +517,10 @@
          </font>
       </TextField>
       <Polygon fx:id="pvsMonth" fill="LIGHTGRAY" layoutX="64.0" layoutY="233.0" onMousePressed="#pvsMonth" points="-50.0, 40.0, -50.0, -11.0, -26.0, 14.0" rotate="180.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="labelRequestOk" layoutX="586.0" layoutY="432.0" text="Request sent!" textFill="#04c227" visible="false">
+         <font>
+            <Font name="Monotype Corsiva" size="17.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
