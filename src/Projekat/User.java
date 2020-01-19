@@ -93,4 +93,9 @@ public class User {
     public void setRequestsId(int requestsId) {
         this.requestsId = requestsId;
     }
+
+    @Override
+    public String toString() {
+        return "You've got a new request by " + getUsername();
+    }
 }

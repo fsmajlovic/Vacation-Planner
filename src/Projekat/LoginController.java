@@ -31,12 +31,14 @@ public class LoginController {
     public PasswordField passwordTextField;
     public Label yourRNAdminLabel;
     public ArrayList<User> users;
+    public ArrayList<Request> requests;
     public User current;
 
     @FXML
     public void initialize(){
         dao = VacationDAO.getInstance();
         users = dao.users();
+        requests = dao.requests();
     }
 
     public void LoginButtonAction(ActionEvent actionEvent) throws IOException {
@@ -60,7 +62,7 @@ public class LoginController {
                     Stage stage = new Stage();
                     Parent root = null;
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminScreen.fxml"));
-                    AdminController adminController = new AdminController(current);
+                    AdminController adminController = new AdminController(current, users, requests);
                     loader.setController(adminController);
                     root = loader.load();
                     stage.setTitle("Administator profile");

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class VacationDAO {
     private static VacationDAO instance;
     private Connection myConn;
-    private PreparedStatement getUsersStmt, addNewRequestStmt;
+    private PreparedStatement getUsersStmt, addNewRequestStmt, getRequestsStmt;
 
     public static VacationDAO getInstance(){
         if(instance == null) instance = new VacationDAO();
@@ -23,6 +23,7 @@ public class VacationDAO {
         try {
             getUsersStmt = myConn.prepareStatement("select * from users order by first_name desc");
             addNewRequestStmt = myConn.prepareStatement("insert into requests (from_date, to_date, approved, user_id) values (?,?,?,?)");
+            getRequestsStmt = myConn.prepareStatement("select * from requests order by approved desc");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -63,7 +64,26 @@ public class VacationDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
 
+    public ArrayList<Request> requests(){
+        ArrayList<Request> requests = new ArrayList<>();
+        ResultSet rs = null;
+        try {
+            rs = getRequestsStmt.executeQuery();
+            while (rs.next()){
+                Request req = new Request();
+                req.setRequestId(rs.getInt("request_id"));
+                req.setFromDate(rs.getString("from_date"));
+                req.setToDate(rs.getString("to_date"));
+                req.setApproved(rs.getInt("approved"));
+                req.setUserId(rs.getInt("user_id"));
+                requests.add(req);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return requests;
     }
 
 }
