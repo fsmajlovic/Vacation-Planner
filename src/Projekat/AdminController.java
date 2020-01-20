@@ -26,7 +26,7 @@ public class AdminController{
     public TextField fieldFirstName;
     public TextField fieldToDate;
     public TextField fieldLastName;
-    public User currentAdmin;
+    public User currentAdmin, currentEmployee;
     public ArrayList<User> users;
     public ArrayList<Request> requests;
     public ArrayList<User> usersWithRequests;
@@ -42,11 +42,6 @@ public class AdminController{
         this.users = users;
         this.requests = requests;
         this.usersWithRequests = new ArrayList<>();
-        for(Request r: requests){
-                User u = new User();
-                u = findUserById(r.getUserId());
-                usersWithRequests.add(u);
-        }
         this.obs = FXCollections.observableArrayList(usersWithRequests);
     }
 
@@ -57,14 +52,25 @@ public class AdminController{
         selectedMonthLabel.textProperty().bind(model.getCurrentSimple());
         choiceSelectMonth.getSelectionModel().select("Select All");
         GreetingsLabel.setText("Welcome " + currentAdmin.getFirstName() + " " + currentAdmin.getLastName() + "!");
-
-
+        for(Request r: requests){
+            User u = findUserById(r.getUserId());
+            User user = new User(u.getId(), u.getFirstName(), u.getLastName(),  u.getEmail(), u.getUsername(), u.getPassword(), u.getAdminId(), u.daysleft,
+                    r.getRequestId(), r.getFromDate(), r.getToDate());
+            usersWithRequests.add(user);
+        }
+        this.obs = FXCollections.observableArrayList(usersWithRequests);
 
         for(User u: usersWithRequests){
             System.out.println(u.getUsername());
         }
 
         listOfRequests.setItems(obs);
+        listOfRequests.getSelectionModel().selectedItemProperty().addListener((obss, oldVal, newVal)-> {
+            fieldFirstName.setText(newVal.getFirstName());
+            fieldLastName.setText(newVal.getLastName());
+            fieldToDate.setText(newVal.getTo());
+            fieldFromDate.setText(newVal.getFrom());
+        });
 
     }
 
@@ -83,6 +89,16 @@ public class AdminController{
                 return u;
         }
         return null;
+    }
+
+    public void onActionApprove(ActionEvent actionEvent){
+        if(listOfRequests.getSelectionModel().getSelectedItem() == null){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Employee selection");
+            alert.setHeaderText("Informacija o passwordu ispod!");
+            alert.setContentText("You need to select an user.");
+            alert.showAndWait();
+        }
     }
 
 }

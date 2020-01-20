@@ -62,6 +62,8 @@ public class LoginController {
                     Stage stage = new Stage();
                     Parent root = null;
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminScreen.fxml"));
+                    users = dao.users();
+                    requests = dao.requests();
                     AdminController adminController = new AdminController(current, users, requests);
                     loader.setController(adminController);
                     root = loader.load();
@@ -71,7 +73,7 @@ public class LoginController {
                     stage.show();
                     usernameTextField.setText("");
                     passwordTextField.setText("");
-                    AdminCheckBox.setSelected(false);
+                    //AdminCheckBox.setSelected(false);
                 }
                 else{
                     yourRNAdminLabel.setVisible(true);
@@ -94,12 +96,13 @@ public class LoginController {
                     Request req = januaryController.getRequest();
                     if(req != null){
                         dao.addNewRequest(req);
+                        System.out.println("called!");
                     }
                 });
             }
             usernameTextField.setText("");
             passwordTextField.setText("");
-            AdminCheckBox.setSelected(false);
+            //AdminCheckBox.setSelected(false);
         }
         else{
             invalidLabel.setVisible(true);

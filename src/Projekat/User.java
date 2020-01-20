@@ -6,6 +6,7 @@ public class User {
     public int adminId;
     public int daysleft;
     public int requestsId;
+    public String from, to;
 
     public User(int id, String firstName, String lastName, String email, String username, String password, int adminId, int daysleft, int requestsId) {
         this.id = id;
@@ -17,9 +18,41 @@ public class User {
         this.adminId = adminId;
         this.daysleft = daysleft;
         this.requestsId = requestsId;
+        this.from = "";
+        this.to = "";
     }
 
     public User() {
+    }
+
+    public String getFrom() {
+        return from;
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
+    }
+
+    public String getTo() {
+        return to;
+    }
+
+    public void setTo(String to) {
+        this.to = to;
+    }
+
+    public User(int id, String firstName, String lastName, String email, String username, String password, int adminId, int daysleft, int requestsId, String from, String to) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.adminId = adminId;
+        this.daysleft = daysleft;
+        this.requestsId = requestsId;
+        this.from = from;
+        this.to = to;
     }
 
     public int getId() {
