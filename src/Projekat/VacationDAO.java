@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class VacationDAO {
     private static VacationDAO instance;
     private Connection myConn;
-    private PreparedStatement getUsersStmt, addNewRequestStmt, getRequestsStmt;
+    private PreparedStatement getUsersStmt, addNewRequestStmt, getRequestsStmt, approveRequestStmt;
 
     public static VacationDAO getInstance(){
         if(instance == null) instance = new VacationDAO();
@@ -24,6 +24,7 @@ public class VacationDAO {
             getUsersStmt = myConn.prepareStatement("select * from users order by first_name desc");
             addNewRequestStmt = myConn.prepareStatement("insert into requests (from_date, to_date, approved, user_id) values (?,?,?,?)");
             getRequestsStmt = myConn.prepareStatement("select * from requests order by approved desc");
+            approveRequestStmt = myConn.prepareStatement("update requests set approved = ? where request_id = ?");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -84,6 +85,16 @@ public class VacationDAO {
             e.printStackTrace();
         }
         return requests;
+    }
+
+    public void approveRequest(int id){
+        ResultSet rs = null;
+        try {
+            rs = approveRequestStmt.executeQuery();
+            rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

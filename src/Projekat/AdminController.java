@@ -31,6 +31,7 @@ public class AdminController{
     public ArrayList<Request> requests;
     public ArrayList<User> usersWithRequests;
     public ObservableList<User> obs;
+    public VacationDAO dao;
 
     public void LogoutAdminOnAction(ActionEvent actionEvent) throws IOException {
         Stage stg = (Stage) GreetingsLabel.getScene().getWindow();
@@ -43,6 +44,7 @@ public class AdminController{
         this.requests = requests;
         this.usersWithRequests = new ArrayList<>();
         this.obs = FXCollections.observableArrayList(usersWithRequests);
+        dao = VacationDAO.getInstance();
     }
 
     @FXML
@@ -59,10 +61,6 @@ public class AdminController{
             usersWithRequests.add(user);
         }
         this.obs = FXCollections.observableArrayList(usersWithRequests);
-
-        for(User u: usersWithRequests){
-            System.out.println(u.getUsername());
-        }
 
         listOfRequests.setItems(obs);
         listOfRequests.getSelectionModel().selectedItemProperty().addListener((obss, oldVal, newVal)-> {
@@ -95,10 +93,14 @@ public class AdminController{
         if(listOfRequests.getSelectionModel().getSelectedItem() == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Employee selection");
-            alert.setHeaderText("Informacija o passwordu ispod!");
-            alert.setContentText("You need to select an user.");
+            alert.setHeaderText("Employee not selected.");
+            alert.setContentText("You need to select an employee.");
             alert.showAndWait();
         }
+        int id = listOfRequests.getSelectionModel().getSelectedItem().getRequestsId();
+
     }
+
+
 
 }
