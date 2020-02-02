@@ -12,7 +12,10 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class AdminController{
     public ChoiceBox<String> choiceSelectMonth;
@@ -49,6 +52,7 @@ public class AdminController{
 
     @FXML
     public void initialize(){
+        
         model.fill();
         choiceSelectMonth.setItems(model.getMonths());
         selectedMonthLabel.textProperty().bind(model.getCurrentSimple());
@@ -63,13 +67,58 @@ public class AdminController{
             }
         }
         this.obs = FXCollections.observableArrayList(usersWithRequests);
-
         listOfRequests.setItems(obs);
+
+
+        choiceSelectMonth.getSelectionModel().selectedItemProperty().addListener((obss, oldVal, newVal)-> {
+            ArrayList<User> usersInMonth = new ArrayList<>();
+
+            try {
+                if(newVal.equals("January")){
+                    usersInMonth = getUsersFromMonth("January");
+                    obs = FXCollections.observableArrayList(usersInMonth);
+                    listOfRequests.setItems(obs);
+                }
+                else if(newVal.equals("February")){
+                    usersInMonth = getUsersFromMonth("February");
+                    obs = FXCollections.observableArrayList(usersInMonth);
+                    listOfRequests.setItems(obs);
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+
+        });
+
+
+//        choiceSelectMonth.getSelectionModel().selectedItemProperty().addListener((obss, oldVal, newVal)-> {
+////            if(newVal.equals("January")){
+////                try {
+////                    JanuaryUsers = FXCollections.observableArrayList(getUsersFromMonth("January"));
+////                    listOfRequests.setItems(JanuaryUsers);
+////                } catch (ParseException e) {
+////                    e.printStackTrace();
+////                }
+////            }
+////            else if(newVal.equals("February")){
+////                try {
+////                    ObservableList<User> FebruaryUsers = FXCollections.observableArrayList(getUsersFromMonth("February"));
+////                    listOfRequests.setItems(FebruaryUsers);
+////                } catch (ParseException e) {
+////                    e.printStackTrace();
+////                }
+////            }
+////
+////        });
+
         listOfRequests.getSelectionModel().selectedItemProperty().addListener((obss, oldVal, newVal)-> {
-            fieldFirstName.setText(newVal.getFirstName());
-            fieldLastName.setText(newVal.getLastName());
-            fieldToDate.setText(newVal.getTo());
-            fieldFromDate.setText(newVal.getFrom());
+            if(newVal != null && oldVal != null) {
+                fieldFirstName.setText(newVal.getFirstName());
+                fieldLastName.setText(newVal.getLastName());
+                fieldToDate.setText(newVal.getTo());
+                fieldFromDate.setText(newVal.getFrom());
+            }
         });
 
     }
@@ -115,6 +164,27 @@ public class AdminController{
         int id = listOfRequests.getSelectionModel().getSelectedItem().getRequestsId();
         dao.denyRequest(id);
         listOfRequests.getItems().remove(listOfRequests.getSelectionModel().getSelectedIndex());
+        usersWithRequests.remove(listOfRequests.getSelectionModel().getSelectedItem());
     }
 
+    public ArrayList<User> getUsersFromMonth(String month) throws ParseException {
+        ArrayList<User> users = new ArrayList<>();
+        for (Request r : requests) {
+            if (r.getApproved() == 0 && getMonthFromRequest(r).equals(month)) {
+                User u = findUserById(r.getUserId());
+                User user = new User(u.getId(), u.getFirstName(), u.getLastName(), u.getEmail(), u.getUsername(), u.getPassword(), u.getAdminId(), u.daysleft,
+                        r.getRequestId(), r.getFromDate(), r.getToDate());
+                users.add(user);
+            }
+        }
+        return users;
+    }
+
+    public String getMonthFromRequest(Request r){
+        String s = r.getFromDate();
+        s = s.replaceAll("\\d","");
+        s = s.replaceAll("[^a-zA-Z0-9]", "");
+        System.out.println(s);
+        return s;
+    }
 }

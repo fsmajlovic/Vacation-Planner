@@ -18,7 +18,6 @@ import javafx.stage.Stage;
         primaryStage.show();
     }
 
-
     public static void main(String[] args) {
         launch(args);
     }
