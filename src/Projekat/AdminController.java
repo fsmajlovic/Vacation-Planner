@@ -55,10 +55,12 @@ public class AdminController{
         choiceSelectMonth.getSelectionModel().select("Select All");
         GreetingsLabel.setText("Welcome " + currentAdmin.getFirstName() + " " + currentAdmin.getLastName() + "!");
         for(Request r: requests){
-            User u = findUserById(r.getUserId());
-            User user = new User(u.getId(), u.getFirstName(), u.getLastName(),  u.getEmail(), u.getUsername(), u.getPassword(), u.getAdminId(), u.daysleft,
-                    r.getRequestId(), r.getFromDate(), r.getToDate());
-            usersWithRequests.add(user);
+            if(r.getApproved() == 0) {
+                User u = findUserById(r.getUserId());
+                User user = new User(u.getId(), u.getFirstName(), u.getLastName(), u.getEmail(), u.getUsername(), u.getPassword(), u.getAdminId(), u.daysleft,
+                        r.getRequestId(), r.getFromDate(), r.getToDate());
+                usersWithRequests.add(user);
+            }
         }
         this.obs = FXCollections.observableArrayList(usersWithRequests);
 
@@ -98,9 +100,21 @@ public class AdminController{
             alert.showAndWait();
         }
         int id = listOfRequests.getSelectionModel().getSelectedItem().getRequestsId();
-
+        dao.approveRequest(id);
+        listOfRequests.getItems().remove(listOfRequests.getSelectionModel().getSelectedIndex());
     }
 
-
+    public void onActionDeny(ActionEvent actionEvent){
+        if(listOfRequests.getSelectionModel().getSelectedItem() == null){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Employee selection");
+            alert.setHeaderText("Employee not selected.");
+            alert.setContentText("You need to select an employee.");
+            alert.showAndWait();
+        }
+        int id = listOfRequests.getSelectionModel().getSelectedItem().getRequestsId();
+        dao.denyRequest(id);
+        listOfRequests.getItems().remove(listOfRequests.getSelectionModel().getSelectedIndex());
+    }
 
 }

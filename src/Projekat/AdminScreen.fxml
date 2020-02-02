@@ -10,7 +10,7 @@
    <children>
       <AnchorPane layoutX="592.0" prefHeight="501.0" prefWidth="208.0" style="-fx-background-color: #333f5c; -fx-border-color: black]];">
          <children>
-            <Button fx:id="btnDeny" alignment="CENTER" contentDisplay="CENTER" layoutY="334.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="208.0" style="-fx-background-color: azure; -fx-border-color: ghostwhite;" text="Deny" textFill="#d02525" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+            <Button fx:id="btnDeny" alignment="CENTER" contentDisplay="CENTER" layoutY="334.0" mnemonicParsing="false" onAction="#onActionDeny" prefHeight="65.0" prefWidth="208.0" style="-fx-background-color: azure; -fx-border-color: ghostwhite;" text="Deny" textFill="#d02525" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
