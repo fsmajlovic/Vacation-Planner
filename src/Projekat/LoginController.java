@@ -96,7 +96,6 @@ public class LoginController {
                     Request req = januaryController.getRequest();
                     if(req != null){
                         dao.addNewRequest(req);
-                        System.out.println("called!");
                     }
                 });
             }
