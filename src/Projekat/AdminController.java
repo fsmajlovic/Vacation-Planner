@@ -90,6 +90,72 @@ public class AdminController{
                     obs = FXCollections.observableArrayList(usersInMonth);
                     listOfRequests.setItems(obs);
                 }
+                else if(newVal.equals("March")){
+                    obs.removeAll();
+                    usersInMonth = getUsersFromMonth("March");
+                    obs = FXCollections.observableArrayList(usersInMonth);
+                    listOfRequests.setItems(obs);
+                }
+                else if(newVal.equals("April")){
+                    obs.removeAll();
+                    usersInMonth = getUsersFromMonth("April");
+                    obs = FXCollections.observableArrayList(usersInMonth);
+                    listOfRequests.setItems(obs);
+                }
+                else if(newVal.equals("May")){
+                    obs.removeAll();
+                    usersInMonth = getUsersFromMonth("May");
+                    obs = FXCollections.observableArrayList(usersInMonth);
+                    listOfRequests.setItems(obs);
+                }
+                else if(newVal.equals("June")){
+                    obs.removeAll();
+                    usersInMonth = getUsersFromMonth("June");
+                    obs = FXCollections.observableArrayList(usersInMonth);
+                    listOfRequests.setItems(obs);
+                }
+                else if(newVal.equals("July")){
+                    obs.removeAll();
+                    usersInMonth = getUsersFromMonth("July");
+                    obs = FXCollections.observableArrayList(usersInMonth);
+                    listOfRequests.setItems(obs);
+                }
+                else if(newVal.equals("August")){
+                    obs.removeAll();
+                    usersInMonth = getUsersFromMonth("August");
+                    obs = FXCollections.observableArrayList(usersInMonth);
+                    listOfRequests.setItems(obs);
+                }
+                else if(newVal.equals("October")){
+                    obs.removeAll();
+                    usersInMonth = getUsersFromMonth("October");
+                    obs = FXCollections.observableArrayList(usersInMonth);
+                    listOfRequests.setItems(obs);
+                }
+                else if(newVal.equals("September")){
+                    obs.removeAll();
+                    usersInMonth = getUsersFromMonth("September");
+                    obs = FXCollections.observableArrayList(usersInMonth);
+                    listOfRequests.setItems(obs);
+                }
+                else if(newVal.equals("October")){
+                    obs.removeAll();
+                    usersInMonth = getUsersFromMonth("October");
+                    obs = FXCollections.observableArrayList(usersInMonth);
+                    listOfRequests.setItems(obs);
+                }
+                else if(newVal.equals("November")){
+                    obs.removeAll();
+                    usersInMonth = getUsersFromMonth("November");
+                    obs = FXCollections.observableArrayList(usersInMonth);
+                    listOfRequests.setItems(obs);
+                }
+                else if(newVal.equals("December")){
+                    obs.removeAll();
+                    usersInMonth = getUsersFromMonth("December");
+                    obs = FXCollections.observableArrayList(usersInMonth);
+                    listOfRequests.setItems(obs);
+                }
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -131,6 +197,7 @@ public class AdminController{
             alert.setHeaderText("Employee not selected.");
             alert.setContentText("You need to select an employee.");
             alert.showAndWait();
+            return;
         }
         int id = listOfRequests.getSelectionModel().getSelectedItem().getRequestsId();
         dao.approveRequest(id);
@@ -146,6 +213,7 @@ public class AdminController{
             alert.setHeaderText("Employee not selected.");
             alert.setContentText("You need to select an employee.");
             alert.showAndWait();
+            return;
         }
         int id = listOfRequests.getSelectionModel().getSelectedItem().getRequestsId();
         dao.denyRequest(id);
@@ -153,7 +221,7 @@ public class AdminController{
         listOfRequests.getItems().remove(listOfRequests.getSelectionModel().getSelectedIndex());
         usersWithRequests.remove(u);
     }
-    
+
         public ArrayList<User> getUsersFromMonth(String month) throws ParseException {
         ArrayList<User> users = new ArrayList<>();
         for (User u : usersWithRequests) {
