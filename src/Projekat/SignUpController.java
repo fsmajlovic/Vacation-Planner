@@ -35,9 +35,13 @@ public class SignUpController {
     public Label incorrectPasswordLabel;
     public VacationDAO dao;
 
+    SignUpController(){
+        dao = VacationDAO.getInstance();
+    }
+
     @FXML
     public void intialize(){
-        dao = VacationDAO.getInstance();
+
     }
 
     public void backOnAction(ActionEvent actionEvent) throws IOException {
@@ -84,25 +88,9 @@ public class SignUpController {
             return;
         }
 
-        Connection myConn = null;
-        int nextId = -1;
-        try {
-            myConn = DriverManager.getConnection("jdbc:sqlite:VPdatabase.db");
-            String sqlprep = "insert into users(first_name, last_name, email, username," +
-                    " password, admin_id, daysleft, requests_id)values (?, ?, ?, ?, ?, ?, ?, ?);";
-            addIntoDatabaseStmt = myConn.prepareStatement(sqlprep);
-            addIntoDatabaseStmt.setString(1, first_name);
-            addIntoDatabaseStmt.setString(2, last_name);
-            addIntoDatabaseStmt.setString(3, email);
-            addIntoDatabaseStmt.setString(4, username);
-            addIntoDatabaseStmt.setString(5, password);
-            addIntoDatabaseStmt.setInt(6, 0);
-            addIntoDatabaseStmt.setInt(7, 10);
-            addIntoDatabaseStmt.setInt(8, 0);
-            addIntoDatabaseStmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        User u = new User(-1, first_name, last_name, email, username, password,0,10,0);
+        dao.addUser(u);
+
         firstNameTF.setText("");
         lastNameTF.setText("");
         emailTF.setText("");

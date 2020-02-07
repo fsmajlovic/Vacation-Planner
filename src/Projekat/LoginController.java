@@ -10,6 +10,8 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -33,12 +35,15 @@ public class LoginController {
     public ArrayList<User> users;
     public ArrayList<Request> requests;
     public User current;
+    //public ImageView ImageLogin;
 
     @FXML
     public void initialize(){
         dao = VacationDAO.getInstance();
         users = dao.users();
         requests = dao.requests();
+//        ImageLogin.setImage(new Image(getClass().getClassLoader().getResource("loginpic1.png").toString(),
+//                400,200,false,false));
     }
 
     public void LoginButtonAction(ActionEvent actionEvent) throws IOException {
@@ -73,7 +78,6 @@ public class LoginController {
                     stage.show();
                     usernameTextField.setText("");
                     passwordTextField.setText("");
-                    //AdminCheckBox.setSelected(false);
                 }
                 else{
                     yourRNAdminLabel.setVisible(true);
@@ -101,7 +105,6 @@ public class LoginController {
             }
             usernameTextField.setText("");
             passwordTextField.setText("");
-            //AdminCheckBox.setSelected(false);
         }
         else{
             invalidLabel.setVisible(true);
@@ -127,13 +130,18 @@ public class LoginController {
     }
 
     public void SignUpOnAction(ActionEvent actionEvent) throws IOException {
-        invalidLabel.setVisible(false);
-        yourRNAdminLabel.setVisible(false);
-        Parent MonthParent = FXMLLoader.load(getClass().getResource("SignUpScreen.fxml"));
-        Scene MonthScene = new Scene(MonthParent, 368, 493);
-        Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        window.setScene(MonthScene);
-        window.show();
+        Stage stage = new Stage();
+        Parent root = null;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SignUpScreen.fxml"));
+        SignUpController signUpController = new SignUpController();
+        loader.setController(signUpController);
+        root = loader.load();
+        stage.setTitle("SignUp");
+        stage.setScene(new Scene(root, 368,493));
+        stage.setResizable(false);
+        Stage s = (Stage) passwordTextField.getScene().getWindow();
+        s.close();
+        stage.show();
     }
 
     public void usernameOnMouseClicked(MouseEvent mouseEvent) {

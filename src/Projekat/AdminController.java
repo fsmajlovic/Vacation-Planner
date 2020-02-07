@@ -4,32 +4,25 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+
 
 public class AdminController{
     public ChoiceBox<String> choiceSelectMonth;
     public Label GreetingsLabel;
     public Label selectedMonthLabel;
     public MonthsModel model = new MonthsModel();
-    public Button btnApprove;
-    public Button btnDeny;
     public ListView<User> listOfRequests;
     public TextField fieldFromDate;
     public TextField fieldFirstName;
     public TextField fieldToDate;
     public TextField fieldLastName;
-    public User currentAdmin, currentEmployee;
+    public User currentAdmin;
     public ArrayList<User> users;
     public ArrayList<Request> requests;
     public ArrayList<User> usersWithRequests;
@@ -61,8 +54,8 @@ public class AdminController{
         for(Request r: requests){
             if(r.getApproved() == 0) {
                 User u = findUserById(r.getUserId());
-                User user = new User(u.getId(), u.getFirstName(), u.getLastName(), u.getEmail(), u.getUsername(), u.getPassword(), u.getAdminId(), u.daysleft,
-                        r.getRequestId(), r.getFromDate(), r.getToDate());
+                User user = new User(u.getId(), u.getFirstName(), u.getLastName(), u.getEmail(), u.getUsername(),
+                        u.getPassword(), u.getAdminId(), u.daysleft, r.getRequestId(), r.getFromDate(), r.getToDate());
                 usersWithRequests.add(user);
             }
         }
@@ -126,12 +119,6 @@ public class AdminController{
                     obs = FXCollections.observableArrayList(usersInMonth);
                     listOfRequests.setItems(obs);
                 }
-                else if(newVal.equals("October")){
-                    obs.removeAll();
-                    usersInMonth = getUsersFromMonth("October");
-                    obs = FXCollections.observableArrayList(usersInMonth);
-                    listOfRequests.setItems(obs);
-                }
                 else if(newVal.equals("September")){
                     obs.removeAll();
                     usersInMonth = getUsersFromMonth("September");
@@ -163,7 +150,7 @@ public class AdminController{
         });
 
         listOfRequests.getSelectionModel().selectedItemProperty().addListener((obss, oldVal, newVal)-> {
-            if(newVal != null && oldVal != null) {
+            if(newVal != null) {
                 fieldFirstName.setText(newVal.getFirstName());
                 fieldLastName.setText(newVal.getLastName());
                 fieldToDate.setText(newVal.getTo());

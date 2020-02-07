@@ -7,7 +7,8 @@ import java.util.ArrayList;
 public class VacationDAO {
     private static VacationDAO instance;
     private Connection myConn;
-    private PreparedStatement getUsersStmt, addNewRequestStmt, getRequestsStmt, approveRequestStmt, denyRequestStmt;
+    private PreparedStatement getUsersStmt, addNewRequestStmt, getRequestsStmt, approveRequestStmt, denyRequestStmt,
+            addIntoDatabaseStmt;
 
     public static VacationDAO getInstance(){
         if(instance == null) instance = new VacationDAO();
@@ -26,6 +27,9 @@ public class VacationDAO {
             getRequestsStmt = myConn.prepareStatement("select * from requests order by approved desc");
             approveRequestStmt = myConn.prepareStatement("update requests set approved = 1 where request_id = ?");
             denyRequestStmt = myConn.prepareStatement("update requests set approved = -1 where request_id = ?");
+            String sqlprep = "insert into users(first_name, last_name, email, username," +
+                    " password, admin_id, daysleft, requests_id)values (?, ?, ?, ?, ?, ?, ?, ?);";
+            addIntoDatabaseStmt = myConn.prepareStatement(sqlprep);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -101,6 +105,22 @@ public class VacationDAO {
         try {
             denyRequestStmt.setInt(1, id);
             denyRequestStmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addUser(User u){
+        try {
+            addIntoDatabaseStmt.setString(1, u.getFirstName());
+            addIntoDatabaseStmt.setString(2, u.getLastName());
+            addIntoDatabaseStmt.setString(3, u.getEmail());
+            addIntoDatabaseStmt.setString(4, u.getUsername());
+            addIntoDatabaseStmt.setString(5, u.getPassword());
+            addIntoDatabaseStmt.setInt(6, 0);
+            addIntoDatabaseStmt.setInt(7, 10);
+            addIntoDatabaseStmt.setInt(8, 0);
+            addIntoDatabaseStmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
