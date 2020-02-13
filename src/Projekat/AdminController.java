@@ -5,11 +5,15 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class AdminController{
@@ -28,6 +32,7 @@ public class AdminController{
     public ArrayList<User> usersWithRequests;
     public ObservableList<User> obs;
     public VacationDAO dao;
+    public ImageView ImageLogin;
 
     public void LogoutAdminOnAction(ActionEvent actionEvent) throws IOException {
         Stage stg = (Stage) GreetingsLabel.getScene().getWindow();
@@ -179,11 +184,7 @@ public class AdminController{
 
     public void onActionApprove(ActionEvent actionEvent){
         if(listOfRequests.getSelectionModel().getSelectedItem() == null){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Employee selection");
-            alert.setHeaderText("Employee not selected.");
-            alert.setContentText("You need to select an employee.");
-            alert.showAndWait();
+            showAlert();
             return;
         }
         int id = listOfRequests.getSelectionModel().getSelectedItem().getRequestsId();
@@ -195,11 +196,7 @@ public class AdminController{
 
     public void onActionDeny(ActionEvent actionEvent){
         if(listOfRequests.getSelectionModel().getSelectedItem() == null){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Employee selection");
-            alert.setHeaderText("Employee not selected.");
-            alert.setContentText("You need to select an employee.");
-            alert.showAndWait();
+            showAlert();
             return;
         }
         int id = listOfRequests.getSelectionModel().getSelectedItem().getRequestsId();
@@ -224,5 +221,13 @@ public class AdminController{
         s = s.replaceAll("\\d","");
         s = s.replaceAll("[^a-zA-Z0-9]", "");
         return s;
+    }
+
+    public void showAlert(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Employee selection");
+        alert.setHeaderText("Employee not selected.");
+        alert.setContentText("You need to select an employee.");
+        alert.showAndWait();
     }
 }

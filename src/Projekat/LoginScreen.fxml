@@ -21,7 +21,7 @@
       <Polyline fill="LIGHTBLUE" layoutX="563.0" layoutY="-8.0" points="6.0, 52.0, -144.0, -2.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
       <Polyline fill="LIGHTBLUE" layoutX="47.0" layoutY="339.0" points="6.0, 52.0, -11.0, -15.0, -89.0, -167.0, 121.0, 24.0" strokeType="INSIDE" />
       <Polyline fill="#333f5c" layoutX="-118.0" layoutY="282.0" points="308.0, 79.0, 68.0, 79.0, 79.0, -186.0, 165.0, -2.0" strokeType="INSIDE" />
-      <CheckBox fx:id="AdminCheckBox" contentDisplay="CENTER" layoutX="211.0" layoutY="237.0" mnemonicParsing="false" onAction="#AdminCheckBoxOnAction" text="Administrator" />
+      <CheckBox fx:id="AdminCheckBox" contentDisplay="CENTER" layoutX="209.0" layoutY="243.0" mnemonicParsing="false" onAction="#AdminCheckBoxOnAction" text="Administrator" />
       <Polyline fill="LIGHTBLUE" layoutX="44.0" layoutY="-38.0" points="6.0, 52.0, -144.0, -2.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
       <Polyline fill="LIGHTBLUE" layoutX="-38.0" layoutY="409.0" points="6.0, 52.0, -144.0, -2.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
       <Polyline fill="LIGHTBLUE" layoutX="-48.0" layoutY="396.0" points="6.0, 52.0, -144.0, -2.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
@@ -45,7 +45,7 @@
       <Label fx:id="yourRNAdminLabel" layoutX="183.0" layoutY="282.0" text="You are not an administrator" textAlignment="CENTER" textFill="RED" visible="false" />
    </children>
    <cursor>
-      <Cursor fx:constant="HAND" />
+      <Cursor fx:constant="DEFAULT" />
    </cursor>
    <effect>
       <InnerShadow />

@@ -6,10 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -85,6 +82,7 @@ public class LoginController {
                 }
             }
             else{
+                boolean isApproved = dao.isApproved(current);
                 Stage stage = new Stage();
                 Parent root = null;
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("January.fxml"));
@@ -95,6 +93,14 @@ public class LoginController {
                 stage.setScene(new Scene(root, 800,500));
                 stage.setResizable(false);
                 stage.show();
+
+                if(isApproved){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Request approved");
+                    alert.setHeaderText("Woohoo! Looks like some of your requests have been accepted!");
+                    alert.setContentText("Check your requests tab and enjoy your vacation!");
+                    alert.showAndWait();
+                }
 
                 stage.setOnHiding(data -> {
                     Request req = januaryController.getRequest();

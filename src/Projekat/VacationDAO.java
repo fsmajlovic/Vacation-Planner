@@ -8,7 +8,7 @@ public class VacationDAO {
     private static VacationDAO instance;
     private Connection myConn;
     private PreparedStatement getUsersStmt, addNewRequestStmt, getRequestsStmt, approveRequestStmt, denyRequestStmt,
-            addIntoDatabaseStmt;
+            addIntoDatabaseStmt, getApprovedRequestById;
 
     public static VacationDAO getInstance(){
         if(instance == null) instance = new VacationDAO();
@@ -30,6 +30,7 @@ public class VacationDAO {
             String sqlprep = "insert into users(first_name, last_name, email, username," +
                     " password, admin_id, daysleft, requests_id)values (?, ?, ?, ?, ?, ?, ?, ?);";
             addIntoDatabaseStmt = myConn.prepareStatement(sqlprep);
+            getApprovedRequestById = myConn.prepareStatement("select approved from requests where user_id = ?");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -125,4 +126,19 @@ public class VacationDAO {
             e.printStackTrace();
         }
     }
+
+    public boolean isApproved(User u){
+        try {
+            getApprovedRequestById.setInt(1, u.getId());
+            ResultSet rs = getApprovedRequestById.executeQuery();
+            while(rs.next()){
+                if(rs.getInt("approved") == 1)
+                    return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }

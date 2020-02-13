@@ -178,5 +178,4 @@ public class JanuaryController {
         visiblePause.play();
     }
 
-
 }
