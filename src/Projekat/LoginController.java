@@ -102,12 +102,12 @@ public class LoginController {
                     alert.showAndWait();
                 }
 
-                stage.setOnHiding(data -> {
-                    Request req = januaryController.getRequest();
-                    if(req != null){
-                        dao.addNewRequest(req);
-                    }
-                });
+//                stage.setOnHiding(data -> {
+//                    Request req = januaryController.getRequest();
+//                    if(req != null){
+//                        dao.addNewRequest(req);
+//                    }
+//                });
             }
             usernameTextField.setText("");
             passwordTextField.setText("");

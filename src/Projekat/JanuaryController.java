@@ -34,10 +34,12 @@ public class JanuaryController {
     public User current;
     public Request req;
     public Label labelRequestOk;
+    public VacationDAO dao;
 
     public JanuaryController(User current){
         this.current = current;
         daysLeft = current.getDaysleft();
+        dao = VacationDAO.getInstance();
     }
 
     @FXML
@@ -176,6 +178,7 @@ public class JanuaryController {
                 event -> labelRequestOk.setVisible(false)
         );
         visiblePause.play();
+        dao.addNewRequest(req);
     }
 
     public void StatusOnAction(ActionEvent actionEvent) throws IOException {
@@ -186,7 +189,7 @@ public class JanuaryController {
         loader.setController(requestsStatusController);
         root = loader.load();
         stage.setTitle("Status");
-        stage.setScene(new Scene(root, 450,190));
+        stage.setScene(new Scene(root, 540,190));
         stage.setResizable(false);
         stage.show();
     }

@@ -486,7 +486,7 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></TextField>
-      <Label layoutX="100.0" layoutY="443.0" prefHeight="25.0" prefWidth="21.0" text="To:">
+      <Label layoutX="89.0" layoutY="443.0" prefHeight="25.0" prefWidth="21.0" text="To:">
          <font>
             <Font name="Monotype Corsiva" size="17.0" />
          </font>
@@ -496,7 +496,7 @@
             <Font name="Monotype Corsiva" size="15.0" />
          </font>
       </Text>
-      <Button layoutX="551.0" layoutY="358.0" mnemonicParsing="false" onAction="#sendRequestOnAction" prefHeight="54.0" prefWidth="151.0" style="-fx-background-color: azure;" text="Send Request">
+      <Button layoutX="551.0" layoutY="392.0" mnemonicParsing="false" onAction="#sendRequestOnAction" prefHeight="44.0" prefWidth="151.0" style="-fx-background-color: azure;" text="Send Request">
          <font>
             <Font name="Monotype Corsiva" size="23.0" />
          </font></Button>
@@ -520,12 +520,12 @@
          </font>
       </TextField>
       <Polygon fx:id="pvsMonth" fill="LIGHTGRAY" layoutX="64.0" layoutY="233.0" onMousePressed="#pvsMonth" points="-50.0, 40.0, -50.0, -11.0, -26.0, 14.0" rotate="180.0" stroke="BLACK" strokeType="INSIDE" />
-      <Label fx:id="labelRequestOk" layoutX="586.0" layoutY="432.0" text="Request sent!" textFill="#04c227" visible="false">
+      <Label fx:id="labelRequestOk" layoutX="586.0" layoutY="456.0" text="Request sent!" textFill="#04c227" visible="false">
          <font>
             <Font name="Monotype Corsiva" size="17.0" />
          </font>
       </Label>
-      <Button fx:id="btnStatus" layoutX="551.0" layoutY="423.0" mnemonicParsing="false" onAction="#StatusOnAction" prefHeight="25.0" prefWidth="151.0" style="-fx-background-color: azure;" text="Requests Status">
+      <Button fx:id="btnStatus" layoutX="551.0" layoutY="354.0" mnemonicParsing="false" onAction="#StatusOnAction" prefHeight="25.0" prefWidth="151.0" style="-fx-background-color: azure;" text="Requests Status">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
