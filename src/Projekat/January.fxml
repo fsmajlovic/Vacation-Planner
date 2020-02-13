@@ -461,7 +461,7 @@
             </ToggleButton>
          </children>
       </GridPane>
-      <Button fx:id="btnLogoutJanuary" layoutX="721.0" layoutY="455.0" mnemonicParsing="false" onAction="#LogoutAction" style="-fx-background-color: azure;" text="Logout">
+      <Button fx:id="btnLogoutJanuary" layoutX="735.0" layoutY="456.0" mnemonicParsing="false" onAction="#LogoutAction" style="-fx-background-color: azure;" text="Logout">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -496,7 +496,7 @@
             <Font name="Monotype Corsiva" size="15.0" />
          </font>
       </Text>
-      <Button layoutX="544.0" layoutY="388.0" mnemonicParsing="false" onAction="#sendRequestOnAction" prefHeight="54.0" prefWidth="151.0" style="-fx-background-color: azure;" text="Send Request">
+      <Button layoutX="551.0" layoutY="358.0" mnemonicParsing="false" onAction="#sendRequestOnAction" prefHeight="54.0" prefWidth="151.0" style="-fx-background-color: azure;" text="Send Request">
          <font>
             <Font name="Monotype Corsiva" size="23.0" />
          </font></Button>
@@ -525,5 +525,13 @@
             <Font name="Monotype Corsiva" size="17.0" />
          </font>
       </Label>
+      <Button fx:id="btnStatus" layoutX="551.0" layoutY="423.0" mnemonicParsing="false" onAction="#StatusOnAction" prefHeight="25.0" prefWidth="151.0" style="-fx-background-color: azure;" text="Requests Status">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <Blend />
+         </effect>
+      </Button>
    </children>
 </AnchorPane>

@@ -178,4 +178,17 @@ public class JanuaryController {
         visiblePause.play();
     }
 
+    public void StatusOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage = new Stage();
+        Parent root = null;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("RequestsStatus.fxml"));
+        RequestsStatusController requestsStatusController = new RequestsStatusController(current.getId());
+        loader.setController(requestsStatusController);
+        root = loader.load();
+        stage.setTitle("Status");
+        stage.setScene(new Scene(root, 450,190));
+        stage.setResizable(false);
+        stage.show();
+    }
+
 }
