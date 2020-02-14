@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -188,6 +189,7 @@ public class JanuaryController {
         RequestsStatusController requestsStatusController = new RequestsStatusController(current.getId());
         loader.setController(requestsStatusController);
         root = loader.load();
+        stage.getIcons().add(new Image("slika.png"));
         stage.setTitle("Status");
         stage.setScene(new Scene(root, 540,190));
         stage.setResizable(false);

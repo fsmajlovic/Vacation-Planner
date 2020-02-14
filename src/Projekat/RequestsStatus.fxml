@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
@@ -7,9 +8,18 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="190.0" prefWidth="540.0" style="-fx-background-color: #333f5c;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ListView fx:id="listApr" layoutY="30.0" prefHeight="160.0" prefWidth="190.0" />
-      <ListView fx:id="listPen" layoutX="183.0" layoutY="30.0" prefHeight="160.0" prefWidth="180.0" />
-      <ListView fx:id="listDen" layoutX="362.0" layoutY="30.0" prefHeight="160.0" prefWidth="180.0" />
+      <ListView fx:id="listApr" editable="true" layoutY="30.0" prefHeight="160.0" prefWidth="190.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></ListView>
+      <ListView fx:id="listPen" editable="true" layoutX="183.0" layoutY="30.0" prefHeight="160.0" prefWidth="180.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></ListView>
+      <ListView fx:id="listDen" editable="true" layoutX="362.0" layoutY="30.0" prefHeight="160.0" prefWidth="180.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></ListView>
       <Line endX="35.0" endY="281.0" layoutX="148.0" layoutY="-88.0" startX="35.0" startY="84.29289245605469" />
       <Line endX="35.0" endY="278.0" layoutX="328.0" layoutY="-87.0" startX="35.0" startY="84.29289245605469" />
       <Text fill="#309718" layoutX="63.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Approved">
