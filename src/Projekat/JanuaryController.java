@@ -189,7 +189,7 @@ public class JanuaryController {
         RequestsStatusController requestsStatusController = new RequestsStatusController(current.getId());
         loader.setController(requestsStatusController);
         root = loader.load();
-        stage.getIcons().add(new Image("slika.png"));
+        stage.getIcons().add(new Image("AppIcon.png"));
         stage.setTitle("Status");
         stage.setScene(new Scene(root, 540,190));
         stage.setResizable(false);

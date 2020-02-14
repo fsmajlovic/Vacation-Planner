@@ -70,6 +70,7 @@ public class LoginController {
                     loader.setController(adminController);
                     root = loader.load();
                     stage.setTitle("Administator profile");
+                    stage.getIcons().add(new Image("AppIcon.png"));
                     stage.setScene(new Scene(root, 800,500));
                     stage.setResizable(false);
                     stage.show();
@@ -90,6 +91,7 @@ public class LoginController {
                 loader.setController(januaryController);
                 root = loader.load();
                 stage.setTitle("January");
+                stage.getIcons().add(new Image("AppIcon.png"));
                 stage.setScene(new Scene(root, 800,500));
                 stage.setResizable(false);
                 stage.show();
@@ -97,6 +99,8 @@ public class LoginController {
                 if(isApproved){
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Request approved");
+                    stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                    stage.getIcons().add(new Image("AppIcon.png"));
                     alert.setHeaderText("Woohoo! Looks like some of your requests have been accepted!");
                     alert.setContentText("Check your requests tab and enjoy your vacation!");
                     alert.showAndWait();
@@ -142,7 +146,8 @@ public class LoginController {
         SignUpController signUpController = new SignUpController();
         loader.setController(signUpController);
         root = loader.load();
-        stage.setTitle("SignUp");
+        stage.setTitle("Sign up");
+        stage.getIcons().add(new Image("AppIcon.png"));
         stage.setScene(new Scene(root, 368,493));
         stage.setResizable(false);
         Stage s = (Stage) passwordTextField.getScene().getWindow();
