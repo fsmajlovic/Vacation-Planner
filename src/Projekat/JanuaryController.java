@@ -115,11 +115,11 @@ public class JanuaryController {
 
             if (!reservedNumbers.isEmpty()) {
 
-                fromField.setText(from.toString());
+                fromField.setText(from);
                 fromField.getStyleClass().clear();
                 fromField.getStyleClass().add("fieldContainsNumbers");
                 if (reservedNumbers.size() != 0) {
-                    toField.setText(to.toString());
+                    toField.setText(to);
                     toField.getStyleClass().clear();
                     toField.getStyleClass().add("fieldContainsNumbers");
                 } else if (reservedNumbers.size() == 0) {

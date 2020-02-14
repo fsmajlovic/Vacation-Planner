@@ -8,7 +8,7 @@ public class VacationDAO {
     private static VacationDAO instance;
     private Connection myConn;
     private PreparedStatement getUsersStmt, addNewRequestStmt, getRequestsStmt, approveRequestStmt, denyRequestStmt,
-            addIntoDatabaseStmt, getApprovedRequestById;
+            addIntoDatabaseStmt, getApprovedRequestById, updateDaysLeftStmt;
 
     public static VacationDAO getInstance(){
         if(instance == null) instance = new VacationDAO();
@@ -31,6 +31,7 @@ public class VacationDAO {
                     " password, admin_id, daysleft, requests_id)values (?, ?, ?, ?, ?, ?, ?, ?);";
             addIntoDatabaseStmt = myConn.prepareStatement(sqlprep);
             getApprovedRequestById = myConn.prepareStatement("select approved from requests where user_id = ?");
+            updateDaysLeftStmt = myConn.prepareStatement("update users set daysleft = ? where user_id = ?");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -139,6 +140,16 @@ public class VacationDAO {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public void updateDaysLeft(int daysLeft, User u){
+        try {
+            updateDaysLeftStmt.setInt(1, daysLeft);
+            updateDaysLeftStmt.setInt(2, u.getId());
+            updateDaysLeftStmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }
