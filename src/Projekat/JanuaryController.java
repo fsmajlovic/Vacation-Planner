@@ -12,12 +12,9 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javafx.util.converter.NumberStringConverter;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.sql.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
@@ -25,7 +22,7 @@ import java.util.*;
 
 public class JanuaryController {
 
-    public TextField labelDaysLeft;
+    public TextField DaysLeftTextField = new TextField();
     public TextField  fromField;
     public TextField toField;
     public String from, to;
@@ -39,13 +36,14 @@ public class JanuaryController {
 
     public JanuaryController(User current){
         this.current = current;
-        daysLeft = current.getDaysleft();
         dao = VacationDAO.getInstance();
+        daysLeft = dao.getDaysLeftByUsername(current.getUsername());
+        System.out.println(daysLeft);
     }
 
     @FXML
-    public void initialize(String usernameFromLogin){
-        labelDaysLeft.setText(String.valueOf(daysLeft));
+    public void initialize(){
+        DaysLeftTextField.setText(String.valueOf(daysLeft));
     }
 
     public void LogoutAction(ActionEvent actionEvent) {
@@ -55,7 +53,6 @@ public class JanuaryController {
 
     public void btnPressed(ActionEvent actionEvent) {
          ToggleButton tgl = (ToggleButton) actionEvent.getSource();
-
         if(daysLeft > 0 && tgl.getStyleClass().contains("notPressed")){
             //Updating the ArrayList
             if (reserved.isEmpty()) {
@@ -71,7 +68,7 @@ public class JanuaryController {
             }
             //Updating DaysLeft
             daysLeft--;
-            labelDaysLeft.setText(String.valueOf(daysLeft));
+            DaysLeftTextField.setText(String.valueOf(daysLeft));
             ((ToggleButton) actionEvent.getSource()).getStyleClass().clear();
             ((ToggleButton) actionEvent.getSource()).getStyleClass().add("isPressed");
         }
@@ -80,7 +77,7 @@ public class JanuaryController {
             reserved.remove((tgl.getText()));
             //Updating DaysLeft
             daysLeft++;
-            labelDaysLeft.setText(String.valueOf(daysLeft));
+            DaysLeftTextField.setText(String.valueOf(daysLeft));
             ((ToggleButton) actionEvent.getSource()).getStyleClass().clear();
             ((ToggleButton) actionEvent.getSource()).getStyleClass().add("notPressed");
         }
@@ -89,7 +86,7 @@ public class JanuaryController {
             reserved.remove((tgl.getText()));
             //Updating DaysLeft
             daysLeft++;
-            labelDaysLeft.setText(String.valueOf(daysLeft));
+            DaysLeftTextField.setText(String.valueOf(daysLeft));
             ((ToggleButton) actionEvent.getSource()).getStyleClass().clear();
             ((ToggleButton) actionEvent.getSource()).getStyleClass().add("notPressed");
         }
@@ -180,6 +177,7 @@ public class JanuaryController {
         );
         visiblePause.play();
         dao.addNewRequest(req);
+        dao.updateDaysLeft(Integer.parseInt(DaysLeftTextField.getText()), current);
     }
 
     public void StatusOnAction(ActionEvent actionEvent) throws IOException {

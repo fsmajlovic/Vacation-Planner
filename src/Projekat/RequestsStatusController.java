@@ -44,10 +44,6 @@ public class RequestsStatusController {
         approvedObs = FXCollections.observableArrayList(approvedArray);
         pendingObs = FXCollections.observableArrayList(pendingArray);
         deniedObs = FXCollections.observableArrayList(deniedArray);
-        for(String s: approvedObs){
-            System.out.println(s);
-        }
-
         listApr.setItems(approvedObs);
         listPen.setItems(pendingObs);
         listDen.setItems(deniedObs);

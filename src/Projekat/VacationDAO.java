@@ -8,7 +8,7 @@ public class VacationDAO {
     private static VacationDAO instance;
     private Connection myConn;
     private PreparedStatement getUsersStmt, addNewRequestStmt, getRequestsStmt, approveRequestStmt, denyRequestStmt,
-            addIntoDatabaseStmt, getApprovedRequestById, updateDaysLeftStmt;
+            addIntoDatabaseStmt, getApprovedRequestById, updateDaysLeftStmt, getDaysLeftByIdStmt;
 
     public static VacationDAO getInstance(){
         if(instance == null) instance = new VacationDAO();
@@ -31,7 +31,8 @@ public class VacationDAO {
                     " password, admin_id, daysleft, requests_id)values (?, ?, ?, ?, ?, ?, ?, ?);";
             addIntoDatabaseStmt = myConn.prepareStatement(sqlprep);
             getApprovedRequestById = myConn.prepareStatement("select approved from requests where user_id = ?");
-            updateDaysLeftStmt = myConn.prepareStatement("update users set daysleft = ? where user_id = ?");
+            updateDaysLeftStmt = myConn.prepareStatement("update users set daysleft = ? where id = ?");
+            getDaysLeftByIdStmt = myConn.prepareStatement("select daysleft from users where username = ?");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -151,5 +152,19 @@ public class VacationDAO {
             e.printStackTrace();
         }
     }
+
+    public int getDaysLeftByUsername(String username){
+        int daysleft = -1;
+        try {
+            getDaysLeftByIdStmt.setString(1, username);
+            ResultSet rs = getDaysLeftByIdStmt.executeQuery();
+            daysleft =  rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return daysleft;
+    }
+
+
 
 }

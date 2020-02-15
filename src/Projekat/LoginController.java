@@ -32,15 +32,15 @@ public class LoginController {
     public ArrayList<User> users;
     public ArrayList<Request> requests;
     public User current;
-    //public ImageView ImageLogin;
+    public ImageView backgroundImgView;
 
     @FXML
     public void initialize(){
         dao = VacationDAO.getInstance();
         users = dao.users();
         requests = dao.requests();
-//        ImageLogin.setImage(new Image(getClass().getClassLoader().getResource("loginpic1.png").toString(),
-//                400,200,false,false));
+        Image image = new Image("background.gif");
+        backgroundImgView.setImage(image);
     }
 
     public void LoginButtonAction(ActionEvent actionEvent) throws IOException {
@@ -102,7 +102,7 @@ public class LoginController {
                     stage = (Stage) alert.getDialogPane().getScene().getWindow();
                     stage.getIcons().add(new Image("AppIcon.png"));
                     alert.setHeaderText("Woohoo! Looks like some of your requests have been accepted!");
-                    alert.setContentText("Check your requests tab and enjoy your vacation!");
+                    alert.setContentText("Check your requests status and enjoy your vacation!");
                     alert.showAndWait();
                 }
 
@@ -146,7 +146,7 @@ public class LoginController {
         SignUpController signUpController = new SignUpController();
         loader.setController(signUpController);
         root = loader.load();
-        stage.setTitle("Sign up");
+        stage.setTitle("Vacation Planner");
         stage.getIcons().add(new Image("AppIcon.png"));
         stage.setScene(new Scene(root, 368,493));
         stage.setResizable(false);
