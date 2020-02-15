@@ -81,8 +81,11 @@ public class JanuaryController {
             ((ToggleButton) actionEvent.getSource()).getStyleClass().add("isPressed");
         }
         else if(daysLeft > 0  && daysLeft < 10 && tgl.getStyleClass().contains("isPressed")){
-        
-            //Updating the ArrayList
+            if(Integer.parseInt(tgl.getText()) != Integer.parseInt((Collections.max(reserved))) &&
+                    Integer.parseInt(tgl.getText()) != Integer.parseInt((Collections.min(reserved)))){
+                return;
+
+            }            //Updating the ArrayList
             reserved.remove((tgl.getText()));
             //Updating DaysLeft
             daysLeft++;
