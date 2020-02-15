@@ -6,7 +6,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import java.net.URL?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="501.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+   <stylesheets>
+      <URL value="@/Css/LoginScreen.css" />
+   </stylesheets>
    <children>
       <AnchorPane layoutX="592.0" prefHeight="501.0" prefWidth="208.0" style="-fx-background-color: #333f5c; -fx-border-color: black]];">
          <children>
