@@ -38,7 +38,6 @@ public class JanuaryController {
         this.current = current;
         dao = VacationDAO.getInstance();
         daysLeft = dao.getDaysLeftByUsername(current.getUsername());
-        System.out.println(daysLeft);
     }
 
     @FXML
@@ -114,10 +113,7 @@ public class JanuaryController {
             reservedNumbers.add(Integer.parseInt(a));
         }
         Collections.sort(reservedNumbers);
-        System.out.println("Array: ");
-        for(Integer a: reservedNumbers){
-            System.out.println(a);
-        }
+
         if(!reservedNumbers.isEmpty()) {
             Integer min = Collections.min(reservedNumbers);
             Integer max = Collections.max(reservedNumbers);
@@ -159,11 +155,30 @@ public class JanuaryController {
     }
 
     public void nxtMonth(MouseEvent mouseEvent) throws IOException {
-        Parent MonthParent = FXMLLoader.load(getClass().getResource("February" + ".fxml"));
-        Scene MonthScene = new Scene(MonthParent, 800, 500);
-        Stage window = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();
-        window.setScene(MonthScene);
-        window.show();
+        boolean isApproved = dao.isApproved(current);
+        Stage stage = new Stage();
+        Parent root = null;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("February.fxml"));
+        FebruaryController februaryController = new FebruaryController(current);
+        loader.setController(februaryController);
+        root = loader.load();
+        stage.setTitle("Vacation Planner");
+        stage.getIcons().add(new Image("AppIcon.png"));
+        stage.setScene(new Scene(root, 800, 500));
+        stage.setResizable(false);
+        stage.show();
+        Stage stg = (Stage) toField.getScene().getWindow();
+        stg.close();
+        if (isApproved) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Request approved");
+            stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image("AppIcon.png"));
+            alert.setHeaderText("Woohoo! Looks like some of your requests have been accepted!");
+            alert.setContentText("Check your requests status and enjoy your vacation!");
+            alert.showAndWait();
+
+        }
     }
 
     public void pvsMonth(MouseEvent mouseEvent) throws IOException {
