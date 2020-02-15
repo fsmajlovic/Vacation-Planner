@@ -500,7 +500,7 @@
          <font>
             <Font name="Monotype Corsiva" size="23.0" />
          </font></Button>
-      <TextField fx:id="labelDaysLeft" alignment="CENTER" editable="false" layoutX="333.0" layoutY="395.0" mouseTransparent="true" prefHeight="70.0" prefWidth="70.0" text="10">
+      <TextField fx:id="DaysLeftTextField" alignment="CENTER" editable="false" layoutX="333.0" layoutY="395.0" mouseTransparent="true" prefHeight="70.0" prefWidth="70.0">
          <font>
             <Font size="30.0" />
          </font>

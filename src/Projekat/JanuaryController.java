@@ -54,8 +54,16 @@ public class JanuaryController {
     public void btnPressed(ActionEvent actionEvent) {
          ToggleButton tgl = (ToggleButton) actionEvent.getSource();
         if(daysLeft > 0 && tgl.getStyleClass().contains("notPressed")){
+            if(Integer.parseInt(tgl.getText())%7 == 0 && Integer.parseInt((Collections.max(reserved))) !=
+                    (Integer.parseInt(tgl.getText())-3)){
+                return;
+            }
+            else if(reserved.size() > 0 && (Integer.parseInt((Collections.max(reserved))) !=
+                    (Integer.parseInt(tgl.getText())-1)) && Integer.parseInt(tgl.getText())%7 != 0) {
+                return;
+            }
             //Updating the ArrayList
-            if (reserved.isEmpty()) {
+            else if (reserved.isEmpty()) {
                 reserved.add((tgl.getText()));
             }
             else if(reserved.stream().anyMatch(x-> {
@@ -73,6 +81,7 @@ public class JanuaryController {
             ((ToggleButton) actionEvent.getSource()).getStyleClass().add("isPressed");
         }
         else if(daysLeft > 0  && daysLeft < 10 && tgl.getStyleClass().contains("isPressed")){
+        
             //Updating the ArrayList
             reserved.remove((tgl.getText()));
             //Updating DaysLeft
@@ -193,5 +202,4 @@ public class JanuaryController {
         stage.setResizable(false);
         stage.show();
     }
-
 }
