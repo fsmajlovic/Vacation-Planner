@@ -54,12 +54,14 @@ public class JanuaryController {
     public void btnPressed(ActionEvent actionEvent) {
          ToggleButton tgl = (ToggleButton) actionEvent.getSource();
         if(daysLeft > 0 && tgl.getStyleClass().contains("notPressed")){
-            if(Integer.parseInt(tgl.getText())%7 == 0 && Integer.parseInt((Collections.max(reserved))) !=
-                    (Integer.parseInt(tgl.getText())-3)){
+            if(reserved.size() > 0 && Integer.parseInt(tgl.getText())%7 == 0 && (Integer.parseInt((Collections.max(reserved))) !=
+                    (Integer.parseInt(tgl.getText())-3) && Integer.parseInt((Collections.min(reserved))) !=
+                    Integer.parseInt(tgl.getText()) + 1)){
                 return;
             }
             else if(reserved.size() > 0 && (Integer.parseInt((Collections.max(reserved))) !=
-                    (Integer.parseInt(tgl.getText())-1)) && Integer.parseInt(tgl.getText())%7 != 0) {
+                    (Integer.parseInt(tgl.getText())-1)  && Integer.parseInt((Collections.min(reserved))) !=
+                    Integer.parseInt(tgl.getText()) + 1) && Integer.parseInt(tgl.getText())%7 != 0) {
                 return;
             }
             //Updating the ArrayList
@@ -84,8 +86,8 @@ public class JanuaryController {
             if(Integer.parseInt(tgl.getText()) != Integer.parseInt((Collections.max(reserved))) &&
                     Integer.parseInt(tgl.getText()) != Integer.parseInt((Collections.min(reserved)))){
                 return;
-
-            }            //Updating the ArrayList
+            }
+            //Updating the ArrayList
             reserved.remove((tgl.getText()));
             //Updating DaysLeft
             daysLeft++;
@@ -94,6 +96,10 @@ public class JanuaryController {
             ((ToggleButton) actionEvent.getSource()).getStyleClass().add("notPressed");
         }
         else if(daysLeft == 0 && tgl.getStyleClass().contains("isPressed")){
+            if(Integer.parseInt(tgl.getText()) != Integer.parseInt((Collections.max(reserved))) &&
+                    Integer.parseInt(tgl.getText()) != Integer.parseInt((Collections.min(reserved)))) {
+                return;
+            }
             //Updating the ArrayList
             reserved.remove((tgl.getText()));
             //Updating DaysLeft

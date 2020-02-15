@@ -69,7 +69,7 @@ public class LoginController {
                     AdminController adminController = new AdminController(current, users, requests);
                     loader.setController(adminController);
                     root = loader.load();
-                    stage.setTitle("Administator profile");
+                    stage.setTitle("Vacation Planner");
                     stage.getIcons().add(new Image("AppIcon.png"));
                     stage.setScene(new Scene(root, 800,500));
                     stage.setResizable(false);
@@ -90,7 +90,7 @@ public class LoginController {
                 JanuaryController januaryController = new JanuaryController(current);
                 loader.setController(januaryController);
                 root = loader.load();
-                stage.setTitle("January");
+                stage.setTitle("Vacation Planner");
                 stage.getIcons().add(new Image("AppIcon.png"));
                 stage.setScene(new Scene(root, 800,500));
                 stage.setResizable(false);
