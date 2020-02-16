@@ -44,7 +44,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ToggleButton fx:id="btnOne" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="1" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <ToggleButton fx:id="btnOne" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="1" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -57,7 +57,7 @@
                <effect>
                   <DropShadow />
                </effect></ToggleButton>
-            <ToggleButton layoutX="98.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="2" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <ToggleButton layoutX="98.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="2" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -70,7 +70,7 @@
                <effect>
                   <DropShadow />
                </effect></ToggleButton>
-            <ToggleButton layoutX="187.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="3" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <ToggleButton layoutX="187.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="3" GridPane.columnIndex="4" GridPane.rowIndex="1">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -83,20 +83,7 @@
                <effect>
                   <DropShadow />
                </effect></ToggleButton>
-            <ToggleButton layoutX="276.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="4" GridPane.columnIndex="4" GridPane.rowIndex="1">
-               <font>
-                  <Font name="Monotype Corsiva" size="22.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-               </GridPane.margin>
-               <padding>
-                  <Insets top="2.0" />
-               </padding>
-               <effect>
-                  <DropShadow />
-               </effect></ToggleButton>
-            <ToggleButton disable="true" layoutX="98.0" layoutY="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="89.0" text="5" GridPane.columnIndex="5" GridPane.rowIndex="1">
+            <ToggleButton disable="true" layoutX="276.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="4" GridPane.columnIndex="5" GridPane.rowIndex="1">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -106,7 +93,7 @@
                <padding>
                   <Insets top="2.0" />
                </padding></ToggleButton>
-            <ToggleButton disable="true" layoutX="187.0" layoutY="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="89.0" text="6" GridPane.columnIndex="6" GridPane.rowIndex="1">
+            <ToggleButton disable="true" layoutX="98.0" layoutY="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="89.0" text="5" GridPane.columnIndex="6" GridPane.rowIndex="1">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -116,7 +103,7 @@
                <padding>
                   <Insets top="2.0" />
                </padding></ToggleButton>
-            <ToggleButton layoutX="276.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="7" GridPane.rowIndex="2">
+            <ToggleButton layoutX="276.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="7" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -129,7 +116,7 @@
                <effect>
                   <DropShadow />
                </effect></ToggleButton>
-            <ToggleButton layoutX="365.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="8" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <ToggleButton layoutX="365.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="8" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -142,7 +129,7 @@
                <effect>
                   <DropShadow />
                </effect></ToggleButton>
-            <ToggleButton layoutX="98.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="9" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <ToggleButton layoutX="98.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="9" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -155,7 +142,7 @@
                <effect>
                   <DropShadow />
                </effect></ToggleButton>
-            <ToggleButton layoutX="187.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="10" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <ToggleButton layoutX="187.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="10" GridPane.columnIndex="4" GridPane.rowIndex="2">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -168,20 +155,7 @@
                <effect>
                   <DropShadow />
                </effect></ToggleButton>
-            <ToggleButton layoutX="276.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="11" GridPane.columnIndex="4" GridPane.rowIndex="2">
-               <font>
-                  <Font name="Monotype Corsiva" size="22.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-               </GridPane.margin>
-               <padding>
-                  <Insets top="2.0" />
-               </padding>
-               <effect>
-                  <DropShadow />
-               </effect></ToggleButton>
-            <ToggleButton disable="true" layoutX="365.0" layoutY="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="89.0" text="12" GridPane.columnIndex="5" GridPane.rowIndex="2">
+            <ToggleButton disable="true" layoutX="276.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="11" GridPane.columnIndex="5" GridPane.rowIndex="2">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -191,7 +165,7 @@
                <padding>
                   <Insets top="2.0" />
                </padding></ToggleButton>
-            <ToggleButton disable="true" layoutX="454.0" layoutY="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="89.0" text="13" GridPane.columnIndex="6" GridPane.rowIndex="2">
+            <ToggleButton disable="true" layoutX="365.0" layoutY="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="89.0" text="12" GridPane.columnIndex="6" GridPane.rowIndex="2">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -201,7 +175,7 @@
                <padding>
                   <Insets top="2.0" />
                </padding></ToggleButton>
-            <ToggleButton layoutX="543.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="14" GridPane.rowIndex="3">
+            <ToggleButton layoutX="543.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="14" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -214,7 +188,7 @@
                <effect>
                   <DropShadow />
                </effect></ToggleButton>
-            <ToggleButton layoutX="10.0" layoutY="65.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="15" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <ToggleButton layoutX="10.0" layoutY="65.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="15" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -227,7 +201,7 @@
                <effect>
                   <DropShadow />
                </effect></ToggleButton>
-            <ToggleButton layoutX="98.0" layoutY="65.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="16" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <ToggleButton layoutX="98.0" layoutY="65.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="16" GridPane.columnIndex="3" GridPane.rowIndex="3">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -240,7 +214,7 @@
                <effect>
                   <DropShadow />
                </effect></ToggleButton>
-            <ToggleButton layoutX="98.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="17" GridPane.columnIndex="3" GridPane.rowIndex="3">
+            <ToggleButton layoutX="98.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="17" GridPane.columnIndex="4" GridPane.rowIndex="3">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -253,20 +227,7 @@
                <effect>
                   <DropShadow />
                </effect></ToggleButton>
-            <ToggleButton layoutX="187.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="18" GridPane.columnIndex="4" GridPane.rowIndex="3">
-               <font>
-                  <Font name="Monotype Corsiva" size="22.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-               </GridPane.margin>
-               <padding>
-                  <Insets top="2.0" />
-               </padding>
-               <effect>
-                  <DropShadow />
-               </effect></ToggleButton>
-            <ToggleButton disable="true" layoutX="276.0" layoutY="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="89.0" text="19" GridPane.columnIndex="5" GridPane.rowIndex="3">
+            <ToggleButton disable="true" layoutX="187.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="18" GridPane.columnIndex="5" GridPane.rowIndex="3">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -276,7 +237,7 @@
                <padding>
                   <Insets top="2.0" />
                </padding></ToggleButton>
-            <ToggleButton disable="true" layoutX="365.0" layoutY="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="89.0" text="20" GridPane.columnIndex="6" GridPane.rowIndex="3">
+            <ToggleButton disable="true" layoutX="276.0" layoutY="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="89.0" text="19" GridPane.columnIndex="6" GridPane.rowIndex="3">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -286,7 +247,7 @@
                <padding>
                   <Insets top="2.0" />
                </padding></ToggleButton>
-            <ToggleButton layoutX="454.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="21" GridPane.rowIndex="4">
+            <ToggleButton layoutX="454.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="21" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -299,7 +260,7 @@
                <effect>
                   <DropShadow />
                </effect></ToggleButton>
-            <ToggleButton layoutX="543.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="22" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <ToggleButton layoutX="543.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="22" GridPane.columnIndex="2" GridPane.rowIndex="4">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -312,7 +273,7 @@
                <effect>
                   <DropShadow />
                </effect></ToggleButton>
-            <ToggleButton layoutX="10.0" layoutY="65.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="23" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <ToggleButton layoutX="10.0" layoutY="65.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="23" GridPane.columnIndex="3" GridPane.rowIndex="4">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -325,7 +286,7 @@
                <effect>
                   <DropShadow />
                </effect></ToggleButton>
-            <ToggleButton layoutX="98.0" layoutY="65.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="55.0" prefWidth="89.0" styleClass="notPressed" text="24" GridPane.columnIndex="3" GridPane.rowIndex="4">
+            <ToggleButton layoutX="98.0" layoutY="65.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="55.0" prefWidth="89.0" styleClass="notPressed" text="24" GridPane.columnIndex="4" GridPane.rowIndex="4">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -338,7 +299,7 @@
                <effect>
                   <DropShadow />
                </effect></ToggleButton>
-            <ToggleButton disable="true" layoutX="365.0" layoutY="174.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="89.0" text="26" GridPane.columnIndex="5" GridPane.rowIndex="4">
+            <ToggleButton disable="true" layoutX="365.0" layoutY="174.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="89.0" text="26" GridPane.columnIndex="6" GridPane.rowIndex="4">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -348,17 +309,7 @@
                <padding>
                   <Insets top="2.0" />
                </padding></ToggleButton>
-            <ToggleButton disable="true" layoutX="454.0" layoutY="174.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="89.0" text="27" GridPane.columnIndex="6" GridPane.rowIndex="4">
-               <font>
-                  <Font name="Monotype Corsiva" size="22.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-               </GridPane.margin>
-               <padding>
-                  <Insets top="2.0" />
-               </padding></ToggleButton>
-            <ToggleButton layoutX="543.0" layoutY="174.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="28" GridPane.rowIndex="5">
+            <ToggleButton layoutX="543.0" layoutY="174.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="28" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -371,7 +322,7 @@
                <effect>
                   <DropShadow />
                </effect></ToggleButton>
-            <ToggleButton layoutX="10.0" layoutY="228.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="29" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <ToggleButton layoutX="10.0" layoutY="228.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="29" GridPane.columnIndex="2" GridPane.rowIndex="5">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -384,7 +335,7 @@
                <effect>
                   <DropShadow />
                </effect></ToggleButton>
-            <ToggleButton layoutX="98.0" layoutY="228.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="30" GridPane.columnIndex="2" GridPane.rowIndex="5">
+            <ToggleButton layoutX="98.0" layoutY="228.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="30" GridPane.columnIndex="3" GridPane.rowIndex="5">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -397,7 +348,7 @@
                <effect>
                   <DropShadow />
                </effect></ToggleButton>
-            <ToggleButton layoutX="187.0" layoutY="228.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="31" GridPane.columnIndex="3" GridPane.rowIndex="5">
+            <ToggleButton layoutX="187.0" layoutY="228.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="31" GridPane.columnIndex="4" GridPane.rowIndex="5">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -445,7 +396,7 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <ToggleButton mnemonicParsing="false" onAction="#btnPressed" prefHeight="53.0" prefWidth="89.0" styleClass="notPressed" text="25" GridPane.columnIndex="4" GridPane.rowIndex="4">
+            <ToggleButton disable="true" mnemonicParsing="false" onAction="#btnPressed" prefHeight="53.0" prefWidth="89.0" styleClass="notPressed" text="25" GridPane.columnIndex="5" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </GridPane.margin>
@@ -455,9 +406,62 @@
                <padding>
                   <Insets top="2.0" />
                </padding>
+            </ToggleButton>
+            <ToggleButton layoutX="366.0" layoutY="193.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="53.0" prefWidth="89.0" styleClass="notPressed" text="27" GridPane.rowIndex="5">
+               <font>
+                  <Font name="Monotype Corsiva" size="22.0" />
+               </font>
+               <padding>
+                  <Insets top="2.0" />
+               </padding>
                <effect>
                   <DropShadow />
                </effect>
+               <GridPane.margin>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </GridPane.margin>
+            </ToggleButton>
+            <ToggleButton layoutX="366.0" layoutY="148.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="20" GridPane.rowIndex="4">
+               <font>
+                  <Font name="Monotype Corsiva" size="22.0" />
+               </font>
+               <padding>
+                  <Insets top="2.0" />
+               </padding>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <GridPane.margin>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </GridPane.margin>
+            </ToggleButton>
+            <ToggleButton layoutX="366.0" layoutY="103.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="13" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Monotype Corsiva" size="22.0" />
+               </font>
+               <padding>
+                  <Insets top="2.0" />
+               </padding>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <GridPane.margin>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </GridPane.margin>
+            </ToggleButton>
+            <ToggleButton layoutX="366.0" layoutY="57.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="6" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Monotype Corsiva" size="22.0" />
+               </font>
+               <padding>
+                  <Insets top="2.0" />
+               </padding>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <GridPane.margin>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </GridPane.margin>
             </ToggleButton>
          </children>
       </GridPane>

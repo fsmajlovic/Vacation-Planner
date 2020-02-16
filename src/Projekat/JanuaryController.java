@@ -53,16 +53,46 @@ public class JanuaryController {
     public void btnPressed(ActionEvent actionEvent) {
          ToggleButton tgl = (ToggleButton) actionEvent.getSource();
         if(daysLeft > 0 && tgl.getStyleClass().contains("notPressed")){
-            if(reserved.size() > 0 && Integer.parseInt(tgl.getText())%7 == 0 && (Integer.parseInt((Collections.max(reserved))) !=
-                    (Integer.parseInt(tgl.getText())-3) && Integer.parseInt((Collections.min(reserved))) !=
-                    Integer.parseInt(tgl.getText()) + 1)){
+//            if(reserved.size() > 0 && (edge == 6 || edge == 13 || edge == 20 || edge == 27)
+//                    && (Integer.parseInt((Collections.max(reserved))) !=
+//                    (edge-3)) && (Integer.parseInt((Collections.min(reserved))) != Integer.parseInt(tgl.getText()) + 1)){
+//                return;
+//            }
+//            else if(reserved.size() > 0 && (edge != 6 && edge != 13 && edge != 20 && edge != 27) &&
+//                    (Integer.parseInt((Collections.max(reserved))) != (Integer.parseInt(tgl.getText())-1)
+//                    && Integer.parseInt((Collections.min(reserved))) != Integer.parseInt(tgl.getText()) + 1)) {
+//                return;
+//            }
+//            int max = 0, min = 0;
+//            int dayNumber = Integer.parseInt(tgl.getText());
+//            if(!reserved.isEmpty()) {
+//                max = Integer.parseInt((Collections.max(reserved)));
+//                min = Integer.parseInt((Collections.min(reserved)));
+//            }
+//            System.out.println("Max: " + max + " Min: " + min + " Day" + dayNumber);
+//            if((dayNumber == 6 || dayNumber == 20 || dayNumber == 27 || dayNumber == 13) &&
+//                max != min  && dayNumber > max && (max != (dayNumber - 3))){
+//                System.out.println("this1");
+//                return;
+//            }
+//            else if((dayNumber == 6 || dayNumber == 13 || dayNumber == 20 || dayNumber == 27) &&
+//                min != max && (min != dayNumber + 3) && dayNumber < min){
+//                System.out.println("this2");
+//                return;
+//            }
+//            else if(max != min && (max != dayNumber - 1) && dayNumber > max &&
+//                    (dayNumber != 6 && dayNumber != 13 && dayNumber != 20 && dayNumber != 27)){
+//                System.out.println("this3");
+//                return;
+//            }
+//            else if(min != max && (min != dayNumber + 1) && dayNumber < min  &&
+//                    (dayNumber != 6 && dayNumber != 13 && dayNumber != 20 && dayNumber != 27)){
+//                System.out.println("this4");
+//                return;
+//            }
+            int dayNumber = Integer.parseInt(tgl.getText());
+            if((dayNumber + 2)%6 == 0 || (dayNumber + 2)%7 == 0)
                 return;
-            }
-            else if(reserved.size() > 0 && (Integer.parseInt((Collections.max(reserved))) !=
-                    (Integer.parseInt(tgl.getText())-1)  && Integer.parseInt((Collections.min(reserved))) !=
-                    Integer.parseInt(tgl.getText()) + 1) && Integer.parseInt(tgl.getText())%7 != 0) {
-                return;
-            }
             //Updating the ArrayList
             else if (reserved.isEmpty()) {
                 reserved.add((tgl.getText()));
@@ -194,6 +224,17 @@ public class JanuaryController {
     }
 
     public void sendRequestOnAction(ActionEvent actionEvent) {
+        if(reserved.isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Day selection");
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image("AppIcon.png"));
+            alert.setHeaderText("No days selected.");
+            alert.setContentText("You need to select one or more days!");
+            alert.showAndWait();
+            return;
+        }
+
         //Updates request for getRequest method
         req = new Request();
         req.setFromDate(fromField.getText());
