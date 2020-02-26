@@ -84,9 +84,9 @@ public class SignUpController {
             if(u.getUsername().equals(username)) userNameInUse = true;
         }
         //Setting alert labels visible acording to the input
-        if(firstNameWrong || lastNameWrong || !emailWrong || emailInUse || usernameWrong || userNameInUse || passwordWrong){
-            if(firstNameWrong) invalidFirstNameLabel.setVisible(true);
-            if(lastNameWrong) invalidLastNameLabel.setVisible(true);
+        if(!firstNameWrong || !lastNameWrong || !emailWrong || emailInUse || usernameWrong || userNameInUse || passwordWrong){
+            if(!firstNameWrong) invalidFirstNameLabel.setVisible(true);
+            if(!lastNameWrong) invalidLastNameLabel.setVisible(true);
             if(emailInUse) emailInUseLabel.setVisible(true);
             if(userNameInUse) usernameInUseLabel.setVisible(true);
             if(!emailWrong) incorrectEmailLabel.setVisible(true);
@@ -130,14 +130,8 @@ public class SignUpController {
     }
 
     public boolean isValidName(String name){
-        if(name.length() < 1)
-            return true;
-        for(int i = 0; i < name.length(); i++){
-            if(!Character.isLetter(name.charAt(i)) && name.charAt(i) != ' ' && name.charAt(i) != '-'){
-                return true;
-            }
-        }
-        return false;
+        boolean valid = name.matches("(?i)[a-z]([- ',.a-z]{0,23}[a-z])?");
+        return valid;
     }
 
     public boolean isValidMail(String email){
