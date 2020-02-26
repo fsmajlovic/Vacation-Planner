@@ -13,6 +13,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -43,9 +46,10 @@ public class LoginController {
         backgroundImgView.setImage(image);
     }
 
-    public void LoginButtonAction(ActionEvent actionEvent) throws IOException {
+    public void LoginButtonAction(ActionEvent actionEvent) throws IOException, NoSuchAlgorithmException {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
+        String hashPassword = MD5Hash(password);
         boolean found = false;
         boolean admin = false;
         for(User u: users){
@@ -171,5 +175,12 @@ public class LoginController {
             invalidLabel.setVisible(false);
         }
         yourRNAdminLabel.setVisible(false);
+    }
+
+    public String MD5Hash(String password) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(password.getBytes(), 0, password.length());
+        String myHash = new BigInteger(1, md.digest()).toString(16);
+        return myHash;
     }
 }

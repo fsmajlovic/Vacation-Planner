@@ -1,5 +1,6 @@
 package Projekat;
 
+import com.sun.prism.PixelFormat;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +14,12 @@ import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import javax.xml.datatype.DatatypeConstants;
+import javax.xml.datatype.DatatypeFactory;
 import java.io.IOException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -52,7 +58,7 @@ public class SignUpController {
         window.show();
     }
 
-    public void signUpOnAction(ActionEvent actionEvent) {
+    public void signUpOnAction(ActionEvent actionEvent) throws NoSuchAlgorithmException {
         //Getting information from input
         String first_name = firstNameTF.getText();
         String last_name = lastNameTF.getText();
@@ -88,7 +94,8 @@ public class SignUpController {
             return;
         }
 
-        User u = new User(-1, first_name, last_name, email, username, password,0,10,0);
+        String hashPass = MD5Hash(password);
+        User u = new User(-1, first_name, last_name, email, username, hashPass,0,10,0);
         dao.addUser(u);
 
         firstNameTF.setText("");
@@ -168,6 +175,13 @@ public class SignUpController {
             lastNameTF.setText("");
             invalidLastNameLabel.setVisible(false);
         }
+    }
+
+    public String MD5Hash(String password) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(password.getBytes(), 0, password.length());
+        String myHash = new BigInteger(1, md.digest()).toString(16);
+        return myHash;
     }
 
 }

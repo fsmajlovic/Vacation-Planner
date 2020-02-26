@@ -63,36 +63,33 @@ public class JanuaryController {
 //                    && Integer.parseInt((Collections.min(reserved))) != Integer.parseInt(tgl.getText()) + 1)) {
 //                return;
 //            }
-//            int max = 0, min = 0;
-//            int dayNumber = Integer.parseInt(tgl.getText());
-//            if(!reserved.isEmpty()) {
-//                max = Integer.parseInt((Collections.max(reserved)));
-//                min = Integer.parseInt((Collections.min(reserved)));
-//            }
-//            System.out.println("Max: " + max + " Min: " + min + " Day" + dayNumber);
-//            if((dayNumber == 6 || dayNumber == 20 || dayNumber == 27 || dayNumber == 13) &&
-//                max != min  && dayNumber > max && (max != (dayNumber - 3))){
-//                System.out.println("this1");
-//                return;
-//            }
-//            else if((dayNumber == 6 || dayNumber == 13 || dayNumber == 20 || dayNumber == 27) &&
-//                min != max && (min != dayNumber + 3) && dayNumber < min){
-//                System.out.println("this2");
-//                return;
-//            }
-//            else if(max != min && (max != dayNumber - 1) && dayNumber > max &&
-//                    (dayNumber != 6 && dayNumber != 13 && dayNumber != 20 && dayNumber != 27)){
-//                System.out.println("this3");
-//                return;
-//            }
-//            else if(min != max && (min != dayNumber + 1) && dayNumber < min  &&
-//                    (dayNumber != 6 && dayNumber != 13 && dayNumber != 20 && dayNumber != 27)){
-//                System.out.println("this4");
-//                return;
-//            }
+            int max = 0, min = 0;
             int dayNumber = Integer.parseInt(tgl.getText());
-            if((dayNumber + 2)%6 == 0 || (dayNumber + 2)%7 == 0)
+            if(!reserved.isEmpty()) {
+                max = Integer.parseInt((Collections.max(reserved)));
+                min = Integer.parseInt((Collections.min(reserved)));
+            }
+            System.out.println("Max: " + max + " Min: " + min + " Day" + dayNumber);
+            if((dayNumber == 6 || dayNumber == 20 || dayNumber == 27 || dayNumber == 13) &&
+                max != min  && dayNumber > max && (max != (dayNumber - 3))){
+                System.out.println("this1");
                 return;
+            }
+            else if((dayNumber == 6 || dayNumber == 13 || dayNumber == 20 || dayNumber == 27) &&
+                min != max && (min != dayNumber + 3) && dayNumber < min){
+                System.out.println("this2");
+                return;
+            }
+            else if(max != min && (max != dayNumber - 1) && dayNumber > max &&
+                    (dayNumber != 6 && dayNumber != 13 && dayNumber != 20 && dayNumber != 27)){
+                System.out.println("this3");
+                return;
+            }
+            else if(min != max && (min != dayNumber + 1) && dayNumber < min  &&
+                    (dayNumber != 6 && dayNumber != 13 && dayNumber != 20 && dayNumber != 27)){
+                System.out.println("this4");
+                return;
+            }
             //Updating the ArrayList
             else if (reserved.isEmpty()) {
                 reserved.add((tgl.getText()));
