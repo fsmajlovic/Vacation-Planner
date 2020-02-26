@@ -22,6 +22,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class SignUpController {
     public TextField firstNameTF;
@@ -83,12 +84,12 @@ public class SignUpController {
             if(u.getUsername().equals(username)) userNameInUse = true;
         }
         //Setting alert labels visible acording to the input
-        if(firstNameWrong || lastNameWrong || emailWrong || emailInUse || usernameWrong || userNameInUse || passwordWrong){
+        if(firstNameWrong || lastNameWrong || !emailWrong || emailInUse || usernameWrong || userNameInUse || passwordWrong){
             if(firstNameWrong) invalidFirstNameLabel.setVisible(true);
             if(lastNameWrong) invalidLastNameLabel.setVisible(true);
             if(emailInUse) emailInUseLabel.setVisible(true);
             if(userNameInUse) usernameInUseLabel.setVisible(true);
-            if(emailWrong) incorrectEmailLabel.setVisible(true);
+            if(!emailWrong) incorrectEmailLabel.setVisible(true);
             if(usernameWrong) invalidUsernameLabel.setVisible(true);
             if(passwordWrong) incorrectPasswordLabel.setVisible(true);
             return;
@@ -140,8 +141,15 @@ public class SignUpController {
     }
 
     public boolean isValidMail(String email){
-        if(!email.contains("@") || email.charAt(0) == '@' || email.charAt(email.length()-1) == '@') return true;
-        return false;
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+
+        Pattern pat = Pattern.compile(emailRegex);
+        if (email == null)
+            return false;
+        return pat.matcher(email).matches();
     }
 
     public boolean isValidUser(String tekst){

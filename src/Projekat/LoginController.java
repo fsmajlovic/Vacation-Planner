@@ -53,7 +53,7 @@ public class LoginController {
         boolean found = false;
         boolean admin = false;
         for(User u: users){
-            if(u.getUsername().equals(username) && u.getPassword().equals(password)) {
+            if(u.getUsername().equals(username) && u.getPassword().equals(hashPassword)) {
                 found = true;
                 current = u;
                 if(u.getAdminId() == 1)
