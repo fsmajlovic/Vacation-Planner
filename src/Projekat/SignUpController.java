@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -41,6 +42,8 @@ public class SignUpController {
     public Label invalidUsernameLabel;
     public Label incorrectPasswordLabel;
     public VacationDAO dao;
+    public Button test;
+
 
     SignUpController(){
         dao = VacationDAO.getInstance();
@@ -105,9 +108,11 @@ public class SignUpController {
         usernameTF.setText("");
         passwordTF.setText("");
 
+
     }
 
     public void usernameOnMouseClicked(MouseEvent mouseEvent) {
+        test.setText("proba");
         if(usernameInUseLabel.isVisible()){
             usernameTF.setText("");
             usernameInUseLabel.setVisible(false);

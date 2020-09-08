@@ -33,11 +33,13 @@ public class JanuaryController {
     public Request req;
     public Label labelRequestOk;
     public VacationDAO dao;
+    private int maxDays;
 
     public JanuaryController(User current){
         this.current = current;
         dao = VacationDAO.getInstance();
         daysLeft = dao.getDaysLeftByUsername(current.getUsername());
+        maxDays = daysLeft;
     }
 
     @FXML
@@ -63,35 +65,35 @@ public class JanuaryController {
 //                    && Integer.parseInt((Collections.min(reserved))) != Integer.parseInt(tgl.getText()) + 1)) {
 //                return;
 //            }
-            int max = 0, min = 0;
-            int dayNumber = Integer.parseInt(tgl.getText());
-            if(!reserved.isEmpty()) {
-                max = Integer.parseInt((Collections.max(reserved)));
-                min = Integer.parseInt((Collections.min(reserved)));
-            }
-            System.out.println("Max: " + max + " Min: " + min + " Day" + dayNumber);
-            if((dayNumber == 6 || dayNumber == 20 || dayNumber == 27 || dayNumber == 13) &&
-                max != min  && dayNumber > max && (max != (dayNumber - 3))){
-                System.out.println("this1");
-                return;
-            }
-            else if((dayNumber == 6 || dayNumber == 13 || dayNumber == 20 || dayNumber == 27) &&
-                min != max && (min != dayNumber + 3) && dayNumber < min){
-                System.out.println("this2");
-                return;
-            }
-            else if(max != min && (max != dayNumber - 1) && dayNumber > max &&
-                    (dayNumber != 6 && dayNumber != 13 && dayNumber != 20 && dayNumber != 27)){
-                System.out.println("this3");
-                return;
-            }
-            else if(min != max && (min != dayNumber + 1) && dayNumber < min  &&
-                    (dayNumber != 6 && dayNumber != 13 && dayNumber != 20 && dayNumber != 27)){
-                System.out.println("this4");
-                return;
-            }
+//            int max = 0, min = 0;
+//            int dayNumber = Integer.parseInt(tgl.getText());
+//            if(!reserved.isEmpty()) {
+//                max = Integer.parseInt((Collections.max(reserved)));
+//                min = Integer.parseInt((Collections.min(reserved)));
+//            }
+//            System.out.println("Max: " + max + " Min: " + min + " Day" + dayNumber);
+//            if((dayNumber == 6 || dayNumber == 20 || dayNumber == 27 || dayNumber == 13) &&
+//                max != min  && dayNumber > max && (max != (dayNumber - 3))){
+//                System.out.println("this1");
+//                return;
+//            }
+//            else if((dayNumber == 6 || dayNumber == 13 || dayNumber == 20 || dayNumber == 27) &&
+//                min != max && (min != dayNumber + 3) && dayNumber < min){
+//                System.out.println("this2");
+//                return;
+//            }
+//            else if(max != min && (max != dayNumber - 1) && dayNumber > max &&
+//                    (dayNumber != 6 && dayNumber != 13 && dayNumber != 20 && dayNumber != 27)){
+//                System.out.println("this3");
+//                return;
+//            }
+//            else if(min != max && (min != dayNumber + 1) && dayNumber < min  &&
+//                    (dayNumber != 6 && dayNumber != 13 && dayNumber != 20 && dayNumber != 27)){
+//                System.out.println("this4");
+//                return;
+//            }
             //Updating the ArrayList
-            else if (reserved.isEmpty()) {
+            if (reserved.isEmpty()) {
                 reserved.add((tgl.getText()));
             }
             else if(reserved.stream().anyMatch(x-> {
@@ -113,13 +115,15 @@ public class JanuaryController {
                     Integer.parseInt(tgl.getText()) != Integer.parseInt((Collections.min(reserved)))){
                 return;
             }
-            //Updating the ArrayList
-            reserved.remove((tgl.getText()));
-            //Updating DaysLeft
-            daysLeft++;
-            DaysLeftTextField.setText(String.valueOf(daysLeft));
-            ((ToggleButton) actionEvent.getSource()).getStyleClass().clear();
-            ((ToggleButton) actionEvent.getSource()).getStyleClass().add("notPressed");
+            if(maxDays > daysLeft) {
+                //Updating the ArrayList
+                reserved.remove((tgl.getText()));
+                //Updating DaysLeft
+                daysLeft++;
+                DaysLeftTextField.setText(String.valueOf(daysLeft));
+                ((ToggleButton) actionEvent.getSource()).getStyleClass().clear();
+                ((ToggleButton) actionEvent.getSource()).getStyleClass().add("notPressed");
+            }
         }
         else if(daysLeft == 0 && tgl.getStyleClass().contains("isPressed")){
             if(Integer.parseInt(tgl.getText()) != Integer.parseInt((Collections.max(reserved))) &&
@@ -204,7 +208,6 @@ public class JanuaryController {
             alert.setHeaderText("Woohoo! Looks like some of your requests have been accepted!");
             alert.setContentText("Check your requests status and enjoy your vacation!");
             alert.showAndWait();
-
         }
     }
 
@@ -229,7 +232,6 @@ public class JanuaryController {
             alert.setHeaderText("No days selected.");
             alert.setContentText("You need to select one or more days!");
             alert.showAndWait();
-            return;
         }
 
         //Updates request for getRequest method
@@ -249,6 +251,8 @@ public class JanuaryController {
         visiblePause.play();
         dao.addNewRequest(req);
         dao.updateDaysLeft(Integer.parseInt(DaysLeftTextField.getText()), current);
+        daysLeft = Integer.parseInt(DaysLeftTextField.getText());
+        maxDays = daysLeft;
     }
 
     public void StatusOnAction(ActionEvent actionEvent) throws IOException {
@@ -260,7 +264,7 @@ public class JanuaryController {
         root = loader.load();
         stage.getIcons().add(new Image("AppIcon.png"));
         stage.setTitle("Status");
-        stage.setScene(new Scene(root, 540,190));
+        stage.setScene(new Scene(root, 800,500));
         stage.setResizable(false);
         stage.show();
     }

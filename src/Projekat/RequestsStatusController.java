@@ -3,29 +3,46 @@ package Projekat;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
 
 public class RequestsStatusController {
+
     public ListView listApr, listDen, listPen;
     private VacationDAO dao;
     private int id;
     private ObservableList<String> approvedObs, deniedObs, pendingObs;
     private ArrayList<String> approvedArray, deniedArray, pendingArray;
     private ArrayList<Request> requests;
+    private ImageView imgReport;
+
+
+    private Button reportBtn;
+
+
     public RequestsStatusController(int id){
+
         dao = VacationDAO.getInstance();
         this.id = id;
+
         this.approvedArray = new ArrayList<>();
         this.pendingArray = new ArrayList<>();
         this.deniedArray = new ArrayList<>();
         this.approvedObs = FXCollections.observableArrayList(approvedArray);
         this.pendingObs = FXCollections.observableArrayList(pendingArray);
         this.deniedObs = FXCollections.observableArrayList(deniedArray);
+
         listApr = new ListView();
         listDen = new ListView();
         listPen = new ListView();
+
+        imgReport = new ImageView();
+        reportBtn = new Button();
     }
 
     @FXML
@@ -47,6 +64,10 @@ public class RequestsStatusController {
         listApr.setItems(approvedObs);
         listPen.setItems(pendingObs);
         listDen.setItems(deniedObs);
+
+
+        reportBtn.setText("aaa");
+
     }
 
 }

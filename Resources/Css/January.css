@@ -22,3 +22,21 @@
     -fx-scale-y: 0.9;
     -fx-scale-x: 0.9;
 }
+
+#listPen .list-cell {
+    -fx-alignment: center;
+}
+
+#listApr .list-cell {
+    -fx-alignment: center;
+}
+
+#listDen .list-cell {
+    -fx-alignment: center;
+}
+
+#reportBtn{
+     -fx-background-color:transparent;
+     -fx-border-color:transparent;
+     -fx-text-fill:transparent;
+  }

@@ -1,40 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="190.0" prefWidth="540.0" style="-fx-background-color: #333f5c;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="800.0" style="-fx-background-color: #333f5c;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+   <stylesheets>
+      <URL value="@/Css/January.css" />
+   </stylesheets>
    <children>
-      <ListView fx:id="listApr" editable="true" layoutY="30.0" prefHeight="160.0" prefWidth="190.0">
+      <ListView fx:id="listApr" editable="true" layoutX="55.0" layoutY="140.0" prefHeight="295.0" prefWidth="230.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></ListView>
-      <ListView fx:id="listPen" editable="true" layoutX="183.0" layoutY="30.0" prefHeight="160.0" prefWidth="180.0">
+      <ListView fx:id="listPen" editable="true" layoutX="285.0" layoutY="140.0" prefHeight="295.0" prefWidth="230.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></ListView>
-      <ListView fx:id="listDen" editable="true" layoutX="362.0" layoutY="30.0" prefHeight="160.0" prefWidth="180.0">
+      <ListView fx:id="listDen" editable="true" layoutX="515.0" layoutY="140.0" prefHeight="295.0" prefWidth="230.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></ListView>
-      <Line endX="35.0" endY="281.0" layoutX="148.0" layoutY="-88.0" startX="35.0" startY="84.29289245605469" />
-      <Line endX="35.0" endY="278.0" layoutX="328.0" layoutY="-87.0" startX="35.0" startY="84.29289245605469" />
-      <Text fill="#309718" layoutX="63.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Approved">
+      <Line endX="35.0" endY="346.0" layoutX="250.0" layoutY="88.0" startX="35.0" startY="52.0" />
+      <Line endX="35.0" endY="346.0" layoutX="480.0" layoutY="88.0" startX="35.0" startY="52.0" />
+      <Text fill="#309718" layoutX="138.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Approved">
          <font>
             <Font name="Monotype Corsiva" size="19.0" />
          </font>
       </Text>
-      <Text fill="#c3c023" layoutX="243.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pending">
+      <Text fill="#c3c023" layoutX="373.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pending">
          <font>
             <Font name="Monotype Corsiva" size="19.0" />
          </font>
       </Text>
-      <Text fill="#e42323" layoutX="428.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Denied">
+      <Text fill="#e42323" layoutX="606.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Denied">
          <font>
             <Font name="Monotype Corsiva" size="19.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="259.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Requests History">
+         <font>
+            <Font name="Mistral" size="53.0" />
          </font>
       </Text>
    </children>

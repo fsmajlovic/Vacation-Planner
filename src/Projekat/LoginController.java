@@ -37,6 +37,7 @@ public class LoginController {
     public User current;
     public ImageView backgroundImgView;
 
+
     @FXML
     public void initialize(){
         dao = VacationDAO.getInstance();
