@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" >
    <children>
       <AnchorPane layoutX="297.0" prefHeight="493.0" prefWidth="71.0" style="-fx-background-color: #9eab96;" />
       <Text fill="#333f5c" layoutX="153.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VP">
@@ -44,6 +44,5 @@
       <Label fx:id="incorrectEmailLabel" layoutX="146.0" layoutY="259.0" text="Incorrect email" textFill="RED" visible="false" />
       <Label fx:id="invalidUsernameLabel" layoutX="141.0" layoutY="314.0" text="Invalid username" textAlignment="CENTER" textFill="RED" visible="false" />
       <Label fx:id="incorrectPasswordLabel" layoutX="60.0" layoutY="368.0" prefHeight="17.0" prefWidth="254.0" text="Password needs to be at least 4 characters long" textAlignment="CENTER" textFill="#ee0000" visible="false" />
-      <Button fx:id="test" layoutX="34.0" layoutY="43.0" mnemonicParsing="false" text="Button" />
    </children>
 </AnchorPane>

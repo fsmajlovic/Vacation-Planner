@@ -42,7 +42,6 @@ public class SignUpController {
     public Label invalidUsernameLabel;
     public Label incorrectPasswordLabel;
     public VacationDAO dao;
-    public Button test;
 
 
     SignUpController(){
@@ -112,7 +111,6 @@ public class SignUpController {
     }
 
     public void usernameOnMouseClicked(MouseEvent mouseEvent) {
-        test.setText("proba");
         if(usernameInUseLabel.isVisible()){
             usernameTF.setText("");
             usernameInUseLabel.setVisible(false);

@@ -15,6 +15,10 @@ public class VacationDAO {
         return instance;
     }
 
+    public Connection getMyConn(){
+        return myConn;
+    }
+
     private VacationDAO(){
         try {
             myConn = DriverManager.getConnection("jdbc:sqlite:VPdatabase.db");

@@ -6,14 +6,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import net.sf.jasperreports.engine.JRException;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Objects;
 
 
 public class AdminController{
@@ -32,7 +33,7 @@ public class AdminController{
     public ArrayList<User> usersWithRequests;
     public ObservableList<User> obs;
     public VacationDAO dao;
-    public ImageView ImageLogin;
+    public ImageView imgViewReport;
 
     public void LogoutAdminOnAction(ActionEvent actionEvent) throws IOException {
         Stage stg = (Stage) GreetingsLabel.getScene().getWindow();
@@ -50,6 +51,9 @@ public class AdminController{
 
     @FXML
     public void initialize(){
+
+        Image image = new Image("Projekat/report.png");
+        imgViewReport.setImage(image);
 
         model.fill();
         choiceSelectMonth.setItems(model.getMonths());
@@ -76,77 +80,79 @@ public class AdminController{
                     obs = FXCollections.observableArrayList(usersWithRequests);
                     listOfRequests.setItems(obs);
                 }
-                if(newVal.equals("January")){
-                    obs.removeAll();
-                    usersInMonth = getUsersFromMonth("January");
-                    obs = FXCollections.observableArrayList(usersInMonth);
-                    listOfRequests.setItems(obs);
-                }
-                else if(newVal.equals("February")){
-                    obs.removeAll();
-                    usersInMonth = getUsersFromMonth("February");
-                    obs = FXCollections.observableArrayList(usersInMonth);
-                    listOfRequests.setItems(obs);
-                }
-                else if(newVal.equals("March")){
-                    obs.removeAll();
-                    usersInMonth = getUsersFromMonth("March");
-                    obs = FXCollections.observableArrayList(usersInMonth);
-                    listOfRequests.setItems(obs);
-                }
-                else if(newVal.equals("April")){
-                    obs.removeAll();
-                    usersInMonth = getUsersFromMonth("April");
-                    obs = FXCollections.observableArrayList(usersInMonth);
-                    listOfRequests.setItems(obs);
-                }
-                else if(newVal.equals("May")){
-                    obs.removeAll();
-                    usersInMonth = getUsersFromMonth("May");
-                    obs = FXCollections.observableArrayList(usersInMonth);
-                    listOfRequests.setItems(obs);
-                }
-                else if(newVal.equals("June")){
-                    obs.removeAll();
-                    usersInMonth = getUsersFromMonth("June");
-                    obs = FXCollections.observableArrayList(usersInMonth);
-                    listOfRequests.setItems(obs);
-                }
-                else if(newVal.equals("July")){
-                    obs.removeAll();
-                    usersInMonth = getUsersFromMonth("July");
-                    obs = FXCollections.observableArrayList(usersInMonth);
-                    listOfRequests.setItems(obs);
-                }
-                else if(newVal.equals("August")){
-                    obs.removeAll();
-                    usersInMonth = getUsersFromMonth("August");
-                    obs = FXCollections.observableArrayList(usersInMonth);
-                    listOfRequests.setItems(obs);
-                }
-                else if(newVal.equals("September")){
-                    obs.removeAll();
-                    usersInMonth = getUsersFromMonth("September");
-                    obs = FXCollections.observableArrayList(usersInMonth);
-                    listOfRequests.setItems(obs);
-                }
-                else if(newVal.equals("October")){
-                    obs.removeAll();
-                    usersInMonth = getUsersFromMonth("October");
-                    obs = FXCollections.observableArrayList(usersInMonth);
-                    listOfRequests.setItems(obs);
-                }
-                else if(newVal.equals("November")){
-                    obs.removeAll();
-                    usersInMonth = getUsersFromMonth("November");
-                    obs = FXCollections.observableArrayList(usersInMonth);
-                    listOfRequests.setItems(obs);
-                }
-                else if(newVal.equals("December")){
-                    obs.removeAll();
-                    usersInMonth = getUsersFromMonth("December");
-                    obs = FXCollections.observableArrayList(usersInMonth);
-                    listOfRequests.setItems(obs);
+                switch (newVal) {
+                    case "January":
+                        obs.removeAll();
+                        usersInMonth = getUsersFromMonth("January");
+                        obs = FXCollections.observableArrayList(usersInMonth);
+                        listOfRequests.setItems(obs);
+                        break;
+                    case "February":
+                        obs.removeAll();
+                        usersInMonth = getUsersFromMonth("February");
+                        obs = FXCollections.observableArrayList(usersInMonth);
+                        listOfRequests.setItems(obs);
+                        break;
+                    case "March":
+                        obs.removeAll();
+                        usersInMonth = getUsersFromMonth("March");
+                        obs = FXCollections.observableArrayList(usersInMonth);
+                        listOfRequests.setItems(obs);
+                        break;
+                    case "April":
+                        obs.removeAll();
+                        usersInMonth = getUsersFromMonth("April");
+                        obs = FXCollections.observableArrayList(usersInMonth);
+                        listOfRequests.setItems(obs);
+                        break;
+                    case "May":
+                        obs.removeAll();
+                        usersInMonth = getUsersFromMonth("May");
+                        obs = FXCollections.observableArrayList(usersInMonth);
+                        listOfRequests.setItems(obs);
+                        break;
+                    case "June":
+                        obs.removeAll();
+                        usersInMonth = getUsersFromMonth("June");
+                        obs = FXCollections.observableArrayList(usersInMonth);
+                        listOfRequests.setItems(obs);
+                        break;
+                    case "July":
+                        obs.removeAll();
+                        usersInMonth = getUsersFromMonth("July");
+                        obs = FXCollections.observableArrayList(usersInMonth);
+                        listOfRequests.setItems(obs);
+                        break;
+                    case "August":
+                        obs.removeAll();
+                        usersInMonth = getUsersFromMonth("August");
+                        obs = FXCollections.observableArrayList(usersInMonth);
+                        listOfRequests.setItems(obs);
+                        break;
+                    case "September":
+                        obs.removeAll();
+                        usersInMonth = getUsersFromMonth("September");
+                        obs = FXCollections.observableArrayList(usersInMonth);
+                        listOfRequests.setItems(obs);
+                        break;
+                    case "October":
+                        obs.removeAll();
+                        usersInMonth = getUsersFromMonth("October");
+                        obs = FXCollections.observableArrayList(usersInMonth);
+                        listOfRequests.setItems(obs);
+                        break;
+                    case "November":
+                        obs.removeAll();
+                        usersInMonth = getUsersFromMonth("November");
+                        obs = FXCollections.observableArrayList(usersInMonth);
+                        listOfRequests.setItems(obs);
+                        break;
+                    case "December":
+                        obs.removeAll();
+                        usersInMonth = getUsersFromMonth("December");
+                        obs = FXCollections.observableArrayList(usersInMonth);
+                        listOfRequests.setItems(obs);
+                        break;
                 }
             } catch (ParseException e) {
                 e.printStackTrace();
@@ -229,5 +235,13 @@ public class AdminController{
         alert.setHeaderText("Employee not selected.");
         alert.setContentText("You need to select an employee.");
         alert.showAndWait();
+    }
+
+    public void rprtOnClicked(MouseEvent mouseEvent) {
+        try {
+            new PrintReport().showReport(dao.getMyConn());
+        } catch (JRException e1) {
+            e1.printStackTrace();
+        }
     }
 }
