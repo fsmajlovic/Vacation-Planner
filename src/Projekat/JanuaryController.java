@@ -12,7 +12,6 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import javafx.util.converter.NumberStringConverter;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -194,7 +193,7 @@ public class JanuaryController {
         loader.setController(februaryController);
         root = loader.load();
         stage.setTitle("Vacation Planner");
-        stage.getIcons().add(new Image("AppIcon.png"));
+        stage.getIcons().add(new Image("Assets/AppIcon.png"));
         stage.setScene(new Scene(root, 800, 500));
         stage.setResizable(false);
         stage.show();
@@ -204,7 +203,7 @@ public class JanuaryController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Request approved");
             stage = (Stage) alert.getDialogPane().getScene().getWindow();
-            stage.getIcons().add(new Image("AppIcon.png"));
+            stage.getIcons().add(new Image("Assets/AppIcon.png"));
             alert.setHeaderText("Some of your requests have been accepted!");
             alert.setContentText("Check your requests status and enjoy your vacation!");
             alert.showAndWait();
@@ -228,7 +227,7 @@ public class JanuaryController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Day selection");
             Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-            stage.getIcons().add(new Image("AppIcon.png"));
+            stage.getIcons().add(new Image("Assets/AppIcon.png"));
             alert.setHeaderText("No days selected.");
             alert.setContentText("You need to select one or more days!");
             alert.showAndWait();
@@ -262,7 +261,7 @@ public class JanuaryController {
         RequestsStatusController requestsStatusController = new RequestsStatusController(current.getId());
         loader.setController(requestsStatusController);
         root = loader.load();
-        stage.getIcons().add(new Image("AppIcon.png"));
+        stage.getIcons().add(new Image("Assets/AppIcon.png"));
         stage.setTitle("Status");
         stage.setScene(new Scene(root, 800,500));
         stage.setResizable(false);

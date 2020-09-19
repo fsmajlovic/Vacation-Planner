@@ -3,7 +3,6 @@ package Projekat;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -19,7 +18,6 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Objects;
 
 public class LoginController {
 
@@ -43,7 +41,7 @@ public class LoginController {
         dao = VacationDAO.getInstance();
         users = dao.users();
         requests = dao.requests();
-        Image image = new Image("background.gif");
+        Image image = new Image("Assets/background.gif");
         backgroundImgView.setImage(image);
     }
 
@@ -75,7 +73,7 @@ public class LoginController {
                     loader.setController(adminController);
                     root = loader.load();
                     stage.setTitle("Vacation Planner");
-                    stage.getIcons().add(new Image("AppIcon.png"));
+                    stage.getIcons().add(new Image("Assets/AppIcon.png"));
                     stage.setScene(new Scene(root, 800,500));
                     stage.setResizable(false);
                     stage.show();
@@ -96,7 +94,7 @@ public class LoginController {
                 loader.setController(januaryController);
                 root = loader.load();
                 stage.setTitle("Vacation Planner");
-                stage.getIcons().add(new Image("AppIcon.png"));
+                stage.getIcons().add(new Image("Assets/AppIcon.png"));
                 stage.setScene(new Scene(root, 800,500));
                 stage.setResizable(false);
                 stage.show();
@@ -105,7 +103,7 @@ public class LoginController {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Request approved");
                     stage = (Stage) alert.getDialogPane().getScene().getWindow();
-                    stage.getIcons().add(new Image("AppIcon.png"));
+                    stage.getIcons().add(new Image("Assets/AppIcon.png"));
                     alert.setHeaderText("Woohoo! Looks like some of your requests have been accepted!");
                     alert.setContentText("Check your requests status and enjoy your vacation!");
                     alert.showAndWait();
@@ -152,7 +150,7 @@ public class LoginController {
         loader.setController(signUpController);
         root = loader.load();
         stage.setTitle("Vacation Planner");
-        stage.getIcons().add(new Image("AppIcon.png"));
+        stage.getIcons().add(new Image("Assets/AppIcon.png"));
         stage.setScene(new Scene(root, 800,494));
         stage.setResizable(false);
         Stage s = (Stage) passwordTextField.getScene().getWindow();

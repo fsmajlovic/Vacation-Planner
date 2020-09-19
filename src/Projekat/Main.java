@@ -5,10 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-
-import java.util.Objects;
 
 public class Main extends Application {
             Stage window;
@@ -17,7 +14,7 @@ public class Main extends Application {
         public void start(Stage primaryStage) throws Exception{
             Parent root = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
             primaryStage.setTitle("Vacation Planner");
-            primaryStage.getIcons().add(new Image("AppIcon.png"));
+            primaryStage.getIcons().add(new Image("Assets/AppIcon.png"));
             primaryStage.setScene(new Scene(root, 800, 494));
             primaryStage.setResizable(false);
             primaryStage.show();

@@ -43,7 +43,7 @@
          <font>
             <Font size="14.0" />
          </font></Text>
-      <Button layoutX="447.0" layoutY="415.0" mnemonicParsing="false" onAction="#SignUpOnAction" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: transparent;" text="Sign up" textFill="#333f5c">
+      <Button fx:id="signUpBtn" layoutX="447.0" layoutY="415.0" mnemonicParsing="false" onAction="#SignUpOnAction" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: transparent;" text="Sign up" textFill="#333f5c">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

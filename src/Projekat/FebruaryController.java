@@ -12,7 +12,6 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import javafx.util.converter.NumberStringConverter;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -201,7 +200,7 @@ public class FebruaryController {
         RequestsStatusController requestsStatusController = new RequestsStatusController(current.getId());
         loader.setController(requestsStatusController);
         root = loader.load();
-        stage.getIcons().add(new Image("AppIcon.png"));
+        stage.getIcons().add(new Image("Assets/AppIcon.png"));
         stage.setTitle("Status");
         stage.setScene(new Scene(root, 540,190));
         stage.setResizable(false);

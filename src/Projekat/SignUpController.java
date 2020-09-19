@@ -1,24 +1,19 @@
 package Projekat;
 
-import com.sun.prism.PixelFormat;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import javax.xml.datatype.DatatypeConstants;
-import javax.xml.datatype.DatatypeFactory;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -53,7 +48,7 @@ public class SignUpController {
 
     @FXML
     public void intialize(){
-        Image image = new Image("background2.gif");
+        Image image = new Image("Assets/background2.gif");
         backgroundImgView.setImage(image);
     }
 
