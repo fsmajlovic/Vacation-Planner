@@ -153,7 +153,7 @@ public class LoginController {
         root = loader.load();
         stage.setTitle("Vacation Planner");
         stage.getIcons().add(new Image("AppIcon.png"));
-        stage.setScene(new Scene(root, 368,493));
+        stage.setScene(new Scene(root, 800,494));
         stage.setResizable(false);
         Stage s = (Stage) passwordTextField.getScene().getWindow();
         s.close();

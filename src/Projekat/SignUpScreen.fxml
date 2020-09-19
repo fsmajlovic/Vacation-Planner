@@ -2,13 +2,21 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" >
-   <children>
-      <AnchorPane layoutX="297.0" prefHeight="493.0" prefWidth="71.0" style="-fx-background-color: #9eab96;" />
-      <Text fill="#333f5c" layoutX="153.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VP">
+<?import java.net.URL?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@/Css/LoginScreen.css" />
+    </stylesheets>
+    <children>
+      <AnchorPane layoutX="621.0" prefHeight="500.0" prefWidth="179.0" style="-fx-background-color: #9eab96;">
+         <children>
+            <Button layoutX="78.0" layoutY="443.0" mnemonicParsing="false" onAction="#backOnAction" prefHeight="36.0" prefWidth="76.0" style="-fx-background-color: lightgrey; -fx-border-color: aliceblue;" text="Back" />
+         </children></AnchorPane>
+      <Text fill="#333f5c" layoutX="366.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VP">
          <font>
             <Font name="Monotype Corsiva" size="53.0" />
          </font>
@@ -16,33 +24,32 @@
             <Shadow blurType="ONE_PASS_BOX" />
          </effect>
       </Text>
-      <Text fill="#333f5c" layoutX="153.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VP">
+      <Text fill="#333f5c" layoutX="359.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VP">
          <font>
-            <Font name="Monotype Corsiva" size="53.0" />
+            <Font name="Monotype Corsiva" size="64.0" />
          </font>
       </Text>
-      <TextField fx:id="firstNameTF" alignment="CENTER" layoutX="110.0" layoutY="128.0" onMouseClicked="#firstNameOnMouseClicked" promptText="Enter your first name" />
-      <TextField fx:id="lastNameTF" alignment="CENTER" layoutX="110.0" layoutY="182.0" onMouseClicked="#lastNameOnMouseClicked" promptText="Enter your last name" />
-      <TextField fx:id="emailTF" alignment="CENTER" layoutX="110.0" layoutY="234.0" onMouseClicked="#emailOnMouseClicked" promptText="Enter your email" />
-      <TextField fx:id="usernameTF" alignment="CENTER" layoutX="110.0" layoutY="289.0" onMouseClicked="#usernameOnMouseClicked" promptText="Enter your username" />
-      <Button layoutX="149.0" layoutY="397.0" mnemonicParsing="false" onAction="#signUpOnAction" prefHeight="36.0" prefWidth="71.0" style="-fx-background-color: lightgrey; -fx-border-color: aliceblue;" text="Sign up">
+      <TextField fx:id="firstNameTF" alignment="CENTER" layoutX="323.0" layoutY="128.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#firstNameOnMouseClicked" prefHeight="36.0" prefWidth="149.0" promptText="Enter your first name" />
+      <TextField fx:id="lastNameTF" alignment="CENTER" layoutX="323.0" layoutY="182.0" onMouseClicked="#lastNameOnMouseClicked" prefHeight="36.0" prefWidth="149.0" promptText="Enter your last name" />
+      <TextField fx:id="emailTF" alignment="CENTER" layoutX="323.0" layoutY="234.0" onMouseClicked="#emailOnMouseClicked" prefHeight="36.0" prefWidth="149.0" promptText="Enter your email" />
+      <TextField fx:id="usernameTF" alignment="CENTER" layoutX="323.0" layoutY="289.0" onMouseClicked="#usernameOnMouseClicked" prefHeight="36.0" prefWidth="149.0" promptText="Enter your username" />
+      <Button layoutX="355.0" layoutY="396.0" mnemonicParsing="false" onAction="#signUpOnAction" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: lightgrey; -fx-border-color: aliceblue;" text="Sign up">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Button>
-      <Text layoutX="118.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fill in your details below" textAlignment="CENTER">
+      <Text layoutX="238.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fill in your details below" textAlignment="CENTER">
          <font>
-            <Font name="Monotype Corsiva" size="15.0" />
+            <Font name="Monotype Corsiva" size="36.0" />
          </font>
       </Text>
-      <Button layoutX="305.0" layoutY="452.0" mnemonicParsing="false" onAction="#backOnAction" prefHeight="27.0" prefWidth="56.0" style="-fx-background-color: lightgrey; -fx-border-color: aliceblue;" text="Back" />
-      <PasswordField fx:id="passwordTF" alignment="CENTER" layoutX="110.0" layoutY="343.0" onMouseClicked="#passwordOnMouseClicked" promptText="Enter your password" />
-      <Label fx:id="emailInUseLabel" layoutX="132.0" layoutY="259.0" text="Email already in use" textAlignment="CENTER" textFill="RED" visible="false" />
-      <Label fx:id="usernameInUseLabel" layoutX="120.0" layoutY="314.0" text="Username already in use" textFill="RED" visible="false" />
-      <Label fx:id="invalidFirstNameLabel" layoutX="140.0" layoutY="153.0" text="Invalid first name" textFill="RED" visible="false" />
-      <Label fx:id="invalidLastNameLabel" layoutX="139.0" layoutY="207.0" text="Invalid last name " textAlignment="CENTER" textFill="RED" visible="false" />
-      <Label fx:id="incorrectEmailLabel" layoutX="146.0" layoutY="259.0" text="Incorrect email" textFill="RED" visible="false" />
-      <Label fx:id="invalidUsernameLabel" layoutX="141.0" layoutY="314.0" text="Invalid username" textAlignment="CENTER" textFill="RED" visible="false" />
-      <Label fx:id="incorrectPasswordLabel" layoutX="60.0" layoutY="368.0" prefHeight="17.0" prefWidth="254.0" text="Password needs to be at least 4 characters long" textAlignment="CENTER" textFill="#ee0000" visible="false" />
+      <PasswordField fx:id="passwordTF" alignment="CENTER" layoutX="323.0" layoutY="343.0" onMouseClicked="#passwordOnMouseClicked" prefHeight="36.0" prefWidth="149.0" promptText="Enter your password" />
+      <Label fx:id="emailInUseLabel" layoutX="345.0" layoutY="270.0" text="Email already in use" textAlignment="CENTER" textFill="RED" visible="false" />
+      <Label fx:id="usernameInUseLabel" layoutX="333.0" layoutY="325.0" text="Username already in use" textFill="RED" visible="false" />
+      <Label fx:id="invalidFirstNameLabel" layoutX="353.0" layoutY="164.0" text="Invalid first name" textFill="RED" visible="false" />
+      <Label fx:id="invalidLastNameLabel" layoutX="352.0" layoutY="218.0" text="Invalid last name " textAlignment="CENTER" textFill="RED" visible="false" />
+      <Label fx:id="incorrectEmailLabel" layoutX="359.0" layoutY="270.0" text="Incorrect email" textFill="RED" visible="false" />
+      <Label fx:id="invalidUsernameLabel" layoutX="354.0" layoutY="325.0" text="Invalid username" textAlignment="CENTER" textFill="RED" visible="false" />
+      <Label fx:id="incorrectPasswordLabel" layoutX="273.0" layoutY="379.0" prefHeight="17.0" prefWidth="254.0" text="Password needs to be at least 4 characters long" textAlignment="CENTER" textFill="#ee0000" visible="false" />
    </children>
 </AnchorPane>

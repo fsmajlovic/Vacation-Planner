@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -42,6 +44,7 @@ public class SignUpController {
     public Label invalidUsernameLabel;
     public Label incorrectPasswordLabel;
     public VacationDAO dao;
+    public ImageView backgroundImgView;
 
 
     SignUpController(){
@@ -50,12 +53,13 @@ public class SignUpController {
 
     @FXML
     public void intialize(){
-
+        Image image = new Image("background2.gif");
+        backgroundImgView.setImage(image);
     }
 
     public void backOnAction(ActionEvent actionEvent) throws IOException {
         Parent AdminParent = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
-        Scene AdminScene = new Scene(AdminParent, 500, 300);
+        Scene AdminScene = new Scene(AdminParent, 800, 494);
         Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         window.setScene(AdminScene);
         window.show();
@@ -90,9 +94,13 @@ public class SignUpController {
             if(!firstNameWrong) invalidFirstNameLabel.setVisible(true);
             if(!lastNameWrong) invalidLastNameLabel.setVisible(true);
             if(emailInUse) emailInUseLabel.setVisible(true);
-            if(userNameInUse) usernameInUseLabel.setVisible(true);
+            if(userNameInUse){
+                usernameInUseLabel.setVisible(true);
+            }
+            else if(usernameWrong){
+                invalidUsernameLabel.setVisible(true);
+            }
             if(!emailWrong) incorrectEmailLabel.setVisible(true);
-            if(usernameWrong) invalidUsernameLabel.setVisible(true);
             if(passwordWrong) incorrectPasswordLabel.setVisible(true);
             return;
         }
@@ -150,6 +158,8 @@ public class SignUpController {
     }
 
     public boolean isValidUser(String tekst){
+        if(tekst.isEmpty())
+            return true;
         if(tekst.length() > 16)
             return true;
         for(int i = 0; i < tekst.length(); i++){
