@@ -18,7 +18,7 @@ public class Main extends Application {
             Parent root = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
             primaryStage.setTitle("Vacation Planner");
             primaryStage.getIcons().add(new Image("AppIcon.png"));
-            primaryStage.setScene(new Scene(root, 500, 300));
+            primaryStage.setScene(new Scene(root, 800, 494));
             primaryStage.setResizable(false);
             primaryStage.show();
     }

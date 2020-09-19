@@ -164,7 +164,7 @@ public class JanuaryController {
                     toField.setText(to);
                     toField.getStyleClass().clear();
                     toField.getStyleClass().add("fieldContainsNumbers");
-                } else if (reservedNumbers.size() == 0) {
+                } else {
                     toField.setText("");
                     toField.getStyleClass().clear();
                     toField.getStyleClass().add("fieldDoesNotContainNumbers");
@@ -205,7 +205,7 @@ public class JanuaryController {
             alert.setTitle("Request approved");
             stage = (Stage) alert.getDialogPane().getScene().getWindow();
             stage.getIcons().add(new Image("AppIcon.png"));
-            alert.setHeaderText("Woohoo! Looks like some of your requests have been accepted!");
+            alert.setHeaderText("Some of your requests have been accepted!");
             alert.setContentText("Check your requests status and enjoy your vacation!");
             alert.showAndWait();
         }

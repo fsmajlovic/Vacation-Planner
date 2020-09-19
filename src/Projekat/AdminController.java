@@ -52,7 +52,7 @@ public class AdminController{
     @FXML
     public void initialize(){
 
-        Image image = new Image("Projekat/report.png");
+        Image image = new Image("Assets/report.png");
         imgViewReport.setImage(image);
 
         model.fill();

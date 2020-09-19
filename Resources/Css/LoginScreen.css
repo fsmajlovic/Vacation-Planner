@@ -1,9 +1,13 @@
 .button:hover {
-    -fx-background-color: #383838;
+    -fx-background-color: #f2e5c3;
     -fx-scale-y: 1.1;
 }
 
 .button:pressed {
     -fx-scale-y: 0.9;
     -fx-scale-x: 0.9;
+}
+
+#loginBtn:hover{
+-fx-background-color: #f2e5c3;
 }

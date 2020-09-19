@@ -3,57 +3,62 @@
 <?import java.net.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="313.0" prefWidth="512.0" style="-fx-background-color: ghostwhite;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Projekat.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="800.0" style="-fx-background-color: ghostwhite;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Projekat.LoginController">
    <stylesheets>
       <URL value="@/Css/LoginScreen.css" />
    </stylesheets>
    <children>
-      <ImageView fx:id="backgroundImgView" fitHeight="325.0" fitWidth="524.0" layoutX="-3.0" layoutY="-9.0" pickOnBounds="true" preserveRatio="true" />
-      <Button alignment="CENTER" layoutX="211.0" layoutY="201.0" mnemonicParsing="false" onAction="#LoginButtonAction" prefHeight="22.0" prefWidth="91.0" style="-fx-background-color: #333f5c;" text="Login" textAlignment="CENTER" textFill="WHITE">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2e5c3" height="81.0" layoutX="105.0" layoutY="442.0" stroke="BLACK" strokeType="INSIDE" width="583.0" />
+      <ImageView fx:id="backgroundImgView" fitHeight="494.0" fitWidth="810.0" layoutX="-2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="loginBtn" alignment="CENTER" layoutX="358.0" layoutY="296.0" mnemonicParsing="false" onAction="#LoginButtonAction" prefHeight="36.0" prefWidth="101.0" style="-fx-background-color: #333f5c;" text="Login" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Italic" size="12.0" />
          </font></Button>
-      <Ellipse fill="LIGHTBLUE" layoutX="-22.0" layoutY="14.0" radiusX="100.0" radiusY="80.0" stroke="BLACK" strokeType="INSIDE" />
-      <Polyline fill="#333f5c" layoutX="-134.0" layoutY="-31.0" points="92.0, -14.0, 187.0, 163.0, 244.0, 127.0, 358.0, 163.0" rotate="113.0" strokeType="INSIDE" />
-      <Polyline fill="#333f5c" layoutX="222.0" layoutY="164.0" points="92.0, -14.0, 311.27642822265625, 19.70916175842285, 442.77252197265625, -122.72108459472656, 383.2321472167969, 128.41207885742188" rotate="-81.9" strokeType="INSIDE" />
-      <Polyline fill="#333f5c" layoutX="290.0" layoutY="384.0" points="173.0, 23.0, 44.0, -19.0, 185.0, -130.0, 158.0, -44.0" strokeType="INSIDE" />
-      <Polyline fill="LIGHTBLUE" layoutX="456.0" layoutY="355.0" points="6.0, 52.0, -11.0, -15.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
-      <Polyline fill="LIGHTBLUE" layoutX="563.0" layoutY="-8.0" points="6.0, 52.0, -144.0, -2.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
-      <Polyline fill="LIGHTBLUE" layoutX="47.0" layoutY="339.0" points="6.0, 52.0, -11.0, -15.0, -89.0, -167.0, 121.0, 24.0" strokeType="INSIDE" />
-      <Polyline fill="#333f5c" layoutX="-118.0" layoutY="282.0" points="308.0, 79.0, 68.0, 79.0, 79.0, -186.0, 165.0, -2.0" strokeType="INSIDE" />
-      <CheckBox fx:id="AdminCheckBox" contentDisplay="CENTER" layoutX="209.0" layoutY="243.0" mnemonicParsing="false" onAction="#AdminCheckBoxOnAction" text="Administrator" />
-      <Polyline fill="LIGHTBLUE" layoutX="44.0" layoutY="-38.0" points="6.0, 52.0, -144.0, -2.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
-      <Polyline fill="LIGHTBLUE" layoutX="-38.0" layoutY="409.0" points="6.0, 52.0, -144.0, -2.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
-      <Polyline fill="LIGHTBLUE" layoutX="-48.0" layoutY="396.0" points="6.0, 52.0, -144.0, -2.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
-      <Polyline fill="LIGHTBLUE" layoutX="-58.0" layoutY="378.0" points="6.0, 52.0, -84.0, -30.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
-      <Polyline fill="LIGHTBLUE" layoutX="600.0" layoutY="13.0" points="6.0, 52.0, -144.0, -2.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
-      <Polyline fill="LIGHTBLUE" layoutX="613.0" layoutY="31.0" points="6.0, 52.0, -144.0, -2.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
-      <Text fill="#fff3f3" fontSmoothingType="LCD" layoutX="124.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacation Planner" textAlignment="CENTER">
+      <Ellipse fill="LIGHTBLUE" layoutX="-19.0" layoutY="20.0" radiusX="100.0" radiusY="80.0" stroke="BLACK" strokeType="INSIDE" />
+      <Polyline fill="#333f5c" layoutX="-131.0" layoutY="-25.0" points="92.0, -14.0, 187.0, 163.0, 244.0, 127.0, 358.0, 163.0" rotate="113.0" strokeType="INSIDE" />
+      <Polyline fill="#333f5c" layoutX="446.0" layoutY="168.0" points="489.02947998046875, -84.13075256347656, 248.37777709960938, -334.1685791015625, 84.57135772705078, -111.00305938720703, 315.1474304199219, -107.35356903076172" rotate="-81.9" strokeType="INSIDE" />
+      <Polyline fill="#333f5c" layoutX="573.0" layoutY="507.0" points="173.0, 23.0, 43.0, -13.0, 247.0, -177.74591064453125, 158.0, -44.0" strokeType="INSIDE" />
+      <Polyline fill="LIGHTBLUE" layoutX="739.0" layoutY="478.0" points="6.0, 52.0, -11.0, -15.0, 64.0, -127.0, 107.0, -1.74591064453125" strokeType="INSIDE" />
+      <Polyline fill="LIGHTBLUE" layoutX="787.0" layoutY="-4.0" points="6.0, 52.0, -144.0, -2.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
+      <Polyline fill="LIGHTBLUE" layoutX="62.0" layoutY="490.0" points="6.0, 52.0, -11.0, -15.0, -89.0, -167.0, 121.0, 24.0" strokeType="INSIDE" />
+      <Polyline fill="#333f5c" layoutX="-103.0" layoutY="433.0" points="308.0, 79.0, 68.0, 79.0, 79.0, -186.0, 165.0, -2.0" strokeType="INSIDE" />
+      <CheckBox fx:id="AdminCheckBox" contentDisplay="CENTER" layoutX="358.0" layoutY="349.0" mnemonicParsing="false" onAction="#AdminCheckBoxOnAction" prefHeight="20.0" prefWidth="101.0" text="Administrator" />
+      <Polyline fill="LIGHTBLUE" layoutX="47.0" layoutY="-32.0" points="6.0, 52.0, -144.0, -2.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
+      <Polyline fill="LIGHTBLUE" layoutX="-23.0" layoutY="560.0" points="6.0, 52.0, -144.0, -2.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
+      <Polyline fill="LIGHTBLUE" layoutX="-33.0" layoutY="547.0" points="6.0, 52.0, -144.0, -2.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
+      <Polyline fill="LIGHTBLUE" layoutX="-43.0" layoutY="529.0" points="6.0, 52.0, -84.0, -30.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
+      <Polyline fill="LIGHTBLUE" layoutX="824.0" layoutY="17.0" points="6.0, 52.0, -144.0, -2.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
+      <Polyline fill="LIGHTBLUE" layoutX="837.0" layoutY="35.0" points="6.0, 52.0, -144.0, -2.0, 64.0, -127.0, 85.0, -15.0" strokeType="INSIDE" />
+      <Text fill="#ddc68b" fontSmoothingType="LCD" layoutX="210.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacation Planner" textAlignment="CENTER">
          <font>
-            <Font name="Monotype Corsiva" size="43.0" />
+            <Font name="Monotype Corsiva" size="64.0" />
          </font>
       </Text>
-      <Text layoutX="145.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New to Vacation Planner?" AnchorPane.leftAnchor="160.0" />
-      <Button layoutX="302.0" layoutY="257.0" mnemonicParsing="false" onAction="#SignUpOnAction" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: transparent;" text="Sign up" textFill="#333f5c">
+      <Text layoutX="280.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New to Vacation Planner?" AnchorPane.leftAnchor="280.0">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font size="14.0" />
+         </font></Text>
+      <Button layoutX="447.0" layoutY="415.0" mnemonicParsing="false" onAction="#SignUpOnAction" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: transparent;" text="Sign up" textFill="#333f5c">
+         <font>
+            <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Label fx:id="invalidLabel" layoutX="177.0" layoutY="180.0" text="Invalid username or password" textFill="RED" visible="false" />
-      <TextField fx:id="usernameTextField" alignment="CENTER" layoutX="173.0" layoutY="121.0" onMouseClicked="#usernameOnMouseClicked" prefHeight="25.0" prefWidth="169.0" promptText="username" />
-      <PasswordField fx:id="passwordTextField" alignment="CENTER" layoutX="174.0" layoutY="154.0" onMouseClicked="#passwordOnMouseClicked" prefHeight="25.0" prefWidth="169.0" promptText="password" />
-      <Label fx:id="yourRNAdminLabel" layoutX="183.0" layoutY="282.0" text="You are not an administrator" textAlignment="CENTER" textFill="RED" visible="false" />
+      <Label fx:id="invalidLabel" layoutX="324.0" layoutY="279.0" text="Invalid username or password" textFill="RED" visible="false" />
+      <TextField fx:id="usernameTextField" alignment="CENTER" layoutX="322.0" layoutY="177.0" onMouseClicked="#usernameOnMouseClicked" prefHeight="36.0" prefWidth="169.0" promptText="username" />
+      <PasswordField fx:id="passwordTextField" alignment="CENTER" layoutX="322.0" layoutY="236.0" onMouseClicked="#passwordOnMouseClicked" prefHeight="36.0" prefWidth="169.0" promptText="password" />
+      <Label fx:id="yourRNAdminLabel" layoutX="330.0" layoutY="381.0" text="You are not an administrator" textAlignment="CENTER" textFill="RED" visible="false" />
+      <Label layoutX="259.0" layoutY="472.0" text="Copyright (c) Faruk Smajlović Elektrotehnički fakultet Sarajevo">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
    </children>
    <cursor>
       <Cursor fx:constant="DEFAULT" />
    </cursor>
-   <effect>
-      <InnerShadow />
-   </effect>
 </AnchorPane>
