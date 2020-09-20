@@ -21,24 +21,23 @@ import java.util.*;
 
 public class JanuaryController {
 
-    public TextField DaysLeftTextField = new TextField();
-    public TextField  fromField;
-    public TextField toField;
+    private TextField DaysLeftTextField = new TextField(), fromField, toField;
     public String from, to;
-    public int daysLeft;
-    public ArrayList<String> reserved = new ArrayList<>();
-    public ArrayList<Integer> reservedNumbers = new ArrayList<>();
-    public User current;
-    public Request req;
-    public Label labelRequestOk;
-    public VacationDAO dao;
-    private int maxDays;
+    private int daysLeft, maxDays;
+    private ArrayList<String> reserved = new ArrayList<>();
+    private ArrayList<Integer> reservedNumbers = new ArrayList<>();
+    private User current;
+    private Request req;
+    private Label labelRequestOk;
+    private VacationDAO dao;
+    private MonthInterface monthInterface;
 
     public JanuaryController(User current){
         this.current = current;
         dao = VacationDAO.getInstance();
         daysLeft = dao.getDaysLeftByUsername(current.getUsername());
         maxDays = daysLeft;
+        monthInterface = new Navigation();
     }
 
     @FXML
@@ -54,43 +53,6 @@ public class JanuaryController {
     public void btnPressed(ActionEvent actionEvent) {
          ToggleButton tgl = (ToggleButton) actionEvent.getSource();
         if(daysLeft > 0 && tgl.getStyleClass().contains("notPressed")){
-//            if(reserved.size() > 0 && (edge == 6 || edge == 13 || edge == 20 || edge == 27)
-//                    && (Integer.parseInt((Collections.max(reserved))) !=
-//                    (edge-3)) && (Integer.parseInt((Collections.min(reserved))) != Integer.parseInt(tgl.getText()) + 1)){
-//                return;
-//            }
-//            else if(reserved.size() > 0 && (edge != 6 && edge != 13 && edge != 20 && edge != 27) &&
-//                    (Integer.parseInt((Collections.max(reserved))) != (Integer.parseInt(tgl.getText())-1)
-//                    && Integer.parseInt((Collections.min(reserved))) != Integer.parseInt(tgl.getText()) + 1)) {
-//                return;
-//            }
-//            int max = 0, min = 0;
-//            int dayNumber = Integer.parseInt(tgl.getText());
-//            if(!reserved.isEmpty()) {
-//                max = Integer.parseInt((Collections.max(reserved)));
-//                min = Integer.parseInt((Collections.min(reserved)));
-//            }
-//            System.out.println("Max: " + max + " Min: " + min + " Day" + dayNumber);
-//            if((dayNumber == 6 || dayNumber == 20 || dayNumber == 27 || dayNumber == 13) &&
-//                max != min  && dayNumber > max && (max != (dayNumber - 3))){
-//                System.out.println("this1");
-//                return;
-//            }
-//            else if((dayNumber == 6 || dayNumber == 13 || dayNumber == 20 || dayNumber == 27) &&
-//                min != max && (min != dayNumber + 3) && dayNumber < min){
-//                System.out.println("this2");
-//                return;
-//            }
-//            else if(max != min && (max != dayNumber - 1) && dayNumber > max &&
-//                    (dayNumber != 6 && dayNumber != 13 && dayNumber != 20 && dayNumber != 27)){
-//                System.out.println("this3");
-//                return;
-//            }
-//            else if(min != max && (min != dayNumber + 1) && dayNumber < min  &&
-//                    (dayNumber != 6 && dayNumber != 13 && dayNumber != 20 && dayNumber != 27)){
-//                System.out.println("this4");
-//                return;
-//            }
             //Updating the ArrayList
             if (reserved.isEmpty()) {
                 reserved.add((tgl.getText()));
@@ -181,45 +143,6 @@ public class JanuaryController {
             fromField.setText("");
             toField.setText("");
         }
-
-    }
-
-    public void nxtMonth(MouseEvent mouseEvent) throws IOException {
-        boolean isApproved = dao.isApproved(current);
-        Stage stage = new Stage();
-        Parent root = null;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("February.fxml"));
-        FebruaryController februaryController = new FebruaryController(current);
-        loader.setController(februaryController);
-        root = loader.load();
-        stage.setTitle("Vacation Planner");
-        stage.getIcons().add(new Image("Assets/AppIcon.png"));
-        stage.setScene(new Scene(root, 800, 500));
-        stage.setResizable(false);
-        stage.show();
-        Stage stg = (Stage) toField.getScene().getWindow();
-        stg.close();
-        if (isApproved) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Request approved");
-            stage = (Stage) alert.getDialogPane().getScene().getWindow();
-            stage.getIcons().add(new Image("Assets/AppIcon.png"));
-            alert.setHeaderText("Some of your requests have been accepted!");
-            alert.setContentText("Check your requests status and enjoy your vacation!");
-            alert.showAndWait();
-        }
-    }
-
-    public void pvsMonth(MouseEvent mouseEvent) throws IOException {
-        Parent MonthParent = FXMLLoader.load(getClass().getResource("December" + ".fxml"));
-        Scene MonthScene = new Scene(MonthParent, 800, 500);
-        Stage window = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();
-        window.setScene(MonthScene);
-        window.show();
-    }
-
-    public Request getRequest(){
-        return req;
     }
 
     public void sendRequestOnAction(ActionEvent actionEvent) {
@@ -254,17 +177,19 @@ public class JanuaryController {
         maxDays = daysLeft;
     }
 
+    public Request getRequest(){
+        return req;
+    }
+
+    public void nxtMonth(MouseEvent mouseEvent) throws IOException {
+        monthInterface.nextMonth("February.fxml", toField, current);
+    }
+
+    public void pvsMonth(MouseEvent mouseEvent) throws IOException {
+        monthInterface.previousMonth("December.fxml", toField, current);
+    }
+
     public void StatusOnAction(ActionEvent actionEvent) throws IOException {
-        Stage stage = new Stage();
-        Parent root = null;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("RequestsStatus.fxml"));
-        RequestsStatusController requestsStatusController = new RequestsStatusController(current.getId());
-        loader.setController(requestsStatusController);
-        root = loader.load();
-        stage.getIcons().add(new Image("Assets/AppIcon.png"));
-        stage.setTitle("Status");
-        stage.setScene(new Scene(root, 800,500));
-        stage.setResizable(false);
-        stage.show();
+        monthInterface.statusInfo(current);
     }
 }
