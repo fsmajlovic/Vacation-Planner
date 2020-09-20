@@ -46,8 +46,8 @@ public class FebruaryController extends MonthController {
     }
 
     public void nxtMonth(MouseEvent mouseEvent) throws IOException {
-        FebruaryController februaryController = new FebruaryController(current);
-        monthInterface.nextMonth("February.fxml", toField, current,februaryController);
+        MarchController marchController = new MarchController(current);
+        monthInterface.nextMonth("March.fxml", toField, current,marchController);
     }
 
     public void pvsMonth(MouseEvent mouseEvent) throws IOException {

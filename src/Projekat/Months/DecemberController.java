@@ -49,12 +49,12 @@ public class DecemberController extends MonthController {
 
     public void nxtMonth(MouseEvent mouseEvent) throws IOException {
         JanuaryController januaryController = new JanuaryController(current);
-        monthInterface.nextMonth("February.fxml", toField, current, januaryController);
+        monthInterface.nextMonth("January.fxml", toField, current, januaryController);
     }
 
     public void pvsMonth(MouseEvent mouseEvent) throws IOException {
-        DecemberController decemberController = new DecemberController(current);
-        monthInterface.previousMonth("December.fxml", toField, current, decemberController);
+        NovemeberController novemeberController = new NovemeberController(current);
+        monthInterface.previousMonth("November.fxml", toField, current, novemeberController);
     }
 
     public void StatusOnAction(ActionEvent actionEvent) throws IOException {

@@ -90,7 +90,7 @@ public class LoginController {
                 boolean isApproved = dao.isApproved(current);
                 Stage stage = new Stage();
                 Parent root = null;
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("January.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Months/January.fxml"));
                 JanuaryController januaryController = new JanuaryController(current);
                 loader.setController(januaryController);
                 root = loader.load();

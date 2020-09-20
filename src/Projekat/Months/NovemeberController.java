@@ -51,13 +51,13 @@ public class NovemeberController extends MonthController {
     }
 
     public void nxtMonth(MouseEvent mouseEvent) throws IOException {
-        FebruaryController februaryController = new FebruaryController(current);
-        monthInterface.nextMonth("February.fxml", toField, current,februaryController);
+        DecemberController decemberController = new DecemberController(current);
+        monthInterface.nextMonth("December.fxml", toField, current,decemberController);
     }
 
     public void pvsMonth(MouseEvent mouseEvent) throws IOException {
-        JanuaryController januaryController = new JanuaryController(current);
-        monthInterface.previousMonth("January.fxml", toField, current, januaryController);
+        OctoberController octoberController = new OctoberController(current);
+        monthInterface.previousMonth("October.fxml", toField, current, octoberController);
     }
 
     public void StatusOnAction(ActionEvent actionEvent) throws IOException {
@@ -129,8 +129,8 @@ public class NovemeberController extends MonthController {
             Integer min = Collections.min(reservedNumbers);
             Integer max = Collections.max(reservedNumbers);
 
-            LocalDate fromDate = LocalDate.of(2020, Month.FEBRUARY, min);
-            LocalDate toDate = LocalDate.of(2020, Month.FEBRUARY, max);
+            LocalDate fromDate = LocalDate.of(2020, Month.NOVEMBER, min);
+            LocalDate toDate = LocalDate.of(2020, Month.NOVEMBER, max);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
             from = fromDate.format(formatter);
             to = toDate.format(formatter);

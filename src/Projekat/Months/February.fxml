@@ -463,7 +463,7 @@
                 <Font name="Monotype Corsiva" size="15.0" />
             </font>
         </Text>
-        <Button layoutX="551.0" layoutY="392.0" mnemonicParsing="false" onAction="#sendRequestOnAction" prefHeight="44.0" prefWidth="151.0" style="-fx-background-color: azure;" text="Send Request">
+        <Button layoutX="551.0" layoutY="400.0" mnemonicParsing="false" onAction="#sendRequestOnAction" prefHeight="44.0" prefWidth="151.0" style="-fx-background-color: azure;" text="Send Request">
             <font>
                 <Font name="Monotype Corsiva" size="23.0" />
             </font></Button>
@@ -492,7 +492,7 @@
                 <Font name="Monotype Corsiva" size="17.0" />
             </font>
         </Label>
-        <Button fx:id="btnStatus" layoutX="551.0" layoutY="354.0" mnemonicParsing="false" onAction="#StatusOnAction" prefHeight="25.0" prefWidth="151.0" style="-fx-background-color: azure;" text="Requests Status">
+        <Button fx:id="btnStatus" layoutX="551.0" layoutY="362.0" mnemonicParsing="false" onAction="#StatusOnAction" prefHeight="25.0" prefWidth="151.0" style="-fx-background-color: azure;" text="Requests Status">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
