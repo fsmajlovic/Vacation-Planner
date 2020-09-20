@@ -23,21 +23,11 @@ import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 public class SignUpController {
-    public TextField firstNameTF;
-    public TextField lastNameTF;
-    public TextField emailTF;
-    public TextField usernameTF;
+    public TextField firstNameTF, lastNameTF, emailTF, usernameTF;
     public PasswordField passwordTF;
-    public PreparedStatement getNextIdStmt, addIntoDatabaseStmt;
-    public UsersModel model = new UsersModel();
     public ArrayList<User> listUsers = new ArrayList<>();
-    public Label usernameInUseLabel;
-    public Label emailInUseLabel;
-    public Label invalidLastNameLabel;
-    public Label invalidFirstNameLabel;
-    public Label incorrectEmailLabel;
-    public Label invalidUsernameLabel;
-    public Label incorrectPasswordLabel;
+    public Label usernameInUseLabel, emailInUseLabel, invalidLastNameLabel, invalidFirstNameLabel,
+            incorrectEmailLabel, invalidUsernameLabel, incorrectPasswordLabel;
     public VacationDAO dao;
     public ImageView backgroundImgView;
 

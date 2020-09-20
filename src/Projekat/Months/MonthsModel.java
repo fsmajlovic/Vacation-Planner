@@ -1,4 +1,4 @@
-package Projekat;
+package Projekat.Months;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;

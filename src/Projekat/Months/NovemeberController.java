@@ -1,14 +1,14 @@
-package Projekat;
+package Projekat.Months;
 
+import Projekat.Request;
+import Projekat.User;
+import Projekat.VacationDAO;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.image.Image;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -17,31 +17,51 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
 
-public class FebruaryController {
+public class NovemeberController extends MonthController {
 
-    public TextField DaysLeftTextField = new TextField();
-    public TextField  fromField;
-    public TextField toField;
+    public TextField DaysLeftTextField = new TextField(), fromField, toField;
     public String from, to;
-    public int daysLeft;
+    public int daysLeft, maxDays;
     public ArrayList<String> reserved = new ArrayList<>();
     public ArrayList<Integer> reservedNumbers = new ArrayList<>();
     public User current;
     public Request req;
     public Label labelRequestOk;
     public VacationDAO dao;
+    public MonthInterface monthInterface;
 
-    public FebruaryController(User current){
+    public NovemeberController(User current){
         this.current = current;
         dao = VacationDAO.getInstance();
         daysLeft = dao.getDaysLeftByUsername(current.getUsername());
+        maxDays = daysLeft;
+        monthInterface = new Navigation();
     }
 
     @FXML
     public void initialize(){
         DaysLeftTextField.setText(String.valueOf(daysLeft));
+    }
+
+    public Request getRequest(){
+        return req;
+    }
+
+    public void nxtMonth(MouseEvent mouseEvent) throws IOException {
+        FebruaryController februaryController = new FebruaryController(current);
+        monthInterface.nextMonth("February.fxml", toField, current,februaryController);
+    }
+
+    public void pvsMonth(MouseEvent mouseEvent) throws IOException {
+        JanuaryController januaryController = new JanuaryController(current);
+        monthInterface.previousMonth("January.fxml", toField, current, januaryController);
+    }
+
+    public void StatusOnAction(ActionEvent actionEvent) throws IOException {
+        monthInterface.statusInfo(current);
     }
 
     public void LogoutAction(ActionEvent actionEvent) {
@@ -52,18 +72,8 @@ public class FebruaryController {
     public void btnPressed(ActionEvent actionEvent) {
         ToggleButton tgl = (ToggleButton) actionEvent.getSource();
         if(daysLeft > 0 && tgl.getStyleClass().contains("notPressed")){
-            if(reserved.size() > 0 && Integer.parseInt(tgl.getText())%7 == 0 && (Integer.parseInt((Collections.max(reserved))) !=
-                    (Integer.parseInt(tgl.getText())-3) && Integer.parseInt((Collections.min(reserved))) !=
-                    Integer.parseInt(tgl.getText()) + 1)){
-                return;
-            }
-            else if(reserved.size() > 0 && (Integer.parseInt((Collections.max(reserved))) !=
-                    (Integer.parseInt(tgl.getText())-1)  && Integer.parseInt((Collections.min(reserved))) !=
-                    Integer.parseInt(tgl.getText()) + 1) && Integer.parseInt(tgl.getText())%7 != 0) {
-                return;
-            }
             //Updating the ArrayList
-            else if (reserved.isEmpty()) {
+            if (reserved.isEmpty()) {
                 reserved.add((tgl.getText()));
             }
             else if(reserved.stream().anyMatch(x-> {
@@ -85,13 +95,15 @@ public class FebruaryController {
                     Integer.parseInt(tgl.getText()) != Integer.parseInt((Collections.min(reserved)))){
                 return;
             }
-            //Updating the ArrayList
-            reserved.remove((tgl.getText()));
-            //Updating DaysLeft
-            daysLeft++;
-            DaysLeftTextField.setText(String.valueOf(daysLeft));
-            ((ToggleButton) actionEvent.getSource()).getStyleClass().clear();
-            ((ToggleButton) actionEvent.getSource()).getStyleClass().add("notPressed");
+            if(maxDays > daysLeft) {
+                //Updating the ArrayList
+                reserved.remove((tgl.getText()));
+                //Updating DaysLeft
+                daysLeft++;
+                DaysLeftTextField.setText(String.valueOf(daysLeft));
+                ((ToggleButton) actionEvent.getSource()).getStyleClass().clear();
+                ((ToggleButton) actionEvent.getSource()).getStyleClass().add("notPressed");
+            }
         }
         else if(daysLeft == 0 && tgl.getStyleClass().contains("isPressed")){
             if(Integer.parseInt(tgl.getText()) != Integer.parseInt((Collections.max(reserved))) &&
@@ -132,7 +144,7 @@ public class FebruaryController {
                     toField.setText(to);
                     toField.getStyleClass().clear();
                     toField.getStyleClass().add("fieldContainsNumbers");
-                } else if (reservedNumbers.size() == 0) {
+                } else {
                     toField.setText("");
                     toField.getStyleClass().clear();
                     toField.getStyleClass().add("fieldDoesNotContainNumbers");
@@ -150,30 +162,12 @@ public class FebruaryController {
             fromField.setText("");
             toField.setText("");
         }
-
-    }
-
-    public void nxtMonth(MouseEvent mouseEvent) throws IOException {
-        Parent MonthParent = FXMLLoader.load(getClass().getResource("February" + ".fxml"));
-        Scene MonthScene = new Scene(MonthParent, 800, 500);
-        Stage window = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();
-        window.setScene(MonthScene);
-        window.show();
-    }
-
-    public void pvsMonth(MouseEvent mouseEvent) throws IOException {
-        Parent MonthParent = FXMLLoader.load(getClass().getResource("December" + ".fxml"));
-        Scene MonthScene = new Scene(MonthParent, 800, 500);
-        Stage window = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();
-        window.setScene(MonthScene);
-        window.show();
-    }
-
-    public Request getRequest(){
-        return req;
     }
 
     public void sendRequestOnAction(ActionEvent actionEvent) {
+        if(reserved.isEmpty())
+            monthInterface.alertBoxNoDays();
+
         //Updates request for getRequest method
         req = new Request();
         req.setFromDate(fromField.getText());
@@ -191,19 +185,7 @@ public class FebruaryController {
         visiblePause.play();
         dao.addNewRequest(req);
         dao.updateDaysLeft(Integer.parseInt(DaysLeftTextField.getText()), current);
-    }
-
-    public void StatusOnAction(ActionEvent actionEvent) throws IOException {
-        Stage stage = new Stage();
-        Parent root = null;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("RequestsStatus.fxml"));
-        RequestsStatusController requestsStatusController = new RequestsStatusController(current.getId());
-        loader.setController(requestsStatusController);
-        root = loader.load();
-        stage.getIcons().add(new Image("Assets/AppIcon.png"));
-        stage.setTitle("Status");
-        stage.setScene(new Scene(root, 540,190));
-        stage.setResizable(false);
-        stage.show();
+        daysLeft = Integer.parseInt(DaysLeftTextField.getText());
+        maxDays = daysLeft;
     }
 }

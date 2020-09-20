@@ -1,14 +1,10 @@
-package Projekat;
+package Projekat.Months;
 
+import Projekat.*;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -19,20 +15,20 @@ import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-public class JanuaryController {
+public class FebruaryController extends MonthController {
 
-    private TextField DaysLeftTextField = new TextField(), fromField, toField;
+    public TextField DaysLeftTextField = new TextField(), fromField, toField;
     public String from, to;
-    private int daysLeft, maxDays;
-    private ArrayList<String> reserved = new ArrayList<>();
-    private ArrayList<Integer> reservedNumbers = new ArrayList<>();
-    private User current;
-    private Request req;
-    private Label labelRequestOk;
-    private VacationDAO dao;
-    private MonthInterface monthInterface;
+    public int daysLeft, maxDays;
+    public ArrayList<String> reserved = new ArrayList<>();
+    public ArrayList<Integer> reservedNumbers = new ArrayList<>();
+    public User current;
+    public Request req;
+    public Label labelRequestOk;
+    public VacationDAO dao;
+    public MonthInterface monthInterface;
 
-    public JanuaryController(User current){
+    public FebruaryController(User current){
         this.current = current;
         dao = VacationDAO.getInstance();
         daysLeft = dao.getDaysLeftByUsername(current.getUsername());
@@ -45,13 +41,31 @@ public class JanuaryController {
         DaysLeftTextField.setText(String.valueOf(daysLeft));
     }
 
+    public Request getRequest(){
+        return req;
+    }
+
+    public void nxtMonth(MouseEvent mouseEvent) throws IOException {
+        FebruaryController februaryController = new FebruaryController(current);
+        monthInterface.nextMonth("February.fxml", toField, current,februaryController);
+    }
+
+    public void pvsMonth(MouseEvent mouseEvent) throws IOException {
+        JanuaryController januaryController = new JanuaryController(current);
+        monthInterface.previousMonth("January.fxml", toField, current, januaryController);
+    }
+
+    public void StatusOnAction(ActionEvent actionEvent) throws IOException {
+        monthInterface.statusInfo(current);
+    }
+
     public void LogoutAction(ActionEvent actionEvent) {
         Stage st = (Stage) toField.getScene().getWindow();
         st.close();
     }
 
     public void btnPressed(ActionEvent actionEvent) {
-         ToggleButton tgl = (ToggleButton) actionEvent.getSource();
+        ToggleButton tgl = (ToggleButton) actionEvent.getSource();
         if(daysLeft > 0 && tgl.getStyleClass().contains("notPressed")){
             //Updating the ArrayList
             if (reserved.isEmpty()) {
@@ -110,8 +124,8 @@ public class JanuaryController {
             Integer min = Collections.min(reservedNumbers);
             Integer max = Collections.max(reservedNumbers);
 
-            LocalDate fromDate = LocalDate.of(2020, Month.JANUARY, min);
-            LocalDate toDate = LocalDate.of(2020, Month.JANUARY, max);
+            LocalDate fromDate = LocalDate.of(2020, Month.FEBRUARY, min);
+            LocalDate toDate = LocalDate.of(2020, Month.FEBRUARY, max);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
             from = fromDate.format(formatter);
             to = toDate.format(formatter);
@@ -146,15 +160,8 @@ public class JanuaryController {
     }
 
     public void sendRequestOnAction(ActionEvent actionEvent) {
-        if(reserved.isEmpty()){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Day selection");
-            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-            stage.getIcons().add(new Image("Assets/AppIcon.png"));
-            alert.setHeaderText("No days selected.");
-            alert.setContentText("You need to select one or more days!");
-            alert.showAndWait();
-        }
+        if(reserved.isEmpty())
+            monthInterface.alertBoxNoDays();
 
         //Updates request for getRequest method
         req = new Request();
@@ -177,19 +184,4 @@ public class JanuaryController {
         maxDays = daysLeft;
     }
 
-    public Request getRequest(){
-        return req;
-    }
-
-    public void nxtMonth(MouseEvent mouseEvent) throws IOException {
-        monthInterface.nextMonth("February.fxml", toField, current);
-    }
-
-    public void pvsMonth(MouseEvent mouseEvent) throws IOException {
-        monthInterface.previousMonth("December.fxml", toField, current);
-    }
-
-    public void StatusOnAction(ActionEvent actionEvent) throws IOException {
-        monthInterface.statusInfo(current);
-    }
 }

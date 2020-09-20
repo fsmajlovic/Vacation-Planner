@@ -1,9 +1,13 @@
-package Projekat;
+package Projekat.Months;
 
+import Projekat.Months.MonthController;
+import Projekat.Months.MonthInterface;
+import Projekat.RequestsStatusController;
+import Projekat.User;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -13,13 +17,12 @@ import java.io.IOException;
 public class Navigation implements MonthInterface {
 
     @Override
-    public void nextMonth(String month, TextField toField, User current){
+    public void nextMonth(String month, TextField toField, User current, MonthController controller){
         try {
         Stage stage = new Stage();
         Parent root = null;
         FXMLLoader loader = new FXMLLoader(getClass().getResource(month));
-        FebruaryController februaryController = new FebruaryController(current);
-        loader.setController(februaryController);
+        loader.setController(controller);
         root = loader.load();
         stage.setTitle("Vacation Planner");
         stage.getIcons().add(new Image("Assets/AppIcon.png"));
@@ -34,13 +37,12 @@ public class Navigation implements MonthInterface {
     }
 
     @Override
-    public void previousMonth(String month, TextField toField, User current) {
+    public void previousMonth(String month, TextField toField, User current, MonthController controller) {
         try {
             Stage stage = new Stage();
             Parent root = null;
             FXMLLoader loader = new FXMLLoader(getClass().getResource(month));
-            FebruaryController februaryController = new FebruaryController(current);
-            loader.setController(februaryController);
+            loader.setController(controller);
             root = loader.load();
             stage.setTitle("Vacation Planner");
             stage.getIcons().add(new Image("Assets/AppIcon.png"));
@@ -71,5 +73,16 @@ public class Navigation implements MonthInterface {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void alertBoxNoDays() {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Day selection");
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image("Assets/AppIcon.png"));
+            alert.setHeaderText("No days selected.");
+            alert.setContentText("You need to select one or more days!");
+            alert.showAndWait();
     }
 }
