@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<?import java.net.URL?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
         <URL value="@/Css/LoginScreen.css" />
@@ -14,7 +13,7 @@
     <children>
       <AnchorPane layoutX="621.0" prefHeight="500.0" prefWidth="179.0" style="-fx-background-color: #9eab96;">
          <children>
-            <Button layoutX="78.0" layoutY="443.0" mnemonicParsing="false" onAction="#backOnAction" prefHeight="36.0" prefWidth="76.0" style="-fx-background-color: lightgrey; -fx-border-color: aliceblue;" text="Back" />
+            <Button fx:id="backBtn" layoutX="78.0" layoutY="443.0" mnemonicParsing="false" onAction="#backOnAction" prefHeight="36.0" prefWidth="76.0" style="-fx-background-color: lightgrey; -fx-border-color: aliceblue;" text="Back" />
          </children></AnchorPane>
       <Text fill="#333f5c" layoutX="366.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VP">
          <font>
@@ -33,7 +32,7 @@
       <TextField fx:id="lastNameTF" alignment="CENTER" layoutX="323.0" layoutY="182.0" onMouseClicked="#lastNameOnMouseClicked" prefHeight="36.0" prefWidth="149.0" promptText="Enter your last name" />
       <TextField fx:id="emailTF" alignment="CENTER" layoutX="323.0" layoutY="234.0" onMouseClicked="#emailOnMouseClicked" prefHeight="36.0" prefWidth="149.0" promptText="Enter your email" />
       <TextField fx:id="usernameTF" alignment="CENTER" layoutX="323.0" layoutY="289.0" onMouseClicked="#usernameOnMouseClicked" prefHeight="36.0" prefWidth="149.0" promptText="Enter your username" />
-      <Button layoutX="355.0" layoutY="396.0" mnemonicParsing="false" onAction="#signUpOnAction" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: lightgrey; -fx-border-color: aliceblue;" text="Sign up">
+      <Button fx:id="signUpBtn" layoutX="355.0" layoutY="396.0" mnemonicParsing="false" onAction="#signUpOnAction" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: lightgrey; -fx-border-color: aliceblue;" text="Sign up">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>

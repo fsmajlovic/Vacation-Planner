@@ -52,7 +52,7 @@
       <TextField fx:id="usernameTextField" alignment="CENTER" layoutX="322.0" layoutY="177.0" onMouseClicked="#usernameOnMouseClicked" prefHeight="36.0" prefWidth="169.0" promptText="username" />
       <PasswordField fx:id="passwordTextField" alignment="CENTER" layoutX="322.0" layoutY="236.0" onMouseClicked="#passwordOnMouseClicked" prefHeight="36.0" prefWidth="169.0" promptText="password" />
       <Label fx:id="yourRNAdminLabel" layoutX="330.0" layoutY="381.0" text="You are not an administrator" textAlignment="CENTER" textFill="RED" visible="false" />
-      <Label layoutX="259.0" layoutY="472.0" text="Copyright (c) Faruk Smajlović Elektrotehnički fakultet Sarajevo">
+      <Label fx:id="copyrightLabel" layoutX="259.0" layoutY="472.0" text="Copyright (c) Faruk Smajlović Elektrotehnički fakultet Sarajevo">
          <font>
             <Font size="11.0" />
          </font>

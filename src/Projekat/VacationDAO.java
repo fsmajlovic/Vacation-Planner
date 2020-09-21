@@ -8,7 +8,8 @@ public class VacationDAO {
     private static VacationDAO instance;
     private Connection myConn;
     private PreparedStatement getUsersStmt, addNewRequestStmt, getRequestsStmt, approveRequestStmt, denyRequestStmt,
-            addIntoDatabaseStmt, getApprovedRequestById, updateDaysLeftStmt, getDaysLeftByIdStmt;
+            addIntoDatabaseStmt, getApprovedRequestById, updateDaysLeftStmt, getDaysLeftByIdStmt, deleteUserByIdStmt,
+            deleteRequestsForUserStmt, getUserByUsernameStmt;
 
     public static VacationDAO getInstance(){
         if(instance == null) instance = new VacationDAO();
@@ -37,6 +38,10 @@ public class VacationDAO {
             getApprovedRequestById = myConn.prepareStatement("select approved from requests where user_id = ?");
             updateDaysLeftStmt = myConn.prepareStatement("update users set daysleft = ? where id = ?");
             getDaysLeftByIdStmt = myConn.prepareStatement("select daysleft from users where username = ?");
+            deleteUserByIdStmt = myConn.prepareStatement("delete from users where id = ?");
+            deleteRequestsForUserStmt = myConn.prepareStatement("delete from requests where user_id = ?");
+            getUserByUsernameStmt = myConn.prepareStatement("select u.id, u.first_name, u.last_name, u.email," +
+                    " u.username, u.password, u.admin_id, u.daysleft, u.requests_id from users u where u.username = ?");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -169,6 +174,43 @@ public class VacationDAO {
         return daysleft;
     }
 
+    public void deleteUserById(User user){
+        try {
+            deleteUserByIdStmt.setInt(1, user.getId());
+            deleteUserByIdStmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
+    public void deleteRequestsForUser(User user){
+        try {
+            deleteRequestsForUserStmt.setInt(1, user.getId());
+            deleteRequestsForUserStmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public User getUserByUsername(String username){
+        User u = new User();
+        try {
+            getUserByUsernameStmt.setString(1, username);
+            ResultSet rs = null;
+            rs = getUserByUsernameStmt.executeQuery();
+            u.setId(rs.getInt("id"));
+            u.setFirstName(rs.getString("first_name"));
+            u.setLastName(rs.getString("last_name"));
+            u.setEmail(rs.getString("email"));
+            u.setUsername( rs.getString("username"));
+            u.setPassword(rs.getString("password"));
+            u.setAdminId(rs.getInt("admin_id"));
+            u.setDaysleft(rs.getInt("daysLeft"));
+            u.setRequestsId(rs.getInt("requests_id"));
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return u;
+    }
 
 }

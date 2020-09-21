@@ -109,13 +109,6 @@ public class LoginController {
                     alert.setContentText("Check your requests status and enjoy your vacation!");
                     alert.showAndWait();
                 }
-
-//                stage.setOnHiding(data -> {
-//                    Request req = januaryController.getRequest();
-//                    if(req != null){
-//                        dao.addNewRequest(req);
-//                    }
-//                });
             }
             usernameTextField.setText("");
             passwordTextField.setText("");

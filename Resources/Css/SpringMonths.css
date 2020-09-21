@@ -2,11 +2,11 @@
     -fx-background-color: burlywood;
 }
 .notPressed{
-    -fx-background-color: #f5d2ed;
+    -fx-background-color: #cdc387;
 }
 
 .toggle-button {
-    -fx-background-color: #f5d2ed;
+    -fx-background-color: #cdc387;
 }
 
 .requestOK{
@@ -40,3 +40,4 @@
      -fx-border-color:transparent;
      -fx-text-fill:transparent;
   }
+
