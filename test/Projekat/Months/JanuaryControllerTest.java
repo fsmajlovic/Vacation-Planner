@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxRobot;
+import org.testfx.api.FxRobotException;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 import org.testfx.service.query.EmptyNodeQueryException;
@@ -59,8 +60,7 @@ class JanuaryControllerTest {
         Text monthText = robot.lookup("#monthText").queryAs(Text.class);
         assertNotNull(monthText);
 
-        User userDelete = dao.getUserByUsername("JanuaryTest");
-        dao.deleteUserById(userDelete);
+        dao.deleteUserByUsername("JanuaryTest");
     }
 
     @Test
@@ -69,8 +69,7 @@ class JanuaryControllerTest {
         Text monthText = robot.lookup("#monthText").queryAs(Text.class);
         assertNotNull(monthText);
 
-        User userDelete = dao.getUserByUsername("JanuaryTest");
-        dao.deleteUserById(userDelete);
+        dao.deleteUserByUsername("JanuaryTest");
     }
 
 
@@ -90,15 +89,18 @@ class JanuaryControllerTest {
 
 
         robot.sleep(200);
-        robot.clickOn("#btnOne");
         robot.clickOn("#btnTwo");
         robot.clickOn("#btnThree");
-        robot.clickOn("#btnThree");
+        robot.clickOn("#btnSix");
+        robot.sleep(100);
+        robot.clickOn("#btnSix");
 
         boolean correctFromTo = false;
-        if(fromTextField.getText().equals("01 January 2020") && toTextField.getText().equals("02 January 2020"))
+        if(fromTextField.getText().equals("02 January 2020") && toTextField.getText().equals("03 January 2020"))
             correctFromTo = true;
         assertTrue(correctFromTo);
+
+        System.out.println("from to" + fromTextField.getText() + " " + toTextField.getText());
 
         TextField daysLeftTextField = robot.lookup("#DaysLeftTextField").queryAs(TextField.class);
         boolean correctDaysLeft = false;
@@ -106,9 +108,7 @@ class JanuaryControllerTest {
             correctDaysLeft = true;
         assertTrue(correctDaysLeft);
 
-        User userDelete = dao.getUserByUsername("JanuaryTest");
-        dao.deleteUserById(userDelete);
-
+        dao.deleteUserByUsername("JanuaryTest");
     }
 
     @Test
@@ -136,8 +136,7 @@ class JanuaryControllerTest {
             nullLabel = true;
         }
         assertTrue(nullLabel);
-        User userDelete = dao.getUserByUsername("JanuaryTest");
-        dao.deleteUserById(userDelete);
+        dao.deleteUserByUsername("JanuaryTest");
     }
 
     @Test
@@ -181,9 +180,7 @@ class JanuaryControllerTest {
         assertTrue(labelRequestOk.isVisible());
 
 
-        User userDelete = dao.getUserByUsername("JanuaryTest");
-        dao.deleteUserById(userDelete);
-
+        dao.deleteUserByUsername("JanuaryTest");
     }
 
     @Test
@@ -193,12 +190,6 @@ class JanuaryControllerTest {
 
         TextField toTextField = robot.lookup("#toField").queryAs(TextField.class);
         assertNotNull(toTextField);
-
-        ToggleButton tgOne = robot.lookup("#btnOne").queryAs(ToggleButton.class);
-        assertNotNull(tgOne);
-
-        ToggleButton tgThree = robot.lookup("#btnThree").queryAs(ToggleButton.class);
-        assertNotNull(tgThree);
 
         robot.clickOn("#btnThirteen");
         robot.clickOn("#btnFourteen");
@@ -215,12 +206,26 @@ class JanuaryControllerTest {
             correct = true;
         assertTrue(correct);
 
-        User userDelete = dao.getUserByUsername("JanuaryTest");
-        dao.deleteUserById(userDelete);
-
+        dao.deleteUserByUsername("JanuaryTest");
     }
 
+    @Test
+    void noDaysSelectedAlertFXTest(FxRobot robot){
+        Button sendRequestBtn = robot.lookup("#sendRequestBtn").queryAs(Button.class);
+        assertNotNull(sendRequestBtn);
+        robot.clickOn("#sendRequestBtn");
 
+        boolean alert = false;
+        try {
+            robot.clickOn("OK");
+            alert = true;
+        }catch (FxRobotException e){
+            e.printStackTrace();
+        }
+        assertTrue(alert);
+
+        dao.deleteUserByUsername("JanuaryTest");
+    }
 
 
 }

@@ -85,4 +85,6 @@ public class Navigation implements MonthInterface {
             alert.setContentText("You need to select one or more days!");
             alert.showAndWait();
     }
+
+
 }
