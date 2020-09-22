@@ -164,6 +164,7 @@ class FebruaryControllerTest {
         robot.clickOn("#btnEleven");
         robot.clickOn("#btnTwelve");
         robot.clickOn("#btnThirteen");
+        robot.clickOn("#btnSix");
 
         TextField daysLeftTextField = robot.lookup("#DaysLeftTextField").queryAs(TextField.class);
         boolean correctDaysLeft = false;

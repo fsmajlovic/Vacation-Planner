@@ -193,8 +193,6 @@ class AprilControllerTest {
         robot.clickOn("#btnFourteen");
         robot.clickOn("#btnThirteen");
 
-
-
         boolean correct = false;
         if(fromTextField.getText().equals("") && toTextField.getText().equals(""))
             correct = true;

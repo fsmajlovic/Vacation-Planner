@@ -1,19 +1,14 @@
 package Projekat.Months;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import Projekat.SignUpController;
 import Projekat.User;
 import Projekat.VacationDAO;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
@@ -24,30 +19,30 @@ import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 import org.testfx.service.query.EmptyNodeQueryException;
 
-import java.awt.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(ApplicationExtension.class)
-class JanuaryControllerTest {
+class JuneControllerTest {
 
     public VacationDAO dao;
 
     @Start
-    public void start (Stage stage) throws Exception{
+    public void start(Stage stage) throws Exception {
         Parent root = null;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("January.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("June.fxml"));
 
         dao = VacationDAO.getInstance();
-        User u = new User(-1, "JanuaryTest", "JanuaryTest", "JanuaryTest@gmail.com",
-                "JanuaryTest", "JanuaryTest", 0, 10, 0);
+        User u = new User(-1, "JuneTest", "JuneTest", "JuneTest@gmail.com",
+                "JuneTest", "JuneTest", 0, 10, 0);
         dao.addUser(u);
-        User user = dao.getUserByUsername("JanuaryTest");
+        User user = dao.getUserByUsername("JuneTest");
 
-        JanuaryController januaryController = new JanuaryController(user);
-        loader.setController(januaryController);
+        JuneController juneController = new JuneController(user);
+        loader.setController(juneController);
         root = loader.load();
         stage.setTitle("Vacation Planner");
         stage.getIcons().add(new Image("Assets/AppIcon.png"));
-        stage.setScene(new Scene(root, 800,494));
+        stage.setScene(new Scene(root, 800, 494));
         stage.setResizable(false);
         stage.show();
         stage.toFront();
@@ -55,76 +50,67 @@ class JanuaryControllerTest {
 
 
     @Test
-    void nextMonthFXTest(FxRobot robot){
+    void nextMonthFXTest(FxRobot robot) {
         robot.clickOn("#nxtMonth");
         Text monthText = robot.lookup("#monthText").queryAs(Text.class);
         assertNotNull(monthText);
 
-        dao.deleteUserByUsername("JanuaryTest");
+        dao.deleteUserByUsername("JuneTest");
     }
 
     @Test
-    void previousMonthFXTest(FxRobot robot){
+    void previousMonthFXTest(FxRobot robot) {
         robot.clickOn("#pvsMonth");
         Text monthText = robot.lookup("#monthText").queryAs(Text.class);
         assertNotNull(monthText);
 
-        dao.deleteUserByUsername("JanuaryTest");
+        dao.deleteUserByUsername("JuneTest");
     }
 
 
     @Test
-    void fromToTextfieldFXTest(FxRobot robot){
+    void fromToTextfieldFXTest(FxRobot robot) {
         TextField fromTextField = robot.lookup("#fromField").queryAs(TextField.class);
         assertNotNull(fromTextField);
 
         TextField toTextField = robot.lookup("#toField").queryAs(TextField.class);
         assertNotNull(toTextField);
 
-        ToggleButton tgOne = robot.lookup("#btnOne").queryAs(ToggleButton.class);
-        assertNotNull(tgOne);
-
-        ToggleButton tgThree = robot.lookup("#btnThree").queryAs(ToggleButton.class);
-        assertNotNull(tgThree);
-
-
         robot.sleep(200);
+        robot.clickOn("#btnOne");
         robot.clickOn("#btnTwo");
         robot.clickOn("#btnThree");
-        robot.clickOn("#btnSix");
-        robot.sleep(100);
-        robot.clickOn("#btnSix");
+        robot.doubleClickOn("#btnFour");
 
         boolean correctFromTo = false;
-        if(fromTextField.getText().equals("02 January 2020") && toTextField.getText().equals("03 January 2020"))
+        if (fromTextField.getText().equals("01 June 2020") && toTextField.getText().equals("03 June 2020"))
             correctFromTo = true;
         assertTrue(correctFromTo);
 
-        System.out.println("from to" + fromTextField.getText() + " " + toTextField.getText());
 
         TextField daysLeftTextField = robot.lookup("#DaysLeftTextField").queryAs(TextField.class);
         boolean correctDaysLeft = false;
-        if(daysLeftTextField.getText().equals("8"))
+        if (daysLeftTextField.getText().equals("7"))
             correctDaysLeft = true;
         assertTrue(correctDaysLeft);
 
-        dao.deleteUserByUsername("JanuaryTest");
+        dao.deleteUserByUsername("JuneTest");
     }
 
     @Test
-    void requestsStatusFXStatus(FxRobot robot){
+    void requestsStatusFXStatus(FxRobot robot) {
         Button btnStatus = robot.lookup("#btnStatus").queryAs(Button.class);
         assertNotNull(btnStatus);
 
         robot.clickOn("#btnStatus");
         Text requestsText = robot.lookup("#requestsText").queryAs(Text.class);
         assertNotNull(requestsText);
-        User userDelete = dao.getUserByUsername("JanuaryTest");
+        User userDelete = dao.getUserByUsername("JuneTest");
         dao.deleteUserById(userDelete);
     }
 
     @Test
-    void logoutButtonFXTest(FxRobot robot){
+    void logoutButtonFXTest(FxRobot robot) {
         Button btnLogoutJanuary = robot.lookup("#btnLogoutJanuary").queryAs(Button.class);
         assertNotNull(btnLogoutJanuary);
         robot.clickOn("#btnLogoutJanuary");
@@ -132,43 +118,39 @@ class JanuaryControllerTest {
         boolean nullLabel = false;
         try {
             Label copyrightLabel = robot.lookup("#copyrightLabel").queryAs(Label.class);
-        }catch (EmptyNodeQueryException e){
+        } catch (EmptyNodeQueryException e) {
             nullLabel = true;
         }
         assertTrue(nullLabel);
-        dao.deleteUserByUsername("JanuaryTest");
+        dao.deleteUserByUsername("JuneTest");
     }
 
     @Test
-    void maxedOutDaysLeftFXTest(FxRobot robot){
+    void maxedOutDaysLeftFXTest(FxRobot robot) {
         TextField fromTextField = robot.lookup("#fromField").queryAs(TextField.class);
         assertNotNull(fromTextField);
 
         TextField toTextField = robot.lookup("#toField").queryAs(TextField.class);
         assertNotNull(toTextField);
 
-        ToggleButton tgOne = robot.lookup("#btnOne").queryAs(ToggleButton.class);
-        assertNotNull(tgOne);
-
-        ToggleButton tgThree = robot.lookup("#btnThree").queryAs(ToggleButton.class);
-        assertNotNull(tgThree);
-
         robot.clickOn("#btnOne");
         robot.clickOn("#btnTwo");
         robot.clickOn("#btnThree");
-        robot.clickOn("#btnSix");
-        robot.clickOn("#btnSeven");
+        robot.clickOn("#btnFour");
+        robot.clickOn("#btnFive");
         robot.clickOn("#btnEight");
         robot.clickOn("#btnNine");
         robot.clickOn("#btnTen");
-        robot.clickOn("#btnThirteen");
-        robot.clickOn("#btnFourteen");
+        robot.clickOn("#btnEleven");
+        robot.clickOn("#btnTwelve");
         robot.clickOn("#btnFifteen");
         robot.clickOn("#btnTen");
 
+
+
         TextField daysLeftTextField = robot.lookup("#DaysLeftTextField").queryAs(TextField.class);
         boolean correctDaysLeft = false;
-        if(daysLeftTextField.getText().equals("0"))
+        if (daysLeftTextField.getText().equals("0"))
             correctDaysLeft = true;
         assertTrue(correctDaysLeft);
 
@@ -181,11 +163,11 @@ class JanuaryControllerTest {
         assertTrue(labelRequestOk.isVisible());
 
 
-        dao.deleteUserByUsername("JanuaryTest");
+        dao.deleteUserByUsername("JuneTest");
     }
 
     @Test
-    void unselectAllFXTest(FxRobot robot){
+    void unselectAllFXTest(FxRobot robot) {
         TextField fromTextField = robot.lookup("#fromField").queryAs(TextField.class);
         assertNotNull(fromTextField);
 
@@ -201,17 +183,16 @@ class JanuaryControllerTest {
         robot.clickOn("#btnThirteen");
 
 
-
         boolean correct = false;
-        if(fromTextField.getText().equals("") && toTextField.getText().equals(""))
+        if (fromTextField.getText().equals("") && toTextField.getText().equals(""))
             correct = true;
         assertTrue(correct);
 
-        dao.deleteUserByUsername("JanuaryTest");
+        dao.deleteUserByUsername("JuneTest");
     }
 
     @Test
-    void noDaysSelectedAlertFXTest(FxRobot robot){
+    void noDaysSelectedAlertFXTest(FxRobot robot) {
         Button sendRequestBtn = robot.lookup("#sendRequestBtn").queryAs(Button.class);
         assertNotNull(sendRequestBtn);
         robot.clickOn("#sendRequestBtn");
@@ -220,13 +201,12 @@ class JanuaryControllerTest {
         try {
             robot.clickOn("OK");
             alert = true;
-        }catch (FxRobotException e){
+        } catch (FxRobotException e) {
             e.printStackTrace();
         }
         assertTrue(alert);
 
-        dao.deleteUserByUsername("JanuaryTest");
+        dao.deleteUserByUsername("JuneTest");
     }
-
 
 }
