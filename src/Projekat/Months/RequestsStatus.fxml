@@ -41,7 +41,7 @@
             <Font name="Monotype Corsiva" size="19.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="259.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Requests History">
+      <Text fx:id="requestsText" fill="WHITE" layoutX="259.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Requests History">
          <font>
             <Font name="Mistral" size="53.0" />
          </font>

@@ -9,7 +9,7 @@ public class VacationDAO {
     private Connection myConn;
     private PreparedStatement getUsersStmt, addNewRequestStmt, getRequestsStmt, approveRequestStmt, denyRequestStmt,
             addIntoDatabaseStmt, getApprovedRequestById, updateDaysLeftStmt, getDaysLeftByIdStmt, deleteUserByIdStmt,
-            deleteRequestsForUserStmt, getUserByUsernameStmt;
+            deleteRequestsForUserStmt, getUserByUsernameStmt, deleteRequestForTestingStmt;
 
     public static VacationDAO getInstance(){
         if(instance == null) instance = new VacationDAO();
@@ -42,6 +42,7 @@ public class VacationDAO {
             deleteRequestsForUserStmt = myConn.prepareStatement("delete from requests where user_id = ?");
             getUserByUsernameStmt = myConn.prepareStatement("select u.id, u.first_name, u.last_name, u.email," +
                     " u.username, u.password, u.admin_id, u.daysleft, u.requests_id from users u where u.username = ?");
+            deleteRequestForTestingStmt = myConn.prepareStatement("delete from requests where from_date = ? and to_date = ? and user_id = ?");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -211,6 +212,17 @@ public class VacationDAO {
             e.printStackTrace();
         }
         return u;
+    }
+
+    public void deleteRequestForTesting(String from_date, String to_date, int user_id){
+        try {
+            deleteRequestForTestingStmt.setString(1, from_date);
+            deleteRequestForTestingStmt.setString(2, to_date);
+            deleteRequestForTestingStmt.setInt(3, user_id);
+            deleteRequestForTestingStmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -27,6 +28,7 @@ public class FebruaryController extends MonthController {
     public Label labelRequestOk;
     public VacationDAO dao;
     public MonthInterface monthInterface;
+    public Text monthLabel;
 
     public FebruaryController(User current){
         this.current = current;

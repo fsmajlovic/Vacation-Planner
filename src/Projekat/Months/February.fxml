@@ -17,7 +17,7 @@
    <children>
       <Polygon fill="#333f5c" layoutX="767.0" layoutY="436.0" points="-376.0, 68.0, 50.0, 68.0, 50.0, -455.0" stroke="BLACK" strokeType="INSIDE" />
       <Polygon fx:id="nxtMonth" fill="LIGHTGRAY" layoutX="812.0" layoutY="233.0" onMousePressed="#nxtMonth" points="-50.0, 40.0, -50.0, -11.0, -26.0, 14.0" stroke="BLACK" strokeType="INSIDE" />
-      <Text layoutX="21.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="February" wrappingWidth="218.13671875">
+      <Text fx:id="monthText" layoutX="21.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="February" wrappingWidth="218.13671875">
          <font>
             <Font name="Monotype Corsiva" size="49.0" />
          </font>
@@ -54,7 +54,7 @@
                <padding>
                   <Insets top="2.0" />
                </padding></ToggleButton>
-            <ToggleButton layoutX="276.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="3" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <ToggleButton fx:id="btnThree" layoutX="276.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="3" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -67,7 +67,7 @@
                <effect>
                   <DropShadow />
                </effect></ToggleButton>
-            <ToggleButton layoutX="365.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="4" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <ToggleButton fx:id="btnFour" layoutX="365.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="4" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -80,7 +80,7 @@
                <effect>
                   <DropShadow />
                </effect></ToggleButton>
-            <ToggleButton layoutX="98.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="5" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <ToggleButton fx:id="btnFive" layoutX="98.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="5" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -93,7 +93,7 @@
                <effect>
                   <DropShadow />
                </effect></ToggleButton>
-            <ToggleButton layoutX="187.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="6" GridPane.columnIndex="4" GridPane.rowIndex="2">
+            <ToggleButton fx:id="btnSix" layoutX="187.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="6" GridPane.columnIndex="4" GridPane.rowIndex="2">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -126,7 +126,7 @@
                <padding>
                   <Insets top="2.0" />
                </padding></ToggleButton>
-            <ToggleButton layoutX="543.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <ToggleButton fx:id="btnTen" layoutX="543.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -139,7 +139,7 @@
                <effect>
                   <DropShadow />
                </effect></ToggleButton>
-            <ToggleButton layoutX="10.0" layoutY="65.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="11" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <ToggleButton fx:id="btnEleven" layoutX="10.0" layoutY="65.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="11" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -152,7 +152,7 @@
                <effect>
                   <DropShadow />
                </effect></ToggleButton>
-            <ToggleButton layoutX="98.0" layoutY="65.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="12" GridPane.columnIndex="3" GridPane.rowIndex="3">
+            <ToggleButton fx:id="btnTwelve" layoutX="98.0" layoutY="65.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="12" GridPane.columnIndex="3" GridPane.rowIndex="3">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -165,7 +165,7 @@
                <effect>
                   <DropShadow />
                </effect></ToggleButton>
-            <ToggleButton layoutX="98.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="13" GridPane.columnIndex="4" GridPane.rowIndex="3">
+            <ToggleButton fx:id="btnThirteen" layoutX="98.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="13" GridPane.columnIndex="4" GridPane.rowIndex="3">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -372,7 +372,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </GridPane.margin>
             </ToggleButton>
-            <ToggleButton layoutX="366.0" layoutY="148.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="16" GridPane.rowIndex="4">
+            <ToggleButton fx:id="btnSixteen" layoutX="366.0" layoutY="148.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="16" GridPane.rowIndex="4">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -386,7 +386,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </GridPane.margin>
             </ToggleButton>
-            <ToggleButton layoutX="366.0" layoutY="103.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="9" GridPane.rowIndex="3">
+            <ToggleButton fx:id="btnNine" layoutX="366.0" layoutY="103.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="9" GridPane.rowIndex="3">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -400,7 +400,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </GridPane.margin>
             </ToggleButton>
-            <ToggleButton layoutX="366.0" layoutY="57.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="2" GridPane.rowIndex="2">
+            <ToggleButton fx:id="btnTwo" layoutX="366.0" layoutY="57.0" mnemonicParsing="false" onAction="#btnPressed" prefHeight="70.0" prefWidth="89.0" styleClass="notPressed" text="2" GridPane.rowIndex="2">
                <font>
                   <Font name="Monotype Corsiva" size="22.0" />
                </font>
@@ -467,7 +467,7 @@
             <Font name="Monotype Corsiva" size="15.0" />
          </font>
       </Text>
-      <Button layoutX="551.0" layoutY="400.0" mnemonicParsing="false" onAction="#sendRequestOnAction" prefHeight="44.0" prefWidth="151.0" style="-fx-background-color: azure;" text="Send Request">
+      <Button fx:id="sendRequestBtn" layoutX="551.0" layoutY="400.0" mnemonicParsing="false" onAction="#sendRequestOnAction" prefHeight="44.0" prefWidth="151.0" style="-fx-background-color: azure;" text="Send Request">
          <font>
             <Font name="Monotype Corsiva" size="23.0" />
          </font></Button>

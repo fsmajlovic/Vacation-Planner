@@ -17,7 +17,7 @@
    <children>
       <Polygon fill="#818d43" layoutX="767.0" layoutY="436.0" points="-376.0, 68.0, 50.0, 68.0, 50.0, -455.0" stroke="BLACK" strokeType="INSIDE" />
       <Polygon fx:id="nxtMonth" fill="LIGHTGRAY" layoutX="812.0" layoutY="233.0" onMousePressed="#nxtMonth" points="-50.0, 40.0, -50.0, -11.0, -26.0, 14.0" stroke="BLACK" strokeType="INSIDE" />
-      <Text layoutX="21.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="March" wrappingWidth="218.13671875">
+      <Text fx:id="monthText" layoutX="21.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="March" wrappingWidth="218.13671875">
          <font>
             <Font name="Monotype Corsiva" size="49.0" />
          </font>
