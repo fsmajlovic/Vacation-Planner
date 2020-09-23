@@ -39,12 +39,12 @@ class LoginControllerTest {
         if(System.getProperty("os.name").equals("Mac OS X"))
             ctrl = KeyCode.COMMAND;
         robot.press(ctrl).press(KeyCode.A).release(KeyCode.A).release(ctrl);
-        robot.write("test123");
+        robot.write("test1");
         TextField tfPassword = robot.lookup("#passwordTextField").queryAs(TextField.class);
         assertNotNull(tfPassword);
         robot.clickOn("#passwordTextField");
         robot.press(ctrl).press(KeyCode.A).release(KeyCode.A).release(ctrl);
-        robot.write("test123");
+        robot.write("test1");
         robot.clickOn("#AdminCheckBox");
         robot.clickOn("#loginBtn");
         Label notAdminLabel = robot.lookup("#yourRNAdminLabel").queryAs(Label.class);
@@ -127,12 +127,12 @@ class LoginControllerTest {
         if(System.getProperty("os.name").equals("Mac OS X"))
             ctrl = KeyCode.COMMAND;
         robot.press(ctrl).press(KeyCode.A).release(KeyCode.A).release(ctrl);
-        robot.write("test123");
+        robot.write("test1");
         TextField tfPassword = robot.lookup("#passwordTextField").queryAs(TextField.class);
         assertNotNull(tfPassword);
         robot.clickOn("#passwordTextField");
         robot.press(ctrl).press(KeyCode.A).release(KeyCode.A).release(ctrl);
-        robot.write("test123");
+        robot.write("test1");
         robot.clickOn("#loginBtn");
 
         TextField tfFrom = robot.lookup("#fromField").queryAs(TextField.class);
