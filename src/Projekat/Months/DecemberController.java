@@ -53,8 +53,8 @@ public class DecemberController extends MonthController {
     }
 
     public void pvsMonth(MouseEvent mouseEvent) throws IOException {
-        NovemeberController novemeberController = new NovemeberController(current);
-        monthInterface.previousMonth("November.fxml", toField, current, novemeberController);
+        NovemberController novemberController = new NovemberController(current);
+        monthInterface.previousMonth("November.fxml", toField, current, novemberController);
     }
 
     public void StatusOnAction(ActionEvent actionEvent) throws IOException {

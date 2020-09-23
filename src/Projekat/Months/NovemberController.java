@@ -20,7 +20,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class NovemeberController extends MonthController {
+public class NovemberController extends MonthController {
 
     public TextField DaysLeftTextField = new TextField(), fromField, toField;
     public String from, to;
@@ -33,7 +33,7 @@ public class NovemeberController extends MonthController {
     public VacationDAO dao;
     public MonthInterface monthInterface;
 
-    public NovemeberController(User current){
+    public NovemberController(User current){
         this.current = current;
         dao = VacationDAO.getInstance();
         daysLeft = dao.getDaysLeftByUsername(current.getUsername());
