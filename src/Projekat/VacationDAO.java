@@ -194,9 +194,9 @@ public class VacationDAO {
         }
     }
 
-    public void deleteRequestsForUser(User user){
+    public void deleteRequestsForUser(int user_id){
         try {
-            deleteRequestsForUserStmt.setInt(1, user.getId());
+            deleteRequestsForUserStmt.setInt(1, user_id);
             deleteRequestsForUserStmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

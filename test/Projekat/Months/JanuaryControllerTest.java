@@ -53,26 +53,6 @@ class JanuaryControllerTest {
         stage.toFront();
     }
 
-
-    @Test
-    void nextMonthFXTest(FxRobot robot){
-        robot.clickOn("#nxtMonth");
-        Text monthText = robot.lookup("#monthText").queryAs(Text.class);
-        assertNotNull(monthText);
-
-        dao.deleteUserByUsername("JanuaryTest");
-    }
-
-    @Test
-    void previousMonthFXTest(FxRobot robot){
-        robot.clickOn("#pvsMonth");
-        Text monthText = robot.lookup("#monthText").queryAs(Text.class);
-        assertNotNull(monthText);
-
-        dao.deleteUserByUsername("JanuaryTest");
-    }
-
-
     @Test
     void fromToTextfieldFXTest(FxRobot robot){
         TextField fromTextField = robot.lookup("#fromField").queryAs(TextField.class);
@@ -91,9 +71,8 @@ class JanuaryControllerTest {
         robot.sleep(200);
         robot.clickOn("#btnTwo");
         robot.clickOn("#btnThree");
-        robot.clickOn("#btnSix");
-        robot.sleep(100);
-        robot.clickOn("#btnSix");
+        robot.doubleClickOn("#btnSix");
+
 
         boolean correctFromTo = false;
         if(fromTextField.getText().equals("02 January 2020") && toTextField.getText().equals("03 January 2020"))
@@ -108,6 +87,8 @@ class JanuaryControllerTest {
             correctDaysLeft = true;
         assertTrue(correctDaysLeft);
 
+        int user_id = dao.getUserByUsername("JanuaryTest").getId();
+        dao.deleteRequestsForUser(user_id);
         dao.deleteUserByUsername("JanuaryTest");
     }
 
@@ -119,8 +100,9 @@ class JanuaryControllerTest {
         robot.clickOn("#btnStatus");
         Text requestsText = robot.lookup("#requestsText").queryAs(Text.class);
         assertNotNull(requestsText);
-        User userDelete = dao.getUserByUsername("JanuaryTest");
-        dao.deleteUserById(userDelete);
+        int user_id = dao.getUserByUsername("JanuaryTest").getId();
+        dao.deleteRequestsForUser(user_id);
+        dao.deleteUserByUsername("JanuaryTest");
     }
 
     @Test
@@ -136,6 +118,8 @@ class JanuaryControllerTest {
             nullLabel = true;
         }
         assertTrue(nullLabel);
+        int user_id = dao.getUserByUsername("JanuaryTest").getId();
+        dao.deleteRequestsForUser(user_id);
         dao.deleteUserByUsername("JanuaryTest");
     }
 
@@ -181,6 +165,8 @@ class JanuaryControllerTest {
         assertTrue(labelRequestOk.isVisible());
 
 
+        int user_id = dao.getUserByUsername("JanuaryTest").getId();
+        dao.deleteRequestsForUser(user_id);
         dao.deleteUserByUsername("JanuaryTest");
     }
 
@@ -207,6 +193,8 @@ class JanuaryControllerTest {
             correct = true;
         assertTrue(correct);
 
+        int user_id = dao.getUserByUsername("JanuaryTest").getId();
+        dao.deleteRequestsForUser(user_id);
         dao.deleteUserByUsername("JanuaryTest");
     }
 
@@ -225,6 +213,8 @@ class JanuaryControllerTest {
         }
         assertTrue(alert);
 
+        int user_id = dao.getUserByUsername("JanuaryTest").getId();
+        dao.deleteRequestsForUser(user_id);
         dao.deleteUserByUsername("JanuaryTest");
     }
 

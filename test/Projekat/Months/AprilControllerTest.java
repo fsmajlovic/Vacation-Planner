@@ -49,26 +49,6 @@ class AprilControllerTest {
         stage.toFront();
     }
 
-
-    @Test
-    void nextMonthFXTest(FxRobot robot){
-        robot.clickOn("#nxtMonth");
-        Text monthText = robot.lookup("#monthText").queryAs(Text.class);
-        assertNotNull(monthText);
-
-        dao.deleteUserByUsername("AprilTest");
-    }
-
-    @Test
-    void previousMonthFXTest(FxRobot robot){
-        robot.clickOn("#pvsMonth");
-        Text monthText = robot.lookup("#monthText").queryAs(Text.class);
-        assertNotNull(monthText);
-
-        dao.deleteUserByUsername("AprilTest");
-    }
-
-
     @Test
     void fromToTextfieldFXTest(FxRobot robot){
         TextField fromTextField = robot.lookup("#fromField").queryAs(TextField.class);
@@ -102,6 +82,8 @@ class AprilControllerTest {
             correctDaysLeft = true;
         assertTrue(correctDaysLeft);
 
+        int user_id = dao.getUserByUsername("AprilTest").getId();
+        dao.deleteRequestsForUser(user_id);
         dao.deleteUserByUsername("AprilTest");
     }
 
@@ -113,8 +95,9 @@ class AprilControllerTest {
         robot.clickOn("#btnStatus");
         Text requestsText = robot.lookup("#requestsText").queryAs(Text.class);
         assertNotNull(requestsText);
-        User userDelete = dao.getUserByUsername("AprilTest");
-        dao.deleteUserById(userDelete);
+        int user_id = dao.getUserByUsername("AprilTest").getId();
+        dao.deleteRequestsForUser(user_id);
+        dao.deleteUserByUsername("AprilTest");
     }
 
     @Test
@@ -130,6 +113,8 @@ class AprilControllerTest {
             nullLabel = true;
         }
         assertTrue(nullLabel);
+        int user_id = dao.getUserByUsername("AprilTest").getId();
+        dao.deleteRequestsForUser(user_id);
         dao.deleteUserByUsername("AprilTest");
     }
 
@@ -173,7 +158,8 @@ class AprilControllerTest {
         assertNotNull(labelRequestOk);
         assertTrue(labelRequestOk.isVisible());
 
-
+        int user_id = dao.getUserByUsername("AprilTest").getId();
+        dao.deleteRequestsForUser(user_id);
         dao.deleteUserByUsername("AprilTest");
     }
 
@@ -198,6 +184,8 @@ class AprilControllerTest {
             correct = true;
         assertTrue(correct);
 
+        int user_id = dao.getUserByUsername("AprilTest").getId();
+        dao.deleteRequestsForUser(user_id);
         dao.deleteUserByUsername("AprilTest");
     }
 
@@ -216,6 +204,8 @@ class AprilControllerTest {
         }
         assertTrue(alert);
 
+        int user_id = dao.getUserByUsername("AprilTest").getId();
+        dao.deleteRequestsForUser(user_id);
         dao.deleteUserByUsername("AprilTest");
     }
 }
