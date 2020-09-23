@@ -16,6 +16,8 @@ import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(ApplicationExtension.class)
 class NavigationTest {
 
@@ -24,7 +26,7 @@ class NavigationTest {
     @Start
     public void start(Stage stage) throws Exception {
         Parent root = null;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("January.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Months/January.fxml"));
 
         dao = VacationDAO.getInstance();
         User u = new User(-1, "JanuaryTest", "JanuaryTest", "JanuaryTest@gmail.com",

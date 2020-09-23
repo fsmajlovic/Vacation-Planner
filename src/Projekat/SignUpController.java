@@ -32,7 +32,7 @@ public class SignUpController {
     public ImageView backgroundImgView;
 
 
-    SignUpController(){
+    public SignUpController(){
         dao = VacationDAO.getInstance();
     }
 

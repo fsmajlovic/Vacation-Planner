@@ -1,28 +1,29 @@
-package Projekat;
+package Projekat.Months;
 
+import Projekat.Request;
+import Projekat.VacationDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
 public class RequestsStatusController {
 
     public ListView listApr, listDen, listPen;
+    public Button backBtn;
     private VacationDAO dao;
     private int id;
     private ObservableList<String> approvedObs, deniedObs, pendingObs;
     private ArrayList<String> approvedArray, deniedArray, pendingArray;
     private ArrayList<Request> requests;
-    private ImageView imgReport;
-
-
-    private Button reportBtn;
 
 
     public RequestsStatusController(int id){
@@ -41,8 +42,6 @@ public class RequestsStatusController {
         listDen = new ListView();
         listPen = new ListView();
 
-        imgReport = new ImageView();
-        reportBtn = new Button();
     }
 
     @FXML
@@ -64,10 +63,10 @@ public class RequestsStatusController {
         listApr.setItems(approvedObs);
         listPen.setItems(pendingObs);
         listDen.setItems(deniedObs);
-
-
-        reportBtn.setText("aaa");
-
     }
 
+    public void backOnAction(ActionEvent actionEvent) {
+        Stage stg = (Stage) listApr.getScene().getWindow();
+        stg.close();
+    }
 }

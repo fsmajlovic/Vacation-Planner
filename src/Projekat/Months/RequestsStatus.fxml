@@ -46,5 +46,6 @@
             <Font name="Mistral" size="53.0" />
          </font>
       </Text>
+      <Button fx:id="backBtn" layoutX="680.0" layoutY="455.0" mnemonicParsing="false" onAction="#backOnAction" prefHeight="25.0" prefWidth="65.0" text="Back" />
    </children>
 </AnchorPane>
